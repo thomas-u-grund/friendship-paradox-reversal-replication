@@ -43,6 +43,7 @@
 }
 \makeatother
 
+\usepackage{sansmath}
 \begin{document}
 
 \lefttitle{[Author information removed for peer review]}
@@ -505,7 +506,7 @@ predicted.
 (Negative-Binomial degrees, CV 1.0; mean over 30 graphs per cell, standard errors of the simulated means at most $0.011$; simulation / mean-field).
 
 \vspace{4pt}
-{\small\sf
+{\small\sf\sansmath
 \begin{tabular}{lrrrrr}
 \toprule
 $n$ & Mean degree 6 & 12 & 25 & 50 & 100\\
@@ -712,27 +713,27 @@ The sign change raises the question whether it arises because triangle-closing s
 with exactly fixed degree sequences (differences in means, 95\% intervals).
 
 \vspace{4pt}
-{\small\sf
+{\footnotesize\sf\sansmath\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrr}
 \toprule
 Contrast (condition) & Base A & Base B\\
 \midrule
 Clustering 0.30 vs start (assortativity 0) & $+0.340$ [0.327, 0.352] & $+0.560$ [0.545, 0.575]\\
-Assortativity $+0.3$ vs $-0.3$ (start clustering) & $+0.196$ [0.186, 0.206] & $+0.294$ [0.281, 0.308]\\
-Assortativity $+0.3$ vs $-0.3$ (clustering 0.10) & $+0.086$ [0.076, 0.095] & $+0.023$ [0.012, 0.033]\\
-Assortativity $+0.3$ vs $-0.3$ (clustering 0.20) & $-0.158$ [$-0.168$, $-0.147$] & $-0.147$ [$-0.161$, $-0.133$]\\
-Assortativity $+0.3$ vs $-0.3$ (clustering 0.30) & $-0.072$ [$-0.083$, $-0.060$] & $-0.300$ [$-0.324$, $-0.275$]\\
-Clustering, highest vs lowest (planted modularity 0.60 / 0.63) & $+0.194$ [0.185, 0.203] & $+0.455$ [0.439, 0.471]\\
-Clustering, highest vs lowest (planted modularity 0.74 / 0.78) & $+0.282$ [0.272, 0.293] & $+0.639$ [0.623, 0.655]\\
-Community strength, strongest vs weakest (clustering 0.10) & $+0.248$ [0.238, 0.257] & $+0.278$ [0.267, 0.289]\\
-Assortativity $+0.3$ vs $-0.3$ (planted partition fixed, natural clustering) & $+0.135$ [0.129, 0.141] & $+0.209$ [0.200, 0.217]\\
-Assortativity $+0.3$ vs $-0.3$ (planted partition fixed, clustering 0.20) & $-0.028$ [$-0.033$, $-0.022$] & $+0.026$ [0.018, 0.035]\\
+Assortativity effect, start clustering & $+0.196$ [0.186, 0.206] & $+0.294$ [0.281, 0.308]\\
+Assortativity effect, clustering 0.10 & $+0.086$ [0.076, 0.095] & $+0.023$ [0.012, 0.033]\\
+Assortativity effect, clustering 0.20 & $-0.158$ [$-0.168$, $-0.147$] & $-0.147$ [$-0.161$, $-0.133$]\\
+Assortativity effect, clustering 0.30 & $-0.072$ [$-0.083$, $-0.060$] & $-0.300$ [$-0.324$, $-0.275$]\\
+Clustering effect, planted modularity 0.60 / 0.63 & $+0.194$ [0.185, 0.203] & $+0.455$ [0.439, 0.471]\\
+Clustering effect, planted modularity 0.74 / 0.78 & $+0.282$ [0.272, 0.293] & $+0.639$ [0.623, 0.655]\\
+Community effect, clustering 0.10 & $+0.248$ [0.238, 0.257] & $+0.278$ [0.267, 0.289]\\
+Assortativity effect, fixed communities, natural clustering & $+0.135$ [0.129, 0.141] & $+0.209$ [0.200, 0.217]\\
+Assortativity effect, fixed communities, clustering 0.20 & $-0.028$ [$-0.033$, $-0.022$] & $+0.026$ [0.018, 0.035]\\
 \bottomrule
 \end{tabular}
 \par}
 
 \vspace{4pt}
-{\small Base A: $n=2{,}000$, mean degree 25, CV 1.0; base B: $n=4{,}000$, mean degree 12,
+{\small Assortativity effect: assortativity $+0.3$ minus $-0.3$. Clustering effect: highest minus lowest clustering (about 0.10 to 0.30). Community effect: strongest minus weakest planted communities (planted modularity 0.74 against 0.17 in base A, 0.78 against 0.18 in base B). Base A: $n=2{,}000$, mean degree 25, CV 1.0; base B: $n=4{,}000$, mean degree 12,
 CV 1.4; 30 graphs per cell. The first five rows are from unrestricted rewiring (1{,}200 graphs); the next three from rewiring that preserves the block-pair edge
 counts of a planted partition (960 graphs); the last two from the same kind of rewiring with assortativity as the target (1{,}080 graphs, averaged over three community strengths, Section 6.4).}
 \end{table*}
@@ -858,7 +859,7 @@ anything particular to real networks.
 departure from the mean-field prediction, on network features (105 Facebook networks).
 
 \vspace{4pt}
-{\small\sf
+{\small\sf\sansmath\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrr}
 \toprule
 Predictor & Reversal distance & Reversal distance (with modularity) & Observed $-$ mean-field\\
@@ -939,10 +940,10 @@ Facebook-type networks, not as an estimate of any population quantity. For the s
 \textbf{Table 4.} Reversal distance in ten public networks (largest components).
 
 \vspace{4pt}
-{\small\sf
+{\footnotesize\sf\sansmath\setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{lrrrrrrrrr}
 \toprule
-Network & $n$ & Mean deg. & CV & Clust. & Assort. & Modul. & Observed & Randomised & Mean-field\\
+Network & $n$ & Mean deg. & CV & Clust. & Assort. & Modul. & Obs. & Rand. & MF\\
 \midrule
 Enron email & 33{,}696 & 10.7 & 3.50 & 0.09 & $-0.12$ & 0.59 & 3.71 & 3.44 & 3.48\\
 AstroPh & 17{,}903 & 22.0 & 1.41 & 0.32 & 0.20 & 0.62 & 3.92 & 3.30 & 3.33\\
@@ -961,8 +962,8 @@ Amazon co-purchase & 334{,}863 & 5.5 & 1.04 & 0.21 & $-0.06$ & 0.93 & 11.36 & 6.
 \vspace{4pt}
 {\small Note: Clust. is the global clustering coefficient, Assort. Newman's degree
 assortativity, Modul. the modularity of a Louvain partition. The last three columns are
-the continuous reversal distance of the network, of a degree-preserving
-randomisation, and of the mean-field model. Ordered by modularity.}
+the continuous reversal distance of the network (Obs.), of a degree-preserving
+randomisation (Rand.), and of the mean-field model (MF). Ordered by modularity.}
 \end{table*}
 
 \begin{figure*}[t]
@@ -1007,7 +1008,7 @@ longer than the population-level reversal suggests.
 \textbf{Table 5.} Share of people with the paradox at distance $k$ (105 Facebook networks).
 
 \vspace{4pt}
-{\small\sf
+{\small\sf\sansmath
 \begin{tabular}{rrrrr}
 \toprule
 $k$ & Observed mean (SD) & Range & Mean-field mean & Share with $B_k>\mu_1$\\
@@ -1212,7 +1213,7 @@ two-variable recursion to $10^{-15}$.
 \textbf{Table A1.} Translation errors $\max_k|\tilde Q_{k+1}(\nu n)-\tilde Q_k(n)|$.
 
 \vspace{4pt}
-{\small\sf
+{\small\sf\sansmath
 \begin{tabular}{lrrr}
 \toprule
 $n$ & Mean degree 12, CV 1.0 & Mean degree 50, CV 1.0 & Mean degree 12, CV 1.4\\
