@@ -87,7 +87,7 @@ the structure of a network determines that distance?
 \includegraphics[width=0.95\linewidth]{figures/figure_intro_schematic.pdf}
 
 \vspace{4pt}
-\textbf{Figure 1. A small network seen from one person.} (A) An illustrative network of 36 people (a simulated configuration-model graph with 52 edges), drawn in rings by shortest-path distance from one person (black); circle size is the number of friends. Each person is coloured by their distance from the person in black, using the colour of that distance's bar in panel B: blue if the people at that distance (the shell) are on average better connected than everyone, orange if they are less connected. (B) The enrichment $Q_k$: the mean degree of the people exactly $k$ steps away, taken over all ordered pairs of people, divided by the mean degree of everyone. The people at distances 1 and 2 are better connected than average. From distance 3 they are less connected than average, which is the reversal this paper studies.
+\textbf{Figure 1. A small network, seen from one person.} (A) An illustrative network of 36 people (a simulated configuration-model graph with 52 edges), drawn in rings by shortest-path distance from one person (black); circle size is the number of friends. Each person is coloured by their distance from the person in black, using the colour of that distance's bar in panel B. (B) Bars: the enrichment $Q_k$ pooled over all ordered pairs of people, that is, the mean degree of the people exactly $k$ steps away (the shell) divided by the mean degree of everyone. Diamonds: the same ratio for the person in black alone. The paper studies the pooled quantity; the single person is shown for intuition, and here follows the same pattern. The people at distances 1 and 2 are better connected than average; from distance 3 they are less connected than average, which is the reversal this paper studies.
 \end{figure*}
 
 The friendship paradox arises from degree-weighted sampling and has implications for
@@ -146,7 +146,7 @@ $S_k=B_k/B_{k-1}$; $S_1=B_1/\mu_1>1$ is the classical paradox.
 \begin{equation*}
 k_{\mathrm{rev}} \;=\; \min\{k\ge 2:\ Q_k<1\},
 \end{equation*}
-the first distance $k$ at which the people exactly $k$ steps away (the shell $N_k$, not everyone within $k$ steps) are, on average, less connected than the population; it
+the first distance $k$ at which the people exactly $k$ steps away (the shell $N_k$, not everyone within $k$ steps) are, on average, less connected than the population (Figure 1B shows this in an example); it
 exists in every connected, non-regular graph (Theorem 1(d)). It is an integer and,
 in the networks I study, takes few distinct values, so I also use a
 \emph{continuous reversal distance} $\tilde k_{\mathrm{rev}}$: the point at which
@@ -395,8 +395,8 @@ $\nu=\mu_2/\mu_1-1>1$, and let $\tilde Q_k(n)$ be the mean-field enrichment with
 $n_d=np_d$ vertices of degree $d$. Then there is a function $\mathcal Q$ of one variable, defined in
 Appendix A, such that for every compact $\Lambda\subset(0,\infty)$,
 $\sup_{k:\ \nu^k/n\in\Lambda}|\tilde Q_k(n)-\mathcal Q(\nu^k/n)|\to0$ as $n\to\infty$.
-In particular $\tilde Q_{k+1}(\nu n)-\tilde Q_k(n)\to0$: multiplying the number of vertices
-by $\nu$ delays the whole enrichment profile by exactly one step. Moreover $\mathcal Q(\lambda)\to\mu_2/\mu_1^2>1$
+In particular $\tilde Q_{k+1}(\nu n)-\tilde Q_k(n)\to0$: asymptotically, multiplying the number of vertices
+by $\nu$ shifts the enrichment profile by one step. Moreover $\mathcal Q(\lambda)\to\mu_2/\mu_1^2>1$
 as $\lambda\to0$. Suppose $\mathcal Q$ crosses $1$ once, in the sense that for some $\lambda^*>0$,
 $\mathcal Q>1$ on $(0,\lambda^*)$ and $\mathcal Q<1$ on $(\lambda^*,\nu\lambda^*]$ (a hypothesis, which holds in all 27 degree laws I checked; Appendix A). Put $u(n)=\log_\nu(n\lambda^*)=\log n/\log\nu+c^*(p)$ with $c^*(p)=\log_\nu\lambda^*$.
 Then, for every $\varepsilon>0$ and all large $n$, the discrete reversal distance is $\lceil u(n)\rceil$ if $u(n)$ is
@@ -1041,14 +1041,7 @@ The results show that the answer has two parts. The degree distribution gives a 
 
 These findings distinguish two sources of degree bias. The classical friendship paradox arises from the unequal probability of encountering people with different numbers of connections. How far it extends through a network, however, depends on how connections are organised. Networks with identical degree sequences can have different reversal distances, and in the experiments clustering and community structure delay reversal, which is consistent with their slowing the rate at which previously unreached people become accessible. The reach of the friendship paradox is therefore not determined by degree heterogeneity alone.
 
-For the higher-order paradox, the results mean the following. The answer to
-``does a person's friends-of-friends have more friends than the person?'' is
-yes for most people at distance 2 and for about half at distance 3 in these networks,
-and the population-level answer, that the people at distance 3 are less connected
-than average, is true of most of the networks; but the distance at which this
-happens is not constant. It moves with the size, density, and wiring of the network
-in the way the model describes, and a longer chain of acquaintance is needed in larger
-and sparser networks.
+For the higher-order paradox, a person's friends-of-friends have more friends than the person for most people at distance 2 and for about half at distance 3 in these networks, while the population-level reversal arrives at about distance 3 and later in larger and sparser networks.
 
 The results have a practical reading for sampling. A random-walk-based sample reaches vertices whose degree is size-biased at every step, whereas the wave of people first reached at distance $k$ in a snowball or survey design has a mean degree above the population mean up to the reversal distance and below it from there on. Collecting everyone within distance $k$ is a different statistic, because it also contains the earlier, better-connected waves; the reversal distance is therefore not the point at which a cumulative sample becomes representative. The reversal distance is later in larger, sparser, and more modular networks. The choice of design, and how
 far one goes, determines the sign of the bias. Avoiding shells beyond the reversal distance does not by itself make a sample representative. What the reversal distance gives is the point at which the direction of shell-level degree bias changes: up to it the people at each distance are better connected than average, and beyond it they are less connected. That is useful in designing a shell-based sample, whose degree bias it helps to anticipate, but it is not a general prescription for representativeness.
@@ -1056,11 +1049,7 @@ far one goes, determines the sign of the bias. Avoiding shells beyond the revers
 \textbf{Limitations.} The scaling result is proved for the mean-field model; for graphs it is an
 empirical statement, accurate to about $\pm0.15$ in the slope at the sizes I simulated, and it has been tested only within configuration-model degree laws, where the model's assumptions hold by construction. Outside them, in the empirical networks, I compare the observed crossing with the model's prediction and find an offset; I have no separate test of the scaling there. The individual-level result (the paradox lasts longest for the least connected) is proved in the model for $k\le2$ and is an empirical finding beyond that.
 
-The three kinds of evidence differ in what they support. The simulations establish controlled results within the stated generating and rewiring procedures; the Facebook networks show that the same patterns hold consistently in one family of related networks, not 105 independent draws from a population of social networks; and the ten other networks show that the patterns are not confined to Facebook, not that they are universal.
-
-The empirical analysis rests mainly on one class of networks, university Facebook networks, which are dense and have small diameters; ten public networks of other kinds, from one repository and chosen for variety, show reversal at larger distances (up to $11$ steps) as the model predicts for large and sparse networks, but they are too few to support more than that. In the Facebook data clustering is collinear with size, and
-regressions of 105 correlated networks are associations. Finally, the analysis
-concerns degree; the same question can be asked of any node attribute.
+The three kinds of evidence differ in what they support. The simulations establish controlled results within the stated generating and rewiring procedures. The Facebook networks, which are dense and have small diameters, show that the same patterns hold consistently in one family of related networks, not in 105 independent draws from a population of social networks; there clustering is collinear with size, and regressions of 105 correlated networks are associations. The ten public networks of other kinds, from one repository and chosen for variety, show reversal at larger distances (up to $11$ steps), as the model predicts for large and sparse networks, and show that the patterns are not confined to Facebook; they are too few to support more than that, and they do not show universality. Finally, the analysis concerns degree; the same question can be asked of any node attribute.
 
 The simulations use two bases, a Negative-Binomial degree law, and equal-sized planted
 blocks; assortativity and clustering are manipulated with greedy swaps, and the
