@@ -68,58 +68,54 @@ friendship paradox; reversal distance; mean-field model; degree heterogeneity; a
 
 \section{Introduction}
 
-The friendship paradox, first formalised by Feld (1991), states that on average a
-person's friends have more friends than the person does. The result arises from
-degree-weighted sampling and has implications for network sampling and targeted
-immunisation (Cohen, Havlin, \& Ben-Avraham, 2003; Christakis \& Fowler, 2010),
-for information diffusion (Ugander, Karrer, Backstrom, \& Marlow, 2011), and for
-inference about behaviour from local network structure (Lerman, Yan, \& Wu, 2016;
-Grund, 2014). It has been generalised to node attributes (Eom \& Jo, 2014; Bollen,
-Gon\c{c}alves, van de Leemput, \& Ruan, 2017; Hodas, Kooti, \& Lerman, 2013), to
-centrality (Grund, 2014; Higham, 2019; Hazra \& Verbitskiy, 2026), and to two steps
-(Fotouhi, Momeni, \& Rabbat, 2014).
+The friendship paradox states that, on average, a person's friends have more friends
+than the person does (Feld, 1991). But what happens beyond immediate friends? Are
+friends of friends, and people further away, also better connected than average?
 
-Beyond a person's friends less is known. Hazra, den Hollander, and
-Parvaneh (2025) characterise the empirical distribution of the (additive)
-friendship bias on sparse random graphs, and Hazra, den Hollander, and Parvaneh
-(2026) extend this to the $k$-level bias of backtracking and non-backtracking
-random-walk explorations, showing how its limiting distribution behaves as the
-graph size and the exploration depth grow and when the two limits commute. Kramer,
-Cutler, and Radcliffe (2016) generalise Feld's two results to the average number
-of friends of a friend of a friend, and so on, in general finite graphs. A
-random-walk exploration, however, lands on a single, degree-weighted vertex; it is
-not the same as asking about \emph{everyone} exactly $k$ steps away, which is what
-a survey, a snowball sample, or an egocentric network study encounters at distance
-$k$. For those people the paradox cannot last: degrees average to the population
-mean, so if the people close to a person are better connected than average, the
-people far away must be less connected.
+The answer depends on how the network is explored. A random walk follows one connection
+after another and can return to people it has already visited, so it keeps favouring
+well-connected people. A distance-based exploration instead considers everyone exactly
+$k$ steps away, counting each person once, at their shortest distance. In a finite
+network, well-connected people are reached early and then run out, so at some distance
+the people who remain are less connected than average. This raises a question that the
+classical paradox does not answer: at what distance does the reversal occur, and what in
+the structure of a network determines that distance?
 
-This follows from elementary bookkeeping, and I prove it (Theorem 1). The open question is
-the distance at which it happens and what network structure sets that distance. I define the
-\emph{reversal distance} as the distance at which the mean degree of the people
-at distance $k$ falls through the population mean degree, and I ask how it depends
-on the size and density of the network, on the heterogeneity of degree, on degree
-assortativity, on clustering, and on community structure, and for whom the paradox
-lasts longest. My main result is that in random networks the reversal
-distance can be predicted from the degree distribution, and that additional social
-structure shifts it systematically. The argument has three parts.
-Section 3 gives an exact identity for the mean degree at distance $k$
-and the conservation law that follows from it, which show that reversal must occur.
-Sections 4 and 5 give a degree-class
-mean-field model of hub-first saturation, with an exact translation property (multiplying
-the number of vertices by $\nu$ shifts the whole profile by one step) and the resulting
-prediction that the reversal distance grows as $\log n/\log\nu$ plus a term set by the
-degree law and test it in 3{,}600 configuration-model networks: mean degree
-brings reversal earlier, size delays it, and the effect of degree heterogeneity changes sign
-with density. Sections 6 and 7 ask how actual network structure changes the prediction. Controlled rewiring
-experiments, with exactly fixed degree sequences, separate assortativity, clustering, and
-community structure; and an analysis of 105 Facebook networks and ten public
-networks of other kinds shows reversal later than under degree-preserving
-randomisation in every network, an offset ordered by modularity. Section 8 draws a consequence for individuals:
-the paradox lasts longest for the least connected.
+The friendship paradox arises from degree-weighted sampling and has implications for
+network sampling and targeted immunisation (Cohen, Havlin, \& Ben-Avraham, 2003;
+Christakis \& Fowler, 2010), for information diffusion (Ugander, Karrer, Backstrom, \&
+Marlow, 2011), and for inference about behaviour from local network structure (Lerman,
+Yan, \& Wu, 2016; Grund, 2014). It has been generalised to node attributes (Eom \& Jo,
+2014; Bollen, Gon\c{c}alves, van de Leemput, \& Ruan, 2017; Hodas, Kooti, \& Lerman,
+2013), to centrality (Grund, 2014; Higham, 2019; Hazra \& Verbitskiy, 2026), and to two
+steps (Fotouhi, Momeni, \& Rabbat, 2014). Beyond a person's friends less is known. Hazra,
+den Hollander, and Parvaneh (2025) characterise the empirical distribution of the
+(additive) friendship bias on sparse random graphs, and Hazra, den Hollander, and
+Parvaneh (2026) extend this to the $k$-level bias of backtracking and non-backtracking
+random-walk explorations, showing how its limiting distribution behaves as the graph size
+and the exploration depth grow and when the two limits commute. Kramer, Cutler, and
+Radcliffe (2016) generalise Feld's two results to the average number of friends of a
+friend of a friend, and so on, in general finite graphs. A random-walk exploration lands
+on a single, degree-weighted vertex; it is not the same as asking about \emph{everyone}
+exactly $k$ steps away, which is what a survey, a snowball sample, or an egocentric
+network study encounters at distance $k$.
 
-The remainder of the paper proceeds in that order; Section 9 discusses limitations
-and implications.
+That reversal must occur follows from elementary bookkeeping: degrees average to the
+population mean, so if the people close to a person are better connected than average,
+the people far away must be less connected. I prove this (Theorem 1). The open question
+is the distance at which it happens. I define the \emph{reversal distance} as the
+distance at which the mean degree of the people at distance $k$ falls through the
+population mean degree. My main result is that in random networks the reversal distance
+can be predicted from the degree distribution, and that the arrangement of connections
+(assortativity, clustering, and community structure) shifts it systematically.
+
+Section 3 gives an exact identity and a conservation law that show reversal must occur.
+Sections 4 and 5 give a mean-field model of hub-first saturation, with a translation
+property (multiplying the number of vertices by $\nu$ shifts the whole profile by one
+step), and test its prediction in 3{,}600 configuration-model networks. Section 6 uses
+controlled rewiring to separate assortativity, clustering, and community structure.
+Section 7 compares 105 Facebook networks and ten others with degree-preserving
+randomisations. Section 8 turns to individuals: for whom does the paradox last longest? Section 9 discusses limitations and implications.
 
 \section{Setup and Definitions}
 
@@ -218,6 +214,8 @@ vertices (at most $0.017$). The continuous measure can lie below 3 although the 
 at distance $k$ and the share of people with a non-empty shell.
 
 \section{Reversal Is Unavoidable}
+
+The intuition is bookkeeping. Degrees average to the population mean, so if the people at short distances are better connected than average, the people at some larger distances must be less connected, to compensate. Theorem 1 makes this exact.
 
 
 \begin{theorem}[1 --- Exact identity and conservation law]
@@ -344,6 +342,8 @@ growing like $\nu^{k-1}$. Part (c) of the theorem says this \emph{must}
 happen, and that when it does the hub surplus is reversed.
 
 \subsection{Finite-size departure: a mean-field model of hub-first saturation}
+
+The mechanism behind reversal is simple. At short distances, well-connected people are overrepresented because they offer more ways of being reached. As an exploration expands, however, they are also the ones most likely to have been reached already, so their contribution to newly reached shells shrinks. Eventually the people reached for the first time are disproportionately those with few connections. The model below tracks how quickly vertices of different degrees are reached as an exploration expands through a finite network.
 
 To quantify where the reversal occurs I use a mean-field model of the
 configuration model with a given degree sequence. Let $n_d$ be the number of
@@ -819,7 +819,7 @@ that every person has.
 
 \subsection{Real networks reverse later than degree alone predicts}
 
-Compare each network with two benchmarks that have its degree sequence and nothing
+If the degree distribution were sufficient to explain reversal, the paradox would reverse at about the same distance in an observed network and in a randomised network with the same degrees. I compare each network with two benchmarks that have its degree sequence and nothing
 else (Figure 5A). A degree-preserving randomisation reverses earlier than the real
 network in every one of the 105 networks, by $0.203$ steps on average (95\% interval
 $[0.194,0.211]$; observed $2.75$, randomised $2.55$). The mean-field model, which
@@ -978,7 +978,7 @@ modularity. Facebook100 networks in grey, the ten other networks in blue.
 
 \section{For Whom Does the Paradox Last?}
 
-The reversal distance describes the average person at distance $k$. Feld's paradox
+The reversal distance describes the average person at distance $k$. This is a different question from the pooled reversal, which compares the people at distance $k$ with the population mean. Feld's paradox
 compares a person with their own friends, so I also ask how many people still
 experience it at distance $k$: the share $P_k$ of people whose distance-$k$ shell has
 a higher mean degree than their own degree. Averaged over the 105 networks, $P_k$ is
@@ -1041,18 +1041,9 @@ within each network, averaged over networks).
 
 \section{Discussion and Conclusion}
 
-The friendship paradox must reverse in every finite connected network that is not regular,
-because degrees average to the population mean. The distance of reversal, which the
-argument does not fix, is predictable from the degree distribution and shifted by wiring. In a mean-field model of hub-first
-saturation the reversal distance grows as $\log n/\log\nu$ plus a term set by the
-degree law, an exact translation property of the model; in 3{,}600 simulated networks
-the model predicts the reversal distance with a correlation of $0.999$, and mean
-degree and size act as the model predicts, while the effect of degree heterogeneity
-changes sign with density: in sparse networks it brings reversal earlier, in dense
-ones it delays it. Beyond the degree sequence, clustering and community structure
-each delay reversal and have a positive interaction, and assortativity's effect
-depends on clustering. In the 105 Facebook networks reversal comes about $0.2$ steps later than in degree-preserving randomisations in every network, and assortativity and modularity account for most of that offset; in ten other networks the offset is larger, up to $5$ steps, and is ordered by modularity. For individuals the paradox lasts
-longest for the least connected.
+The friendship paradox does not extend indefinitely through a network. It depends on how connections are explored and how the network is organised. When I consider everyone at a given network distance, rather than following random walks, the initial overrepresentation of well-connected people must eventually give way to an underrepresentation. The question is not whether this happens, but when.
+
+The results show that the answer has two parts. The degree distribution gives a baseline prediction of the reversal distance: in the mean-field model it grows as $\log n/\log\nu$ plus a term set by the degree law, and the model reproduces the reversal distance in configuration-model networks and in degree-preserving randomisations of real networks. The arrangement of connections then shifts that baseline. Real networks reverse later than their randomisations in all 115 networks, and controlled rewiring shows that clustering and community structure each delay reversal, while the effect of assortativity depends on clustering. For individuals, the paradox lasts longest for the least connected.
 
 For the higher-order paradox the results mean the following. The answer to
 ``does a person's friends-of-friends have more friends than the person?'' is
@@ -1085,11 +1076,7 @@ The empirical analysis rests mainly on one class of networks, university Faceboo
 regressions of 105 correlated networks are associations. Finally, the analysis
 concerns degree; the same question can be asked of any node attribute.
 
-The results have a practical reading for sampling. A random-walk-based sample
-reaches vertices whose degree is size-biased at every step, whereas a design that
-collects everyone within distance $k$ collects, from the reversal distance onward,
-people with lower degree than average; and the reversal distance is later in larger,
-sparser, and more modular networks. The choice of design, and how
+The results have a practical reading for sampling. A random-walk-based sample reaches vertices whose degree is size-biased at every step, whereas the wave of people first reached at distance $k$ in a snowball or survey design has a mean degree above the population mean up to the reversal distance and below it from there on. Collecting everyone within distance $k$ is a different statistic, because it also contains the earlier, better-connected waves; the reversal distance is therefore not the point at which a cumulative sample becomes representative. The reversal distance is later in larger, sparser, and more modular networks. The choice of design, and how
 far one goes, determines the sign of the bias. A sampler who wants a degree-representative sample should therefore not collect whole shells beyond the reversal distance, which oversamples low-degree people, and should not use random-walk steps, which oversample high-degree people at every step; the reversal distance tells how far a shell-based design can go before the bias changes sign.
 
 
