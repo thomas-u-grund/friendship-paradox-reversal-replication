@@ -45,12 +45,12 @@ for (b in c("A", "B")) { d <- s5[s5$base == b, ]; g <- d %>% group_by(mix, tc) %
 dev.off()
 # ---------- Figure 5: Facebook100 ----------
 pdf("../figures/figureZ5_facebook.pdf", width = 7.2, height = 3.3, family = "Helvetica"); par(mfrow = c(1, 2), mar = c(3.6, 3.9, 1.6, 0.8)); base_par()
-rg <- range(c(fb$ktil, fb$ktil_mf, fb$null_ktil)); plot(NA, xlim = rg, ylim = rg, xlab = "Observed crossing distance", ylab = "Crossing distance of the comparison model", bty = "l"); abline(h = pretty(rg), v = pretty(rg), col = grid, lwd = 0.6); abline(0, 1, col = ink2)
+rg <- range(c(fb$ktil, fb$ktil_mf, fb$null_ktil)); plot(NA, xlim = rg, ylim = rg, xlab = "Observed crossing distance", ylab = "Benchmark crossing distance", bty = "l"); abline(h = pretty(rg), v = pretty(rg), col = grid, lwd = 0.6); abline(0, 1, col = ink2)
 points(fb$ktil, fb$null_ktil, pch = 24, bg = adjustcolor(col[2], 0.75), col = "white", cex = 0.9); points(fb$ktil, fb$ktil_mf, pch = 1, col = col[1], cex = 1.15, lwd = 1.1)
-legend("topleft", legend = c("mean-field model", "degree-preserving rewiring"), pch = c(1, 24), pt.bg = c(NA, col[2]), col = c(col[1], "white"), bty = "n", cex = 0.7, pt.lwd = 1.1); mtext("A", side = 3, line = 0.3, adj = -0.2, font = 2, cex = 1)
+legend("topleft", legend = c("mean-field model", "degree-preserving rewiring"), pch = c(1, 24), pt.bg = c(NA, col[2]), col = c(col[1], "white"), bty = "n", cex = 0.7, pt.lwd = 1.1); mtext("A", side = 3, line = 0.3, adj = -0.27, font = 2, cex = 1)
 fb$gap <- fb$ktil - fb$ktil_mf; m <- lm(gap ~ assort + modularity, fb); rg2 <- range(c(fb$gap, fitted(m)))
 plot(fitted(m), fb$gap, xlab = "Fitted from assortativity and modularity", ylab = "Observed minus mean-field crossing", xlim = rg2, ylim = rg2, pch = 21, bg = adjustcolor(col[1], 0.7), col = "white", cex = 0.9, bty = "l"); abline(h = pretty(rg2), v = pretty(rg2), col = grid, lwd = 0.6); abline(0, 1, col = ink2)
-points(fitted(m), fb$gap, pch = 21, bg = adjustcolor(col[1], 0.7), col = "white", cex = 0.9); text(rg2[2], rg2[1] + 0.03, sprintf("R2 = %.2f", summary(m)$r.squared), adj = 1, cex = 0.72, col = ink2); mtext("B", side = 3, line = 0.3, adj = -0.2, font = 2, cex = 1); dev.off()
+points(fitted(m), fb$gap, pch = 21, bg = adjustcolor(col[1], 0.7), col = "white", cex = 0.9); text(rg2[2], rg2[1] + 0.03, sprintf("R2 = %.2f", summary(m)$r.squared), adj = 1, cex = 0.72, col = ink2); mtext("B", side = 3, line = 0.3, adj = -0.27, font = 2, cex = 1); dev.off()
 cat("figures written; Facebook gap model R2:", round(summary(m)$r.squared, 3), "\n")
 # ---------- Figure 6: external networks ----------
 ex <- read.csv("../results/external_Z.csv"); ex$gap <- ex$ktil - ex$ktil_mf; fb$gap <- fb$ktil - fb$ktil_mf
