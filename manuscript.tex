@@ -101,34 +101,28 @@ on a single, degree-weighted vertex; it is not the same as asking about \emph{ev
 exactly $k$ steps away, which is what a survey, a snowball sample, or an egocentric
 network study encounters at distance $k$.
 
-That reversal must occur follows from elementary bookkeeping: degrees average to the
+Reversal must occur, and this is elementary bookkeeping: degrees average to the
 population mean, so if the people close to a person are better connected than average,
-the people far away must be less connected. I prove this (Theorem 1). The open question
+the people far away must be less connected. I prove this exactly (Theorem 1). The open question
 is the distance at which it happens. I define the \emph{reversal distance} as the
 distance at which the mean degree of the people at distance $k$ falls through the
 population mean degree. My main result is that in random networks the reversal distance
 can be predicted from the degree distribution, and that the arrangement of connections
 (assortativity, clustering, and community structure) shifts it systematically.
 
-Section 3 gives an exact identity and a conservation law that show reversal must occur.
-Sections 4 and 5 give a mean-field model (a deterministic approximation that tracks how quickly people of each degree are reached, well-connected people first) of hub-first saturation, with a translation
-property (multiplying the number of vertices by $\nu$ shifts the whole profile by one
-step), and test its prediction in 3{,}600 configuration-model networks (random networks with a prescribed degree sequence). Section 6 uses
-controlled rewiring to separate assortativity, clustering, and community structure.
-Section 7 compares 105 Facebook networks and ten others with degree-preserving
-randomisations (the same network with its connections shuffled at random while every person keeps their degree). Section 8 turns to individuals: for whom does the paradox last longest? Section 9 discusses limitations and implications.
+Section 3 gives an exact identity and a conservation law that show reversal must occur. Section 4 gives a mean-field model of hub-first saturation, a deterministic approximation that tracks how quickly people of each degree are reached, well-connected people first. The model has a translation property: multiplying the number of vertices by $\nu$ shifts the whole profile by one step. Section 5 tests the model's predictions in 3{,}600 configuration-model networks (random networks with a prescribed degree sequence). Section 6 uses controlled rewiring to separate assortativity, clustering, and community structure. Section 7 compares 105 Facebook networks and ten others with degree-preserving randomisations (the same network with its connections shuffled at random while every person keeps their degree). Section 8 turns to individuals: for whom does the paradox last longest? Section 9 discusses implications and limitations.
 
 \section{Setup and Definitions}
 
 Let $G=(V,E)$ be a finite, simple, undirected, connected graph with $n=|V|$ vertices
 (undirected, so that distance is symmetric, which Theorem 1 uses; directed networks are read as undirected; for a disconnected graph all statements apply within a component, and in the
-empirical analysis I use the largest component). Degree is written $d_v$;
-the letter $k$ is reserved for the order, i.e.\ the distance or number of
-steps, so the two are never conflated. Write $\mu_1=n^{-1}\sum_v d_v$ and
+empirical analysis I use the largest component). Degree is written $d_v$, and the letter $k$ always denotes a distance (a number of steps), never a degree. Write $\mu_1=n^{-1}\sum_v d_v$ and
 $\mu_2=n^{-1}\sum_v d_v^2$ for the first two empirical degree moments, and
 $\mathrm{CV}=\sqrt{\mu_2/\mu_1^2-1}$ for the coefficient of variation of
 degree. The \emph{shell} $N_k(v)=\{w:\mathrm{dist}(v,w)=k\}$ is the set of people exactly $k$ steps away from $v$ along shortest paths (not everyone within $k$ steps); it has size
 $n_k(v)=|N_k(v)|$, with $N_0(v)=\{v\}$ and $n_0(v)=1$; $n_1(v)=d_v$.
+
+I define one main outcome, the reversal distance, from a pooled shell statistic; three secondary statistics answer related questions, and three structural measures are defined at the end of this section.
 
 \textbf{Pooled shell statistic.} For $k\ge 1$ let
 \begin{equation*}
@@ -267,13 +261,13 @@ distance 2 and 3; but in a finite, small-diameter graph a high-degree vertex
 also \emph{runs out of vertices at large distances first}, because its ball
 saturates the network earlier. The covariance in (a) is therefore positive at
 $k=1$ and, because the covariances sum to zero, negative at some larger $k$;
-part (c) says that these two effects cancel exactly. The paradox therefore cannot persist
-indefinitely in a finite graph, and this holds with no assumption on how the
-graph was generated. Parts (c) and (d), however, are bookkeeping consequences of
-(a): they say only that the shell means must average back to the population
-mean. They show that a reversal relative to the population is unavoidable, but
-not where it occurs and not whether individuals experience it, which is the
-role of Section 4 and of the empirical analysis.
+part (c) says that these two effects cancel exactly.
+
+Parts (c) and (d) are bookkeeping consequences of (a): they say only that the
+shell means must average back to the population mean. They hold with no
+assumption on how the graph was generated, and they show that the paradox cannot persist
+indefinitely in a finite graph. They do not say where the reversal occurs or whether individuals
+experience it, which is the role of Section 4 and of the empirical analysis.
 
 \section{When Does Reversal Happen? A Mean-Field Theory}
 
