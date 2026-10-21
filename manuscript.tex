@@ -91,7 +91,7 @@ Yan, \& Wu, 2016; Grund, 2014). It has been generalised to node attributes (Eom 
 2013), to centrality (Grund, 2014; Higham, 2019; Hazra \& Verbitskiy, 2026), and to two
 steps (Fotouhi, Momeni, \& Rabbat, 2014). Beyond a person's friends less is known. Hazra,
 den Hollander, and Parvaneh (2025) characterise the empirical distribution of the
-(additive) friendship bias on sparse random graphs, and Hazra, den Hollander, and
+(additive) friendship bias (the difference between the average degree of a person's friends and the person's own degree) on sparse random graphs, and Hazra, den Hollander, and
 Parvaneh (2026) extend this to the $k$-level bias of backtracking and non-backtracking
 random-walk explorations, showing how its limiting distribution behaves as the graph size
 and the exploration depth grow and when the two limits commute. Kramer, Cutler, and
@@ -111,12 +111,12 @@ can be predicted from the degree distribution, and that the arrangement of conne
 (assortativity, clustering, and community structure) shifts it systematically.
 
 Section 3 gives an exact identity and a conservation law that show reversal must occur.
-Sections 4 and 5 give a mean-field model of hub-first saturation, with a translation
+Sections 4 and 5 give a mean-field model (a deterministic approximation that tracks how quickly people of each degree are reached, well-connected people first) of hub-first saturation, with a translation
 property (multiplying the number of vertices by $\nu$ shifts the whole profile by one
 step), and test its prediction in 3{,}600 configuration-model networks (random networks with a prescribed degree sequence). Section 6 uses
 controlled rewiring to separate assortativity, clustering, and community structure.
 Section 7 compares 105 Facebook networks and ten others with degree-preserving
-randomisations. Section 8 turns to individuals: for whom does the paradox last longest? Section 9 discusses limitations and implications.
+randomisations (the same network with its connections shuffled at random while every person keeps their degree). Section 8 turns to individuals: for whom does the paradox last longest? Section 9 discusses limitations and implications.
 
 \section{Setup and Definitions}
 
@@ -210,6 +210,8 @@ networks I report a bootstrap standard error of $\tilde k_{\mathrm{rev}}$ over s
 vertices (at most $0.017$). I also report, for each $k$, the share of the network
 at distance $k$ and the share of people with a non-empty shell.
 
+\textbf{Network structure measures.} Three measures describe how connections are arranged beyond the degree sequence. \emph{Assortativity} is Newman's (2002) coefficient: the Pearson correlation between the degrees at the two ends of an edge, positive when well-connected people tend to be linked to each other. The (global) \emph{clustering coefficient} is the share of connected triples (a person with two friends) whose two friends are themselves linked, that is, three times the number of triangles divided by the number of connected triples. The \emph{modularity} of a division of the vertices into communities (Newman, 2006) is the share of edges that fall within communities minus the share expected if edges were placed at random with the same degrees; it is high when there are dense communities with few links between them. For empirical networks I detect communities with the Louvain algorithm (Blondel, Guillaume, Lambiotte, \& Lefebvre, 2008) and report the modularity of the partition it finds (``detected modularity''); in the experiments with built-in communities of Section 6.3 I also use the modularity of the planted partition (``planted modularity'').
+
 \section{Reversal Is Unavoidable}
 
 The intuition is bookkeeping. Degrees average to the population mean, so if the people at short distances are better connected than average, the people at some larger distances must be less connected, to compensate. Theorem 1 makes this exact.
@@ -281,7 +283,7 @@ This section develops the theory of the reversal distance. I first relate the sh
 
 I now relate $B_k$ and $W_k$ to the idealised setting of Hazra et al.\ (2026).
 
-\textbf{Standing assumptions.} Let $(G_n)$ be a sequence of simple (random)
+\textbf{Standing assumptions.} In words: for large $n$, the neighbourhood of a randomly chosen vertex looks like a random tree in which each vertex has a random number of children. Formally, let $(G_n)$ be a sequence of simple (random)
 graphs converging locally weakly in probability to a unimodular
 Galton--Watson (UGW) tree $(G_\infty,\varphi)$ with root degree law $\Lambda$
 of finite mean $\mu_1$ and finite second moment $\mu_2$ (so that the empirical
@@ -292,7 +294,7 @@ the configuration model (defined in Section 5.1) and of the homogeneous Erd\H{o}
 et al., 2026, Section 5; van der Hofstad, 2017, 2024); inhomogeneous
 Erd\H{o}s--R\'enyi graphs have a multi-type limit and preferential attachment a
 P\'olya point tree, and both lie outside the single-type assumption used here. Write $\nu=\mathbb{E}[D^*]-1=\mu_2/\mu_1-1$ and assume $\nu>1$
-(supercritical, i.e.\ the Molloy--Reed condition for a giant component; Theorem 1 does not need this, and the mean-field theory below applies only in this regime). For
+(supercritical: the exploration keeps growing, which is the Molloy--Reed condition for a giant component, a connected piece containing a positive fraction of the vertices; Theorem 1 does not need this, and the mean-field theory below applies only in this regime). For
 the shell statistic I additionally assume that the family
 $\{d_V\,n_k(V)\}$ is uniformly integrable for each fixed $k$ (this holds, for
 instance, if degrees are bounded or have sufficiently many moments). Since $n_k(V)\le d_V\,n_k(V)$ (degrees are at least $1$ in a connected graph), the family $\{n_k(V)\}$ is then uniformly integrable as well, so both the numerator and the denominator of $B_k$ converge to their tree expectations.
@@ -466,12 +468,12 @@ $s$. Beyond $k=2$ the property is an empirical statement about the model, not a 
 \subsection{Design}
 
 I test the predictions of Section 4 where the model's assumptions hold by
-construction. The \emph{configuration model} generates a random network with a prescribed degree sequence: each vertex $v$ receives $d_v$ half-edges (stubs), and all stubs are paired uniformly at random to form edges. It is the standard random-graph benchmark for ``the degree sequence and nothing else''. The pairing can create self-loops and multiple edges; I remove them (the graph is \emph{simplified}) and keep the largest component. Stage 1 uses configuration-model graphs whose degree sequences are
-drawn from three families: Negative-Binomial (the main family; six sizes
+construction. The \emph{configuration model} generates a random network with a prescribed degree sequence: each vertex $v$ receives $d_v$ half-edges (stubs), and all stubs are paired uniformly at random to form edges. It is the standard random-graph benchmark for ``the degree sequence and nothing else''. The pairing can create self-loops and multiple edges; I remove them (the graph is \emph{simplified}) and keep the largest component. The first set of experiments (Stage 1) uses configuration-model graphs whose degree sequences are
+drawn from three families: Negative-Binomial (a flexible family whose mean and variance can be set separately; the main family; six sizes
 $n=500,\ldots,16{,}000$, mean degree 6, 12, 25, 50, 100 subject to mean degree
 $\le n/20$, and CV $0.4,0.7,1.0,1.4$, giving 108 cells with 30 graphs each),
 lognormal (CV $0.7,1.4$; $n=2{,}000$ and $8{,}000$; mean degree 12 and 50), and a
-truncated power law with exponent 2.5 (same sizes and mean degrees), 3{,}600 graphs
+truncated (heavy-tailed) power law with exponent 2.5 (same sizes and mean degrees), 3{,}600 graphs
 in all. The minimum degree is 1. I compute $Q_k$ to the diameter (from all vertices when
 $n\le4{,}000$, 2{,}220 graphs; from 2{,}000 sampled vertices otherwise), the
 reversal distances, and the mean-field prediction from each graph's realised
@@ -595,8 +597,8 @@ from 0.4 to 1.4, at fixed size and mean degree (Negative-Binomial graphs).
 
 \subsection{Design: exact control on fixed degree sequences}
 
-Stage 2 starts from Negative-Binomial configuration-model graphs and rewires them
-by degree-preserving double-edge swaps. I implemented the swaps with incremental
+The second set of experiments (Stage 2) starts from Negative-Binomial configuration-model graphs and rewires them
+by degree-preserving double-edge swaps (take two edges $\{a,b\}$ and $\{c,d\}$ and replace them with $\{a,d\}$ and $\{c,b\}$, which leaves every degree unchanged). I implemented the swaps with incremental
 updates of the two quantities that change: with degrees fixed, assortativity changes
 only through the sum of products of endpoint degrees over edges, and the global
 clustering coefficient only through the triangle count. The routine accepts a swap if
@@ -1251,6 +1253,8 @@ saturate the network earlier and leave less exposure to add in later steps.
 
 \begin{thebibliography}{99}
 
+\bibitem[Blondel et al.(2008)]{Blondel2008} Blondel, V. D., Guillaume, J.-L., Lambiotte, R., \& Lefebvre, E. (2008). Fast unfolding of communities in large networks. \emph{Journal of Statistical Mechanics: Theory and Experiment}, \emph{2008}(10), P10008.
+
 \bibitem[Bollen et al.(2017)]{Bollen2017} Bollen, J., Gon\c{c}alves, B., van
 de Leemput, I., \& Ruan, G. (2017). The happiness paradox: Your friends are
 happier than you. \emph{EPJ Data Science}, \emph{6}(1), 4.
@@ -1330,6 +1334,8 @@ ONE}, \emph{11}(2), e0147617.
 
 \bibitem[Newman(2002)]{Newman2002} Newman, M. E. J. (2002). Assortative
 mixing in networks. \emph{Physical Review Letters}, \emph{89}(20), 208701.
+
+\bibitem[Newman(2006)]{Newman2006} Newman, M. E. J. (2006). Modularity and community structure in networks. \emph{Proceedings of the National Academy of Sciences}, \emph{103}(23), 8577--8582.
 
 \bibitem[Tchen(1980)]{Tchen1980} Tchen, A. H. (1980). Inequalities for
 distributions with given marginals. \emph{Annals of Probability}, \emph{8}(4),
