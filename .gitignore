@@ -1,0 +1,6 @@
+.DS_Store
+*.aux
+*.log
+*.rds
+__pycache__/
+external_networks/raw/

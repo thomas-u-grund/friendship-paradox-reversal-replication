@@ -1,0 +1,38 @@
+27 paper laws, 43 hostile laws (nu from 1.08 to 167.3)
+
+T1  Properties of H (claimed: increasing, strictly concave, H(0)=0, H'(0)=nu, H<1-1/mu1, H(E)<=nu E, unique fixed point E* in (0,1) with H'(E*)<1)
+    70/70 laws pass all property checks
+
+T2  omega = phi^{-1}: H(omega(u)) = omega(nu u) globally; omega increasing; omega(u) = u + O(u^2); omega(u) -> E* as u -> inf
+    worst relative functional-equation error 6.2e-15; monotone in all: True; worst |omega(1e6)-E*| 2.2e-08; worst omega(1e-4)/1e-4 - 1 = 1.4e-03
+
+T3  Lemma A: sup_k |E_k - omega(nu^k delta/(nu-1))| over nu^k delta/(nu-1) in [a,b], as delta -> 0 (claimed -> 0); and the linear-phase bounds
+    delta=1e-03: worst sup-error over [a,b]=[0.1,20] = 1.54e-02 (law rand37); upper bound E_k <= delta nu^k/(nu-1) holds in all: True
+    delta=1e-05: worst sup-error over [a,b]=[0.1,20] = 3.95e-04 (law rand37); upper bound E_k <= delta nu^k/(nu-1) holds in all: True
+    delta=1e-07: worst sup-error over [a,b]=[0.1,20] = 6.78e-06 (law rand37); upper bound E_k <= delta nu^k/(nu-1) holds in all: True
+    delta=1e-09: worst sup-error over [a,b]=[0.1,20] = 9.69e-08 (law rand37); upper bound E_k <= delta nu^k/(nu-1) holds in all: True
+    error ratio delta=1e-3 vs 1e-9: 1.6e+05 (convergence to 0 confirmed if >> 1)
+
+T4  Q-tilde_k(n) vs Qcal(nu^k/n) on shells with nu^k/n in [1e-3, 1e3]; Qcal(lambda) as lambda -> 0 vs mu2/mu1^2; translation error
+    n=1e+03: worst |Q-tilde - Qcal| = 9.8e-03
+    n=1e+05: worst |Q-tilde - Qcal| = 7.9e-05
+    n=1e+07: worst |Q-tilde - Qcal| = 1.9e-06
+    NB 6/0.4: Qcal(1e-8) = 1.164720  vs  mu2/mu1^2 = 1.164720
+    NB 12/1.0: Qcal(1e-8) = 1.861230  vs  mu2/mu1^2 = 1.861230
+    NB 50/1.4: Qcal(1e-8) = 2.634228  vs  mu2/mu1^2 = 2.634228
+    LN 25/1.4: Qcal(1e-8) = 2.686187  vs  mu2/mu1^2 = 2.686187
+    PL 12: Qcal(1e-8) = 4.373250  vs  mu2/mu1^2 = 4.373250
+    rand0: Qcal(1e-8) = 1.130564  vs  mu2/mu1^2 = 1.130564
+
+T5  Discrete and continuous reversal distance vs the proposition, n dense in log scale (so that u(n) approaches integers)
+    NB 6/0.4               lam*=   2.780 max |k~rev - (u+pi(u))| = 1.60e-03 (n from 2e3 to 4.3e+05); discrete = ceil(u) when far from integers: True (54 n); in {m,m+1} when near: True (6 n)
+    NB 12/1.0              lam*=  13.347 max |k~rev - (u+pi(u))| = 3.54e-04 (n from 2e3 to 2.4e+07); discrete = ceil(u) when far from integers: True (55 n); in {m,m+1} when near: True (5 n)
+    LN 25/1.4              lam*=  28.079 max |k~rev - (u+pi(u))| = 1.72e-04 (n from 2e3 to 5.6e+08); discrete = ceil(u) when far from integers: True (54 n); in {m,m+1} when near: True (6 n)
+    PL 12                  lam*=  24.552 max |k~rev - (u+pi(u))| = 3.14e-04 (n from 2e3 to 2.7e+08); discrete = ceil(u) when far from integers: True (54 n); in {m,m+1} when near: True (6 n)
+    rand0: single crossing of Qcal NOT found on grid
+    rand1                  lam*=   7.576 max |k~rev - (u+pi(u))| = 5.70e-04 (n from 2e3 to 4.1e+06); discrete = ceil(u) when far from integers: True (54 n); in {m,m+1} when near: True (6 n)
+    rand2                  lam*=   5.538 max |k~rev - (u+pi(u))| = 2.67e-04 (n from 2e3 to 1.0e+07); discrete = ceil(u) when far from integers: True (54 n); in {m,m+1} when near: True (6 n)
+
+T6  Existence of lambda* (scope of the single-crossing hypothesis): number of crossings of Qcal=1 for lambda in [e^-8, e^21], all 70 laws
+    27 paper laws: crossings = [1]; nu range 5.96 to 143.6; E* >= 0.811
+    hostile laws: 9 with no crossing (Q stays above 1: nu in [1.08, 1.95], E* <= 0.471); laws with more than one crossing: 0

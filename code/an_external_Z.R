@@ -1,0 +1,12 @@
+suppressMessages(library(dplyr)); options(width = 200, digits = 3); r <- read.csv("../results/external_Z.csv"); fb <- read.csv("../results/fb100_Z.csv")
+r$gap <- r$ktil - r$ktil_mf; r$dnull <- r$ktil - r$null_ktil
+cat("N external:", nrow(r), "\n")
+cat(sprintf("observed later than null in %d/%d; later than MF in %d/%d; MF vs null: corr %.3f, mean(MF - null) %.3f, max |diff| %.3f\n", sum(r$dnull > 0), nrow(r), sum(r$gap > 0), nrow(r), cor(r$ktil_mf, r$null_ktil), mean(r$ktil_mf - r$null_ktil), max(abs(r$ktil_mf - r$null_ktil))))
+cat(sprintf("observed vs null: corr %.3f, mean diff %.2f (range %.2f to %.2f); observed vs MF: corr %.3f\n", cor(r$ktil, r$null_ktil), mean(r$dnull), min(r$dnull), max(r$dnull), cor(r$ktil, r$ktil_mf)))
+cat(sprintf("corr(offset, modularity) %.3f; corr(offset, clustering) %.3f; corr(offset, assort) %.3f; corr(offset, log n) %.3f; Spearman(offset, modularity) %.3f\n", cor(r$gap, r$modularity), cor(r$gap, r$clustering), cor(r$gap, r$assort), cor(r$gap, log(r$n)), cor(r$gap, r$modularity, method = "spearman")))
+cat(sprintf("corr(observed, log n/log nu) %.3f ; corr(null, log n/log nu) %.3f; corr(MF, z) %.3f\n", cor(r$ktil, r$z), cor(r$null_ktil, r$z), cor(r$ktil_mf, r$z)))
+cat(sprintf("range observed %.2f-%.2f; Facebook100 mean %.2f; diameters seen %d-%d\n", min(r$ktil), max(r$ktil), mean(fb$ktil), min(r$K), max(r$K)))
+cat(sprintf("kP50 - ktil: mean %.2f, range %.2f to %.2f; corr(kP50, ktil) %.3f\n", mean(r$kP50 - r$ktil), min(r$kP50 - r$ktil), max(r$kP50 - r$ktil), cor(r$kP50, r$ktil)))
+cat(sprintf("combined 115 networks: corr(offset, modularity) %.3f\n", { a <- c(fb$ktil - fb$ktil_mf, r$gap); b <- c(fb$modularity, r$modularity); cor(a, b) }))
+cat("\nrows for Table 5:\n"); for (i in seq_len(nrow(r))) with(r[i, ], cat(sprintf("%s & %s & %s & %.1f & %.2f & %.2f & %.2f & %.2f & %.2f & %.2f & %.2f\\\\\n", label, domain, big <- format(n, big.mark = "{,}"), mean_deg, cv, clustering, assort, modularity, ktil, null_ktil, ktil_mf)))
+cat(sprintf("max SE of observed crossing: %.3f\n", max(r$ktil_se, na.rm = TRUE)))

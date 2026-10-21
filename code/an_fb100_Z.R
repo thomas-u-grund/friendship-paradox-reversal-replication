@@ -1,0 +1,16 @@
+suppressMessages(library(dplyr)); options(width = 200, digits = 3); r <- read.csv("../results/fb100_Z.csv"); cat("networks:", nrow(r), " exact:", sum(r$exact), "\n")
+cat("\n== discrete k_rev ==\n"); print(table(r$krev, useNA = "ifany"))
+cat(sprintf("\ncontinuous ktil: mean %.3f SD %.3f range %.2f-%.2f | log-interp mean %.3f | bootstrap SE (sampled nets) mean %.3f max %.3f | K (largest distance seen): %d-%d\n", mean(r$ktil), sd(r$ktil), min(r$ktil), max(r$ktil), mean(r$ktil_log), mean(r$ktil_se, na.rm=T), max(r$ktil_se, na.rm=T), min(r$K), max(r$K)))
+cat("\n== MF vs observed crossing ==\n"); cat(sprintf("corr %.3f RMSE %.3f mean(MF - obs) %.3f  max|diff| %.3f\n", cor(r$ktil, r$ktil_mf), sqrt(mean((r$ktil_mf-r$ktil)^2)), mean(r$ktil_mf-r$ktil), max(abs(r$ktil_mf-r$ktil))))
+cat("\n== H7: observed vs degree-preserving null (paired) ==\n"); d <- r$ktil - r$null_ktil; t <- t.test(d)
+cat(sprintf("mean ktil obs %.3f, null %.3f, diff %.3f [%.3f, %.3f]; obs later than null in %d/%d networks; corr(obs, null) %.3f\n", mean(r$ktil), mean(r$null_ktil), mean(d), t$conf.int[1], t$conf.int[2], sum(d > 0), nrow(r), cor(r$ktil, r$null_ktil)))
+cat("null discrete: "); print(table(r$null_krev)); cat("null MF-vs-null sim: corr", round(cor(r$null_ktil, r$ktil_mf),3), " mean(MF - null)", round(mean(r$ktil_mf - r$null_ktil),3), "\n")
+cat("\n== H3 on real networks: ktil vs z ==\n"); m <- lm(ktil ~ z, r); cat(sprintf("slope %.3f [%.3f, %.3f], R2 %.3f; corr %.3f\n", coef(m)[2], confint(m)[2,1], confint(m)[2,2], summary(m)$r.squared, cor(r$ktil, r$z)))
+r$lnN <- log(r$n); r$mu10 <- r$mean_deg / 10; r$resid_mf <- r$ktil - r$ktil_mf
+cat("\n== regressions of ktil (HC-free OLS; collinearity noted) ==\n")
+f1 <- lm(ktil ~ cv + assort + clustering + mu10 + lnN, r); f2 <- update(f1, . ~ . + modularity); f3 <- lm(ktil ~ cv + assort + mu10 + lnN, r)
+for (nm in c("f1", "f2", "f3")) { m <- get(nm); cat("\n", nm, ":", deparse(formula(m)), " R2", round(summary(m)$r.squared, 3), "\n"); print(round(coef(summary(m))[, 1:4], 3)) }
+cat("\n== departure from the mean-field crossing (ktil - ktil_mf) on assortativity, clustering, modularity ==\n"); g <- lm(resid_mf ~ assort + clustering + modularity + lnN + cv, r); print(round(coef(summary(g))[, 1:4], 3)); cat("R2", round(summary(g)$r.squared, 3), "\n")
+cat("\ncorrelations among features: clustering~lnN", round(cor(r$clustering, r$lnN), 2), " clustering~modularity", round(cor(r$clustering, r$modularity), 2), " assort~modularity", round(cor(r$assort, r$modularity), 2), "\n")
+cat("\n== H8: individual-level 50% crossing ==\n"); ok <- is.finite(r$kP50); cat(sprintf("kP50 mean %.3f SD %.3f; kP50 - ktil mean %.3f SD %.3f; corr %.3f\n", mean(r$kP50[ok]), sd(r$kP50[ok]), mean(r$kP50[ok]-r$ktil[ok]), sd(r$kP50[ok]-r$ktil[ok]), cor(r$kP50[ok], r$ktil[ok])))
+cat("\n== eligible-ego share at k=4,5 (mean) and shell shares ==\n"); print(round(colMeans(r[, c("e3", "e4", "e5", "e6", "c2", "c3", "c4", "c5")], na.rm = TRUE), 3))

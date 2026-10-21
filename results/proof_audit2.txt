@@ -1,0 +1,8 @@
+27 paper laws, 43 hostile laws (nu from 1.08 to 167.3)
+A. Limit of Qcal as lambda -> infinity: formula Q_inf vs Qcal at large lambda (largest lambda before 0/0 underflow), and crossing existence vs Q_inf < 1
+   70 laws: max |Qcal(largest finite lambda) - Q_inf| = 1.93e-02
+   crossing exists  <=>  Q_inf < 1 in all 70 laws: True  (61 laws with Q_inf<1; 9 with Q_inf>=1)
+   27 paper laws: Q_inf from 0.034 to 0.685
+
+B. Denser grid (400 points of lambda in [e^-6, e^14]) for the 27 paper laws: number of crossings of Qcal=1, and whether Qcal is monotone decreasing
+   laws with exactly one crossing and Q monotone decreasing: 27/27
