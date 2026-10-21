@@ -57,7 +57,7 @@
 \affil{}
 
 \begin{abstract}
-The friendship paradox states that our friends have, on average, more friends than we do. But does this remain true for people further away in a network? Unlike random walks, which follow sequences of connections and may revisit individuals, we examine all distinct individuals at a given network distance. We prove that, unless everyone has the same degree, the paradox must eventually reverse: at some distance, these individuals are less connected than the population average. We develop a mean-field model that predicts when this happens from the degree distribution alone, with an error of approximately 0.1 steps across 3{,}600 simulated networks in which its assumptions hold by construction. Reversal occurs earlier in denser networks and later in larger ones, while degree heterogeneity has a density-dependent effect. Controlled rewiring experiments show that clustering and community structure delay reversal further. In 115 empirical networks, reversal comes later than the degree sequence alone predicts, by an amount that rises with modularity. The paradox also persists longest for the least connected individuals. These findings show how network structure shapes the reach and eventual reversal of the friendship paradox.
+The friendship paradox states that our friends have, on average, more friends than we do. But does this remain true for people further away in a network? Unlike random walks, which follow sequences of connections and may revisit individuals, I examine all distinct individuals at a given network distance. I prove that, unless everyone has the same degree, the paradox must eventually reverse: at some distance, these individuals are less connected than the population average. I develop a mean-field model that predicts when this happens from the degree distribution alone, with an error of approximately 0.1 steps across 3{,}600 simulated networks in which its assumptions hold by construction. Reversal occurs earlier in denser networks and later in larger ones, while degree heterogeneity has a density-dependent effect. Controlled rewiring experiments show that clustering and community structure delay reversal further. In 115 empirical networks, reversal comes later than the degree sequence alone predicts, by an amount that rises with modularity. The paradox also persists longest for the least connected individuals. These findings show how network structure shapes the reach and eventual reversal of the friendship paradox.
 \end{abstract}
 
 \begin{keywords}
@@ -94,13 +94,13 @@ $k$. For those people the paradox cannot last: degrees average to the population
 mean, so if the people close to a person are better connected than average, the
 people far away must be less connected.
 
-This follows from elementary bookkeeping, and we prove it (Theorem 1). The open question is
-the distance at which it happens and what network structure sets that distance. We define the
+This follows from elementary bookkeeping, and I prove it (Theorem 1). The open question is
+the distance at which it happens and what network structure sets that distance. I define the
 \emph{reversal distance} as the distance at which the mean degree of the people
-at distance $k$ falls through the population mean degree, and we ask how it depends
+at distance $k$ falls through the population mean degree, and I ask how it depends
 on the size and density of the network, on the heterogeneity of degree, on degree
 assortativity, on clustering, and on community structure, and for whom the paradox
-lasts longest. Our main result is that in random networks the reversal
+lasts longest. My main result is that in random networks the reversal
 distance can be predicted from the degree distribution, and that additional social
 structure shifts it systematically. The argument has three parts.
 Section 3 gives an exact identity for the mean degree at distance $k$
@@ -126,7 +126,7 @@ and implications.
 
 Let $G=(V,E)$ be a finite, simple, undirected, connected graph with $n=|V|$ vertices
 (undirected, so that distance is symmetric, which Theorem 1 uses; directed networks are read as undirected; for a disconnected graph all statements apply within a component, and in the
-empirical analysis we use the largest component). Degree is written $d_v$;
+empirical analysis I use the largest component). Degree is written $d_v$;
 the letter $k$ is reserved for the order, i.e.\ the distance or number of
 steps, so the two are never conflated. Write $\mu_1=n^{-1}\sum_v d_v$ and
 $\mu_2=n^{-1}\sum_v d_v^2$ for the first two empirical degree moments, and
@@ -143,7 +143,7 @@ the mean degree of a vertex drawn uniformly from the set of all ordered pairs
 $(u,w)$ at distance exactly $k$. This is the natural generalisation of Feld's
 original comparison, in which the neighbour is drawn from the set of all edges:
 for $k=1$ it is the mean degree of the endpoint of an edge traversed in a
-uniformly random direction. We define the \emph{paradox strength at distance $k$} as the ratio of
+uniformly random direction. I define the \emph{paradox strength at distance $k$} as the ratio of
 averages
 \begin{equation*}
 S_k \;=\; B_k/B_{k-1},
@@ -163,7 +163,7 @@ A_k \;=\; \frac{1}{\#\{u:\,n_k(u)>0\}}\sum_{u:\,n_k(u)>0}\frac{1}{n_k(u)}\sum_{w
 the average over egos of the mean degree of the ego's own distance-$k$
 alters. $A_k$ and $B_k$ coincide when all egos have shells of equal size,
 and differ in general; the difference is exactly an assortativity-type term at
-$k=1$ (Section 6.4). We use $B_k$ for the theory because it admits an exact identity, and use $A_k$ only for the first step (Section 6.4).
+$k=1$ (Section 6.4). I use $B_k$ for the theory because it admits an exact identity, and use $A_k$ only for the first step (Section 6.4).
 
 \textbf{Individual-level paradox.} Feld's paradox compares a person with the
 people around them, not with the population. For $k\ge1$ let
@@ -174,7 +174,7 @@ P_k \;=\; \frac{\#\{u:\ n_k(u)>0,\ m_k(u)>d_u\}}{\#\{u:\ n_k(u)>0\}} ,
 \end{equation*}
 the share of people whose distance-$k$ alters have a higher mean degree than
 they do. $P_1$ is the share of people whose friends have, on average, more
-friends than they do. We use $B_k$ for the theory and $P_k$ for the empirical
+friends than they do. I use $B_k$ for the theory and $P_k$ for the empirical
 question of how many people experience the paradox at distance $k$.
 
 \textbf{Walk statistic.} A \emph{$k$-step non-backtracking random walk} from
@@ -199,7 +199,7 @@ k_{\mathrm{rev}} \;=\; \min\{k\ge 2:\ Q_k<1\},
 \end{equation*}
 the first distance at which the shell is less connected than the population; it
 exists in every connected, non-regular graph (Theorem 1(d)). It is an integer and,
-in the networks we study, takes few distinct values, so we also use a
+in the networks I study, takes few distinct values, so I also use a
 \emph{continuous reversal distance} $\tilde k_{\mathrm{rev}}$: the point at which
 the straight line from $(k_{\mathrm{rev}}-1,\,Q_{k_{\mathrm{rev}}-1})$ to
 $(k_{\mathrm{rev}},\,Q_{k_{\mathrm{rev}}})$ crosses $Q=1$,
@@ -207,14 +207,14 @@ $(k_{\mathrm{rev}},\,Q_{k_{\mathrm{rev}}})$ crosses $Q=1$,
 \tilde k_{\mathrm{rev}} \;=\; (k_{\mathrm{rev}}-1)+\frac{Q_{k_{\mathrm{rev}}-1}-1}{Q_{k_{\mathrm{rev}}-1}-Q_{k_{\mathrm{rev}}}} .
 \end{equation*}
 Interpolating $\log Q_k$ instead changes $\tilde k_{\mathrm{rev}}$ by at most $0.13$
-in any graph we study and by $0.05$ on average. The reversal distance is distinct
+in any graph I study and by $0.05$ on average. The reversal distance is distinct
 from the consecutive-shell ratio $S_k=B_k/B_{k-1}$: $S_k<1$ means that the paradox
 weakens from one shell to the next, whereas $k_{\mathrm{rev}}$ marks where the
-shell crosses the population benchmark. We estimate $Q_k$ from every vertex for
+shell crosses the population benchmark. I estimate $Q_k$ from every vertex for
 networks with at most 4{,}000 vertices and from 2{,}000 uniformly sampled start
 vertices otherwise (with $Q_1$ set to its exact value $\mu_2/\mu_1^2$); for sampled
-networks we report a bootstrap standard error of $\tilde k_{\mathrm{rev}}$ over start
-vertices (at most $0.017$). The continuous measure can lie below 3 although the discrete reversal distance is 3 (no network we study has discrete reversal distance 2). Sampling the start vertices leaves $Q_1$ exact but makes $Q_k$, $k\ge2$, and hence $\tilde k_{\mathrm{rev}}$ and the ratios $S_k$, estimates; the bootstrap standard errors refer to the latter. We also report, for each $k$, the share of the network
+networks I report a bootstrap standard error of $\tilde k_{\mathrm{rev}}$ over start
+vertices (at most $0.017$). The continuous measure can lie below 3 although the discrete reversal distance is 3 (no network I study has discrete reversal distance 2). Sampling the start vertices leaves $Q_1$ exact but makes $Q_k$, $k\ge2$, and hence $\tilde k_{\mathrm{rev}}$ and the ratios $S_k$, estimates; the bootstrap standard errors refer to the latter. I also report, for each $k$, the share of the network
 at distance $k$ and the share of people with a non-empty shell.
 
 \section{Reversal Is Unavoidable}
@@ -280,11 +280,11 @@ role of Section 4 and of the empirical analysis.
 
 \section{When Does Reversal Happen? A Mean-Field Theory}
 
-This section develops the theory of the reversal distance. We first relate the shell statistic to the random-walk statistic in the locally tree-like limit, then give a degree-class mean-field model of hub-first saturation, its translation property, and its predictions.
+This section develops the theory of the reversal distance. I first relate the shell statistic to the random-walk statistic in the locally tree-like limit, then give a degree-class mean-field model of hub-first saturation, its translation property, and its predictions.
 
 \subsection{The locally tree-like limit}
 
-We now relate $B_k$ and $W_k$ to the idealised setting of Hazra et al.\ (2026).
+I now relate $B_k$ and $W_k$ to the idealised setting of Hazra et al.\ (2026).
 
 \textbf{Standing assumptions.} Let $(G_n)$ be a sequence of simple (random)
 graphs converging locally weakly in probability to a unimodular
@@ -298,7 +298,7 @@ et al., 2026, Section 5; van der Hofstad, 2017, 2024); inhomogeneous
 Erd\H{o}s--R\'enyi graphs have a multi-type limit and preferential attachment a
 P\'olya point tree, and both lie outside the single-type assumption used here. Write $\nu=\mathbb{E}[D^*]-1=\mu_2/\mu_1-1$ and assume $\nu>1$
 (supercritical, i.e.\ the Molloy--Reed condition for a giant component; Theorem 1 does not need this, and the mean-field theory below applies only in this regime). For
-the shell statistic we additionally assume that the family
+the shell statistic I additionally assume that the family
 $\{d_V\,n_k(V)\}$ is uniformly integrable for each fixed $k$ (this holds, for
 instance, if degrees are bounded or have sufficiently many moments). Since $n_k(V)\le d_V\,n_k(V)$ (degrees are at least $1$ in a connected graph), the family $\{n_k(V)\}$ is then uniformly integrable as well, so both the numerator and the denominator of $B_k$ converge to their tree expectations.
 
@@ -318,7 +318,7 @@ for $k\ge1$, has degree law $\Lambda^*$ (the same law at every generation),
 because a Galton--Watson tree uses the same offspring law in every
 generation (this is the size-biasing of the degrees along the walk that underlies
 Theorem 3(a) and Lemma 1 of Hazra et al., 2026; their Theorem 3(a) assumes a
-minimum degree of at least 3 so that the walk is never absorbed, whereas we
+minimum degree of at least 3 so that the walk is never absorbed, whereas I
 condition on survival: survival to step $k$ depends only on the degrees of
 $X_1,\ldots,X_{k-1}$, which are independent of $d_{X_k}$, so the law of $d_{X_k}$
 is unchanged). The convergence of the empirical $k$-level quantities to their
@@ -345,7 +345,7 @@ happen, and that when it does the hub surplus is reversed.
 
 \subsection{Finite-size departure: a mean-field model of hub-first saturation}
 
-To quantify where the reversal occurs we use a mean-field model of the
+To quantify where the reversal occurs I use a mean-field model of the
 configuration model with a given degree sequence. Let $n_d$ be the number of
 vertices of degree $d$ and $\Sigma=\sum_v d_v$ the number of half-edges.
 Consider a start vertex of degree $s$. Let $F_1=s$ be the number of
@@ -367,7 +367,7 @@ predicted pooled mean degree is
 \tilde B_k \;=\; \frac{\sum_s n_s\sum_d n_d\,d\,\pi_k(d\mid s)}{\sum_s n_s\sum_d n_d\,\pi_k(d\mid s)} .
 \end{equation*}
 This is a deterministic recursion over degree classes; it is not a theorem, and
-we treat it as a model whose predictions we test (Sections 5 and 7). Its
+I treat it as a model whose predictions I test (Sections 5 and 7). Its
 key feature is that the half-edges exposed at step $k$ are drawn
 disproportionately from \emph{already reached} high-degree vertices, so that
 the effective branching ratio of the exploration falls with $k$ and hubs are
@@ -420,7 +420,7 @@ $\sup_{k:\ \nu^k/n\in\Lambda}|\tilde Q_k(n)-\mathcal Q(\nu^k/n)|\to0$ as $n\to\i
 In particular $\tilde Q_{k+1}(\nu n)-\tilde Q_k(n)\to0$: multiplying the number of vertices
 by $\nu$ delays the whole enrichment profile by exactly one step. Moreover $\mathcal Q(\lambda)\to\mu_2/\mu_1^2>1$
 as $\lambda\to0$. Suppose $\mathcal Q$ crosses $1$ once, in the sense that for some $\lambda^*>0$,
-$\mathcal Q>1$ on $(0,\lambda^*)$ and $\mathcal Q<1$ on $(\lambda^*,\nu\lambda^*]$ (a hypothesis, which holds in all 27 degree laws we checked; Appendix A). Put $u(n)=\log_\nu(n\lambda^*)=\log n/\log\nu+c^*(p)$ with $c^*(p)=\log_\nu\lambda^*$.
+$\mathcal Q>1$ on $(0,\lambda^*)$ and $\mathcal Q<1$ on $(\lambda^*,\nu\lambda^*]$ (a hypothesis, which holds in all 27 degree laws I checked; Appendix A). Put $u(n)=\log_\nu(n\lambda^*)=\log n/\log\nu+c^*(p)$ with $c^*(p)=\log_\nu\lambda^*$.
 Then, for every $\varepsilon>0$ and all large $n$, the discrete reversal distance is $\lceil u(n)\rceil$ if $u(n)$ is
 at least $\varepsilon$ from an integer (and one of the two nearest integers otherwise), and the continuous
 reversal distance $\tilde k_{\mathrm{rev}}(n)$ (the interpolated crossing of Section 2, computed from the model's $\tilde Q_k(n)$) satisfies $\tilde k_{\mathrm{rev}}(n)=u(n)+\pi(u(n))+o(1)$ as $n\to\infty$, where $\pi$ is an explicit
@@ -443,7 +443,7 @@ delays it; and the model predicts that the net effect depends on density
 (Section 5). The intercept is not a constant of the model: it increases with the
 coefficient of variation (in the mean-field model it is $0.52$ to $0.63$ at CV 0.6
 and $0.92$ to $0.96$ at CV 1.4; in the simulations of Section 5, about $0.4$ at CV 0.4
-and about $1.0$ at CV 1.4). We do not have a closed form for $\lambda^*$.
+and about $1.0$ at CV 1.4). I do not have a closed form for $\lambda^*$.
 
 \subsection{A supporting result for individuals}
 
@@ -462,13 +462,13 @@ exactly for people of degree at most $s^*_k$, and $\tilde P_k=\sum_{s\le s^*_k}p
 
 The proof (Appendix B) compares the shell probabilities of two start degrees in the
 likelihood-ratio order. For $k\ge3$ the frontier $F_k(s)$ need not be monotone in
-$s$. Beyond $k=2$ the property is an empirical statement about the model, not a theorem: we computed $\tilde m_k(s)$ for $k=1,\ldots,5$ in the 27 degree laws of Appendix A at $n=10^3,10^4,10^5$ and in every case it was non-increasing in $s$ with $\tilde m_k(s)-s$ strictly decreasing. In graphs, the individual-level results of Section 8 are an empirical finding for $k\ge3$.
+$s$. Beyond $k=2$ the property is an empirical statement about the model, not a theorem: I computed $\tilde m_k(s)$ for $k=1,\ldots,5$ in the 27 degree laws of Appendix A at $n=10^3,10^4,10^5$ and in every case it was non-increasing in $s$ with $\tilde m_k(s)-s$ strictly decreasing. In graphs, the individual-level results of Section 8 are an empirical finding for $k\ge3$.
 
 \section{Degree Sequence and Reversal: Configuration-Model Experiments}
 
 \subsection{Design}
 
-We test the predictions of Section 4 where the model's assumptions hold by
+I test the predictions of Section 4 where the model's assumptions hold by
 construction. Stage 1 uses configuration-model graphs whose degree sequences are
 drawn from three families: Negative-Binomial (the main family; six sizes
 $n=500,\ldots,16{,}000$, mean degree 6, 12, 25, 50, 100 subject to mean degree
@@ -476,7 +476,7 @@ $\le n/20$, and CV $0.4,0.7,1.0,1.4$, giving 108 cells with 30 graphs each),
 lognormal (CV $0.7,1.4$; $n=2{,}000$ and $8{,}000$; mean degree 12 and 50), and a
 truncated power law with exponent 2.5 (same sizes and mean degrees), 3{,}600 graphs
 in all. The minimum degree is 1; each graph is simplified and restricted to its
-largest component. We compute $Q_k$ to the diameter (from all vertices when
+largest component. I compute $Q_k$ to the diameter (from all vertices when
 $n\le4{,}000$, 2{,}220 graphs; from 2{,}000 sampled vertices otherwise), the
 reversal distances, and the mean-field prediction from each graph's realised
 degree sequence. The plan, the hypotheses, and the predictions of the mean-field model
@@ -531,7 +531,7 @@ $n$ & Mean degree 6 & 12 & 25 & 50 & 100\\
 \subsection{Scaling with $\log n/\log\nu$}
 
 Proposition 3 implies that, for a fixed degree law, the reversal distance grows
-with slope $1/\log\nu$ in $\log n$. We therefore examined, within each of the 20
+with slope $1/\log\nu$ in $\log n$. I therefore examined, within each of the 20
 Negative-Binomial cells of fixed mean degree and CV (four to six sizes each), the
 ratio $\rho=(d\tilde k_{\mathrm{rev}}/d\log n)\cdot\log\nu$, which equals 1
 under the scaling statement. In simulation the ratio averages $1.003$ (SD $0.065$,
@@ -543,15 +543,15 @@ in dense, low-CV cells and smaller in dense, high-CV cells, and the simulation
 reproduces them; in the model the slope tends to 1 as $n$ grows (Proposition 3; numerically it is between $0.99$ and $1.01$ for $n=10^3$ to $10^9$, and for the lognormal and power-law families to $10^{12}$). In Figure 1B the lines of different
 mean degree within a CV level are parallel to the slope-1 guide, separated by the intercept $c^*(p)$, which rises with CV from about $0.4$ to about $1.0$.
 
-We also ran the test we had specified in advance: a regression of
+I also ran the test I had specified in advance: a regression of
 $\tilde k_{\mathrm{rev}}$ on $z=\log n/\log\nu$ within each degree family, with the
 requirement that the slope's interval lie within $[0.9,1.1]$. The slopes were $0.948$
 $[0.940,0.957]$ for Negative-Binomial, $0.973$ $[0.935,1.011]$ for lognormal,
-and $1.225$ $[1.182,1.268]$ for the power law. We do not regard this as a clean test
+and $1.225$ $[1.182,1.268]$ for the power law. I do not regard this as a clean test
 of the statement: it pools degree laws whose intercepts differ, it uses each
 graph's realised $\nu$, which varies within a cell, and in the power-law family the
 degree cutoff grows with $n$ so the degree law is not fixed. The fixed-law analysis
-above is the appropriate one, and we report both. The upshot is that the
+above is the appropriate one, and I report both. The upshot is that the
 $\log n/\log\nu$ law is a good first-order description of the reversal distance at
 the sizes of real networks, with deviations of about $\pm0.15$ in the slope, and an
 exact asymptotic law of the model.
@@ -600,14 +600,14 @@ from 0.4 to 1.4, at fixed size and mean degree (Negative-Binomial graphs).
 \subsection{Design: exact control on fixed degree sequences}
 
 Stage 2 starts from Negative-Binomial configuration-model graphs and rewires them
-by degree-preserving double-edge swaps. We implemented the swaps with incremental
+by degree-preserving double-edge swaps. I implemented the swaps with incremental
 updates of the two quantities that change: with degrees fixed, assortativity changes
 only through the sum of products of endpoint degrees over edges, and the global
 clustering coefficient only through the triangle count. The routine accepts a swap if
 it moves both quantities toward their targets, and it reproduces igraph's values of
 both statistics on the rewired graphs. Targeting clustering alone drives
 assortativity up (on a graph with 2{,}000 vertices and mean degree 25, a clustering
-target of 0.30 moved assortativity from $-0.03$ to $0.71$), so we target both at once.
+target of 0.30 moved assortativity from $-0.03$ to $0.71$), so I target both at once.
 The two bases are (A) $n=2{,}000$, mean degree 25, CV 1.0 and (B) $n=4{,}000$, mean
 degree 12, CV 1.4; assortativity targets are $-0.30,-0.15,0,0.15,0.30$ and clustering
 targets the starting value, $0.10$, $0.20$, and $0.30$, with 30 graphs per cell
@@ -623,7 +623,7 @@ $+0.20$ and $+0.29$ steps), at clustering $0.10$ the effect is near zero, and at
 clustering $0.20$ and above it is negative ($-0.16$ and $-0.15$ at $0.20$; $-0.07$
 and $-0.30$ at $0.30$). The assortativity-by-clustering interaction in a regression
 of the crossing is $-1.64$ (base A) and $-3.56$ (base B). Assortativity therefore
-does not have a single sign in its effect on reversal. We do not have a mechanistic account of the sign change; the experiments establish it but do not explain it.
+does not have a single sign in its effect on reversal. I do not have a mechanistic account of the sign change; the experiments establish it but do not explain it.
 
 However, triangle-closing swaps also build community structure: modularity of the
 detected partition rises by $0.34$ (base A) and $0.37$ (base B) between the
@@ -646,7 +646,7 @@ reversal distance by clustering, with 95\% intervals.
 
 \subsection{Separating clustering from community structure}
 
-To separate the two, we plant a partition of the vertices into blocks (10 blocks of
+To separate the two, I plant a partition of the vertices into blocks (10 blocks of
 200 vertices in base A, 20 blocks of 200 in base B), draw each vertex's edges so
 that a fraction $1-m$ stay within its block (mixing $m=0.15,0.30,0.50,0.80$,
 corresponding to planted modularity $0.74$ to $0.17$ in base A and $0.79$ to $0.18$
@@ -690,10 +690,10 @@ has SD $0.81$. In the controlled rewiring designs the share is $0.78$ (SD $0.02$
 the unrestricted rewiring, whereas an increase of $0.1$ in clustering moves the crossing by
 $0.11$ to $0.20$ steps and the share at the crossing by only $0.01$ to $0.03$. This is what the saturation mechanism predicts: clustering and
 communities delay the point at which the shells have covered about three quarters of the network.
-Part of the regularity is forced, because the share must stay below one, so we read it as
+Part of the regularity is forced, because the share must stay below one, so I read it as
 consistent with the mechanism and not as a test that excludes other explanations. The first step of the expansion can be read directly: the ratio of the share of the network at distance 2 to the share at distance 1 falls by 14 to 24\% for each $0.1$ of clustering in the four designs. This is close to the definition of clustering (triangles leave fewer new vertices at distance 2) and so is expected, but it is the rate that the mean-field model takes as input.
 
-\paragraph{Assortativity with the communities held fixed.} The sign change of Section 6.2 raises the question whether it arises because triangle-closing swaps also build communities, which assortative swaps then dissolve (in the unrestricted rewiring, at clustering $0.30$, detected modularity is lower by $0.20$ in base A and $0.24$ in base B at assortativity $+0.3$ than at $-0.3$). We therefore repeated the assortativity experiment inside the planted partitions, with block-pair edge counts fixed by the swap rule, three community strengths (mixing $0.15$, $0.5$, $0.8$), assortativity targets $-0.3$, $0$, $0.3$ (achieved to within $0.01$), and clustering either left at its natural value or raised to $0.20$ (1{,}080 graphs, 30 per cell; this experiment was added after the main analysis). Planted modularity and the degree sequence are exactly fixed. At natural clustering, raising assortativity from $-0.3$ to $+0.3$ delays reversal by $0.14$ (base A) and $0.21$ steps (base B), in each of the three community strengths. At clustering $0.20$ the effect falls to $-0.03$ and $+0.03$ (Table 2), with the six cells ranging from $-0.11$ to $+0.09$. The dependence on clustering therefore remains (the interaction is $-0.16$ and $-0.18$, $p<.001$), but its negative arm largely disappears: the clearly negative effects of $-0.16$ and $-0.15$ found with unrestricted rewiring at clustering $0.20$ are mostly the loss of community structure, and adjusting for detected modularity changes the interaction little ($-0.14$ and $-0.18$), so detected modularity is not the whole account. The remaining dependence is absorbed by the mean distance (to $-0.05$ and $-0.11$), which restates the result in terms of expansion and does not explain it.
+\paragraph{Assortativity with the communities held fixed.} The sign change of Section 6.2 raises the question whether it arises because triangle-closing swaps also build communities, which assortative swaps then dissolve (in the unrestricted rewiring, at clustering $0.30$, detected modularity is lower by $0.20$ in base A and $0.24$ in base B at assortativity $+0.3$ than at $-0.3$). I therefore repeated the assortativity experiment inside the planted partitions, with block-pair edge counts fixed by the swap rule, three community strengths (mixing $0.15$, $0.5$, $0.8$), assortativity targets $-0.3$, $0$, $0.3$ (achieved to within $0.01$), and clustering either left at its natural value or raised to $0.20$ (1{,}080 graphs, 30 per cell; this experiment was added after the main analysis). Planted modularity and the degree sequence are exactly fixed. At natural clustering, raising assortativity from $-0.3$ to $+0.3$ delays reversal by $0.14$ (base A) and $0.21$ steps (base B), in each of the three community strengths. At clustering $0.20$ the effect falls to $-0.03$ and $+0.03$ (Table 2), with the six cells ranging from $-0.11$ to $+0.09$. The dependence on clustering therefore remains (the interaction is $-0.16$ and $-0.18$, $p<.001$), but its negative arm largely disappears: the clearly negative effects of $-0.16$ and $-0.15$ found with unrestricted rewiring at clustering $0.20$ are mostly the loss of community structure, and adjusting for detected modularity changes the interaction little ($-0.14$ and $-0.18$), so detected modularity is not the whole account. The remaining dependence is absorbed by the mean distance (to $-0.05$ and $-0.11$), which restates the result in terms of expansion and does not explain it.
 
 \begin{table*}[t]
 \centering
@@ -766,8 +766,8 @@ $S_1^{\mathrm{ego}}=S_1$.
 (a) $A_1=n^{-1}\sum_i d_i^{-1}\sum_{j\sim i}d_j$. Each edge $\{i,j\}$
 contributes $d_j/d_i$ to $i$'s inner sum and $d_i/d_j$ to $j$'s, so
 $\sum_i d_i^{-1}\sum_{j\sim i}d_j=\sum_{\{i,j\}\in E}(d_i/d_j+d_j/d_i)=2m\,
-\mathbb{E}[D/D']$, where $m=|E|$ and we used that $(D,D')$ and $(D',D)$ have the same law.
-Since $2m=n\mu_1$ we get $A_1=\mu_1\mathbb{E}[D/D']$.
+\mathbb{E}[D/D']$, where $m=|E|$ and I used that $(D,D')$ and $(D',D)$ have the same law.
+Since $2m=n\mu_1$ I get $A_1=\mu_1\mathbb{E}[D/D']$.
 
 (b) Under the size-biased marginal, $\mathbb{E}[D]=\mu_2/\mu_1$ and
 $\mathbb{E}[1/D']=\sum_d d^{-1}(d\,p_d/\mu_1)=1/\mu_1$, so
@@ -788,19 +788,19 @@ $\mathrm{Cov}(D,1/D')=0$.
 Newman's degree assortativity coefficient is the Pearson correlation of
 $(D,D')$ on the same edge pairs, so part (b) says that for realistic joint
 degree distributions positive assortativity lowers the ego-averaged ratio
-below the pooled one, and negative assortativity raises it. We state the
+below the pooled one, and negative assortativity raises it. I state the
 result for $k=1$ only; for $k\ge2$ the corresponding dependence involves
-longer-range degree correlations and we test it empirically.
+longer-range degree correlations and I test it empirically.
 
 
 \section{Empirical Networks}
 
 \subsection{Data and approach}
 
-We analyse Facebook friendship networks from 105 US universities (Traud, Mucha, \&
+I analyse Facebook friendship networks from 105 US universities (Traud, Mucha, \&
 Porter, 2012), restricted to each network's largest component (762 to 63{,}392
 vertices; mean degree 25.8 to 116.2; degree CV 0.71 to 1.55; clustering 0.10 to
-0.29; assortativity $-0.07$ to $0.20$). For every network we compute $Q_k$ to the
+0.29; assortativity $-0.07$ to $0.20$). For every network I compute $Q_k$ to the
 diameter (all vertices for the 23 networks with at most 4{,}000 vertices, 2{,}000
 sampled otherwise), the reversal distances with bootstrap standard errors, the
 mean-field prediction from the degree sequence, the same quantities in a
@@ -810,7 +810,7 @@ of a Louvain partition, and the individual-level share $P_k$.
 \subsection{How far away does the paradox reverse?}
 
 The discrete reversal distance is 3 in 96 of the 105 networks (91\%), 4 in 8, and 5
-in 1; because it varies so little we analyse the continuous reversal distance, which
+in 1; because it varies so little I analyse the continuous reversal distance, which
 has mean $2.75$ (SD $0.24$, range $2.23$ to $4.08$; bootstrap standard error at most
 $0.017$). The mean enrichment is $Q_k=1.90$, $1.46$, $0.86$, $0.40$, $0.21$, and $0.11$ at $k=1,\ldots,6$ ($Q_1$ has SD $0.27$ and equals $1+\mathrm{CV}^2$ by Theorem 1(b)); $Q_2>1$ in every network, $Q_3<1$ in 91\%, and $Q_4<1$ in 99\%. The non-backtracking walk ratio of Section 2, by contrast, stays at its first-step level (mean ratios $1.71$, $1.04$, $1.03$ at steps 1 to 3, so the walk's endpoint has mean degree $1.71$, $1.78$, and $1.82$ times the population mean), as Proposition 2 says it does in the tree-like limit: a walk-based measure does not show the reversal that the neighbourhoods of a person undergo. On average 33\%, 55\%, 10\%, and 1\% of a network lies at distance 2, 3, 4,
 and 5, and the share of people with a non-empty shell is 1.00 through $k=4$, 0.92 at
@@ -844,7 +844,7 @@ departure from the mean-field prediction, the observed minus the mean-field
 crossing, is accounted for by assortativity ($+0.47$ per unit, $p<.001$) and
 modularity ($+0.85$, $p<.001$), with clustering, CV, size, and mean degree not
 significant ($R^2=0.71$; $0.69$ with assortativity and modularity alone;
-Figure 5B). The experiments of Section 6 suggest the same for community structure, which delays reversal when added to a fixed degree sequence. For assortativity the experiments show that the sign of the effect depends on clustering, so the cross-sectional coefficient describes these networks and is not a replication of a single effect. The Facebook networks have clustering between $0.10$ and $0.29$ (83\% between $0.10$ and $0.20$), which is the range in which Table 2 finds the effect of assortativity changing from small positive to negative. The cross-sectional association of the offset with assortativity is nevertheless positive in each third of the clustering distribution (slopes $0.32$ to $0.66$) and shows no interaction with clustering ($p=.95$). This is more consistent with the experiments than it first appears. With the communities held fixed (Section 6.3) the experimental effect of assortativity is positive at natural clustering ($+0.14$ and $+0.21$ for a change of $0.6$ in assortativity, a slope of $0.2$ to $0.35$ per unit) and close to zero at clustering $0.20$, not clearly negative, and the Facebook networks' assortativity spans only $-0.07$ to $0.20$. The cross-sectional slope ($0.32$ to $0.66$ per unit) is larger than the experimental one, so the cross-section carries more than degree mixing alone: assortativity is tied to other features of the networks, for instance the mixing of students by year, which we have not separated.
+Figure 5B). The experiments of Section 6 suggest the same for community structure, which delays reversal when added to a fixed degree sequence. For assortativity the experiments show that the sign of the effect depends on clustering, so the cross-sectional coefficient describes these networks and is not a replication of a single effect. The Facebook networks have clustering between $0.10$ and $0.29$ (83\% between $0.10$ and $0.20$), which is the range in which Table 2 finds the effect of assortativity changing from small positive to negative. The cross-sectional association of the offset with assortativity is nevertheless positive in each third of the clustering distribution (slopes $0.32$ to $0.66$) and shows no interaction with clustering ($p=.95$). This is more consistent with the experiments than it first appears. With the communities held fixed (Section 6.3) the experimental effect of assortativity is positive at natural clustering ($+0.14$ and $+0.21$ for a change of $0.6$ in assortativity, a slope of $0.2$ to $0.35$ per unit) and close to zero at clustering $0.20$, not clearly negative, and the Facebook networks' assortativity spans only $-0.07$ to $0.20$. The cross-sectional slope ($0.32$ to $0.66$ per unit) is larger than the experimental one, so the cross-section carries more than degree mixing alone: assortativity is tied to other features of the networks, for instance the mixing of students by year, which I have not separated.
 
 The cross-sectional slope of the crossing on
 $\log n/\log\nu$ is $1.43$ ($R^2=0.93$); since the degree law varies across networks
@@ -897,7 +897,7 @@ a regression on assortativity and modularity ($R^2=0.69$).
 \subsection{Networks of other kinds}
 
 Facebook university networks are dense, with small diameters, and the model predicts
-that reversal comes later in larger and sparser networks. We therefore applied the
+that reversal comes later in larger and sparser networks. I therefore applied the
 same analysis to ten public networks from the Stanford Network Analysis Project
 collection (Leskovec \& Krevl, 2014), chosen to differ in size, density, and kind:
 four scientific collaboration networks (arXiv GrQc, HepTh, CondMat, AstroPh;
@@ -930,7 +930,7 @@ are weakly related to the offset in these ten ($r=0.15$ and $-0.06$), which with
 individual-level crossing lags the reversal distance by $0.74$ to $4.84$ steps (mean $1.69$;
 correlation $0.99$), so the paradox lasts longer for the less connected in these networks
 as well, and by a wider margin where reversal is late. These are ten networks from
-one repository, selected for variety and not sampled; we regard this as a test that the
+one repository, selected for variety and not sampled; I regard this as a test that the
 predictions of Section 4 and the Facebook findings are not particular to
 Facebook-type networks, not as an estimate of any population quantity. For the same reason the modularity ordering of the offset in these ten is a consistency check on the Facebook result, which has the power to estimate the effect, and not an independent estimate of it.
 
@@ -979,7 +979,7 @@ modularity. Facebook100 networks in grey, the ten other networks in blue.
 \section{For Whom Does the Paradox Last?}
 
 The reversal distance describes the average person at distance $k$. Feld's paradox
-compares a person with their own friends, so we also ask how many people still
+compares a person with their own friends, so I also ask how many people still
 experience it at distance $k$: the share $P_k$ of people whose distance-$k$ shell has
 a higher mean degree than their own degree. Averaged over the 105 networks, $P_k$ is
 85\%, 75\%, 50\%, 17\%, and 5\% at $k=1,\ldots,5$ (Table 5). A majority of people have
@@ -999,7 +999,7 @@ The individual-level crossing, the distance at which $P_k$ falls through one hal
 follows the reversal distance closely. In the Facebook networks it lies $0.24$ steps
 later (SD $0.06$; correlation $0.99$); in the 3{,}600 simulated networks $0.28$ steps
 later (SD $0.15$; correlation $0.98$); and in the mean-field model $0.2$ to $0.35$
-steps later at every size we tried. For the less connected the paradox therefore lasts a little
+steps later at every size I tried. For the less connected the paradox therefore lasts a little
 longer than the population-level reversal suggests.
 
 \begin{table}[t]
@@ -1064,7 +1064,7 @@ in the way the model describes, and a longer chain of acquaintance is needed in 
 and sparser networks.
 
 The study has limits. The scaling result is proved for the mean-field model; for graphs it is an
-empirical statement, accurate to about $\pm0.15$ in the slope at the sizes we simulated, and it has been tested only within configuration-model degree laws, where the model's assumptions hold by construction. Outside them, in the empirical networks, we compare the observed crossing with the model's prediction and find an offset; we have no separate test of the scaling there. The individual-level result (the paradox lasts longest for the least connected) is proved in the model for $k\le2$ and is an empirical finding beyond that.
+empirical statement, accurate to about $\pm0.15$ in the slope at the sizes I simulated, and it has been tested only within configuration-model degree laws, where the model's assumptions hold by construction. Outside them, in the empirical networks, I compare the observed crossing with the model's prediction and find an offset; I have no separate test of the scaling there. The individual-level result (the paradox lasts longest for the least connected) is proved in the model for $k\le2$ and is an empirical finding beyond that.
 
 The simulations use two bases, a Negative-Binomial degree law, and equal-sized planted
 blocks; assortativity and clustering are manipulated with greedy swaps, and the
@@ -1147,7 +1147,7 @@ $\sup\{|E_k-\omega(\nu^k\delta/(\nu-1))|:\ \nu^k\delta/(\nu-1)\in[a,b]\}\to0$ as
 \emph{Proof.} The orbit is increasing and stays below the fixed point of $\psi_\delta$.
 \emph{Linear phase.} Concavity gives $H(E)\le\nu E$, so $E_k\le\delta\nu^k/(\nu-1)$
 for all $k$. Choose $C$ and $E_0$ with $H(E)\ge\nu E-CE^2$ for $E\le E_0$, and let
-$0<\eta\le E_0$. With $z_k=\nu^{-k}E_k$ we have
+$0<\eta\le E_0$. With $z_k=\nu^{-k}E_k$ I have
 $z_{k+1}-z_k=\delta\nu^{-(k+1)}-\nu^{-(k+1)}\bigl(\nu E_k-H(E_k)\bigr)$, where
 $0\le\nu E_k-H(E_k)\le CE_k^2$ while $E_k\le E_0$. Summing and using the upper bound,
 \[
@@ -1201,7 +1201,7 @@ $\tilde Q_m=1-\delta$ the pair $(m-1,m)$ gives $m-\delta/(\tilde Q_{m-1}-\tilde 
 the denominators are bounded away from $0$); so the expansion holds uniformly, with the $o(1)$ depending on $\varepsilon$ only
 through the continuity modulus of $g$ and of $\pi$. \qed
 
-\textbf{Existence of $\lambda^*$.} The hypothesis that $\mathcal Q$ crosses $1$ is not automatic. The model describes the exposure of the giant component, which covers only a fraction $E^*$ of the half-edges, and the conservation law of Theorem 1 does not hold for it. We evaluated $\mathcal Q$ for 43 further degree laws (random finitely supported laws, including laws with most vertices of degree $1$, and $\nu$ between $1.08$ and $167$). In 34 of them $\mathcal Q$ crosses $1$ exactly once; in the nine that do not, $\nu<2$ and $E^*<0.5$ (near-critical laws), and $\mathcal Q$ stays above $1$, so the model never reverses (for example, $p_1=0.5$, $p_2=0.2$, $p_3=0.3$, with $\nu=1.22$). The crossing is therefore a property of the degree law that has to be checked, not a consequence of $\nu>1$.
+\textbf{Existence of $\lambda^*$.} The hypothesis that $\mathcal Q$ crosses $1$ is not automatic. The model describes the exposure of the giant component, which covers only a fraction $E^*$ of the half-edges, and the conservation law of Theorem 1 does not hold for it. I evaluated $\mathcal Q$ for 43 further degree laws (random finitely supported laws, including laws with most vertices of degree $1$, and $\nu$ between $1.08$ and $167$). In 34 of them $\mathcal Q$ crosses $1$ exactly once; in the nine that do not, $\nu<2$ and $E^*<0.5$ (near-critical laws), and $\mathcal Q$ stays above $1$, so the model never reverses (for example, $p_1=0.5$, $p_2=0.2$, $p_3=0.3$, with $\nu=1.22$). The crossing is therefore a property of the degree law that has to be checked, not a consequence of $\nu>1$.
 
 \textbf{Behaviour as $\lambda\to\infty$, and a sufficient condition for a crossing.} Write $m=H'(E^*)\in(0,1)$ and $a(u)=E^*-\omega(u)>0$, which tends to $0$ as $u\to\infty$. From $\omega(\nu u)=H(\omega(u))$ and a Taylor expansion at $E^*$, $a(\nu u)=m\,a(u)\,(1+o(1))$, so $a(u/\nu)/a(u)\to1/m$. For fixed $d$ and $s$ the shell probability in $\mathcal Q$ is therefore $e^{-d\omega(\lambda s/(\nu\kappa))}-e^{-d\omega(\lambda s/\kappa)}=d\,e^{-dE^*}a(\lambda s/\kappa)\,(1/m-1)\,(1+o(1))$. The factor that depends on $s$ and $\lambda$ is common to numerator and denominator of $\mathcal Q$ and cancels, so
 \[
@@ -1209,9 +1209,9 @@ through the continuity modulus of $g$ and of $\pi$. \qed
 \]
 Since $\mathcal Q\to\mu_2/\mu_1^2>1$ as $\lambda\to0$ and $\mathcal Q$ is continuous, $\mathcal Q_\infty<1$ implies that $\mathcal Q$ crosses $1$ at least once; $\mathcal Q_\infty>1$ implies that $\mathcal Q>1$ for all large $\lambda$, so the crossing, if any, is followed by a return above $1$ and the hypothesis of Proposition 3 fails. Numerically, $\mathcal Q$ at the largest $\lambda$ before underflow differs from $\mathcal Q_\infty$ by at most $0.02$ in the 70 laws, and a crossing exists exactly when $\mathcal Q_\infty<1$ (in all 70). In the 27 degree laws of the paper $\mathcal Q_\infty$ lies between $0.03$ and $0.69$. Uniqueness of the crossing is not proved: on a grid of 400 values of $\lambda$, $\mathcal Q$ is decreasing, with a single crossing, in each of the 27 laws. All 27 degree laws used in the paper have $\nu\ge5.9$ and $E^*\ge0.81$, and so do the empirical networks ($\nu\ge10.5$).
 
-\textbf{Single crossing.} We evaluated $\mathcal Q$ on a grid of 150 values of $\lambda$ from $10^{-4}$ to $10^{3.5}$ for 27 degree laws (Negative-Binomial and lognormal with mean degree 6, 12, 25, 50 and CV 0.4, 1.0, 1.4; truncated power laws with mean degree 6, 12, 25). In every case $\mathcal Q\ge1$ up to a single crossing and $\mathcal Q<1$ afterwards (maximum after the crossing $0.999$), with $\lambda^*$ between $2.4$ and $77$ across the 27 laws; this is a numerical check on a grid, not a proof.
+\textbf{Single crossing.} I evaluated $\mathcal Q$ on a grid of 150 values of $\lambda$ from $10^{-4}$ to $10^{3.5}$ for 27 degree laws (Negative-Binomial and lognormal with mean degree 6, 12, 25, 50 and CV 0.4, 1.0, 1.4; truncated power laws with mean degree 6, 12, 25). In every case $\mathcal Q\ge1$ up to a single crossing and $\mathcal Q<1$ afterwards (maximum after the crossing $0.999$), with $\lambda^*$ between $2.4$ and $77$ across the 27 laws; this is a numerical check on a grid, not a proof.
 
-\textbf{Step-by-step audit.} We also tested each step of this appendix numerically, for the 27 degree laws of the paper and 43 random degree laws (including laws with most vertices of degree one and $\nu$ as low as $1.08$): the properties of $H$ hold in all 70 laws; the functional equation $H(\omega(u))=\omega(\nu u)$ holds to relative error $6\times10^{-15}$; the Lemma A error falls from $1.5\times10^{-2}$ at $\delta=10^{-3}$ to $10^{-7}$ at $\delta=10^{-9}$ in the worst law; and the discrete and continuous reversal-distance statements hold with $n$ chosen so that $u(n)$ comes close to an integer (largest deviation of $\tilde k_{\mathrm{rev}}$ from $u+\pi(u)$ $1.6\times10^{-3}$ at $n\le4\times10^5$ for the least favourable law shown, and below $4\times10^{-4}$ for mean degree 12). The scripts and output are in the replication materials.
+\textbf{Step-by-step audit.} I also tested each step of this appendix numerically, for the 27 degree laws of the paper and 43 random degree laws (including laws with most vertices of degree one and $\nu$ as low as $1.08$): the properties of $H$ hold in all 70 laws; the functional equation $H(\omega(u))=\omega(\nu u)$ holds to relative error $6\times10^{-15}$; the Lemma A error falls from $1.5\times10^{-2}$ at $\delta=10^{-3}$ to $10^{-7}$ at $\delta=10^{-9}$ in the worst law; and the discrete and continuous reversal-distance statements hold with $n$ chosen so that $u(n)$ comes close to an integer (largest deviation of $\tilde k_{\mathrm{rev}}$ from $u+\pi(u)$ $1.6\times10^{-3}$ at $n\le4\times10^5$ for the least favourable law shown, and below $4\times10^{-4}$ for mean degree 12). The scripts and output are in the replication materials.
 
 \textbf{Numerical check.} Table A1 gives $\max_k|\tilde Q_{k+1}(\nu n)-\tilde Q_k(n)|$
 over the shells $k$ that contain between $10^{-8}$ and $0.999$ of the network, for
