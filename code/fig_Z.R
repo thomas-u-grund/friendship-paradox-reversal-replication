@@ -14,7 +14,7 @@ nb <- s1[s1$family == "NB", ]; cells <- nb %>% group_by(mu_target, cv_target, n_
 plot(NA, xlim = range(cells$z) + c(-0.05, 0.1), ylim = range(cells$k) + c(-0.1, 0.1), xlab = expression("log n / log "*nu), ylab = "Simulated crossing distance", bty = "l"); abline(h = 2:6, v = seq(1, 4, 0.5), col = grid, lwd = 0.6)
 cvs <- sort(unique(cells$cv_target)); for (i in seq_along(cvs)) for (m in sort(unique(cells$mu_target))) { d <- cells[cells$cv_target == cvs[i] & cells$mu_target == m, ] %>% arrange(n_target); if (nrow(d) < 2) next
   lines(d$z, d$k, col = adjustcolor(col[i], 0.8), lwd = 1.3); points(d$z, d$k, pch = 21, bg = col[i], col = "white", cex = 0.7); segments(d$z[1], d$k[1], d$z[nrow(d)], d$k[1] + (d$z[nrow(d)] - d$z[1]), col = adjustcolor(col[i], 0.5), lty = 3, lwd = 0.8) }
-legend("topleft", legend = paste("CV", cvs), pch = 21, pt.bg = col[seq_along(cvs)], col = "white", lty = 1, lwd = 1.2, bty = "n", cex = 0.68, pt.cex = 0.8); text(max(cells$z), min(cells$k) - 0.02, "dotted: slope 1 from each line's first point", adj = 1, cex = 0.58, col = ink2)
+legend("topleft", legend = paste("CV", sprintf("%.1f", cvs)), pch = 21, pt.bg = col[seq_along(cvs)], col = "white", lty = 1, lwd = 1.2, bty = "n", cex = 0.68, pt.cex = 0.8); text(max(cells$z), min(cells$k) - 0.02, "dotted: slope 1 from each line's first point", adj = 1, cex = 0.58, col = ink2)
 mtext("B", side = 3, line = 0.3, adj = -0.2, font = 2, cex = 1); dev.off()
 # ---------- Figure 2: heterogeneity effect changes sign with density ----------
 pdf("../figures/figureZ2_heterogeneity.pdf", width = 5.2, height = 3.3, family = "Helvetica"); par(mar = c(3.6, 3.9, 1.4, 1.0)); base_par()
@@ -28,19 +28,23 @@ pdf("../figures/figureZ3_rewiring.pdf", width = 7.2, height = 3.2, family = "Hel
 for (b in c("A", "B")) { d <- s2[s2$base == b, ]; g <- d %>% group_by(r_target, tc) %>% summarise(T = mean(t_ach), k = mean(ktil), e = se(ktil), .groups = "drop")
   plot(NA, xlim = c(0, 0.33), ylim = range(g$k) + c(-0.06, 0.06), xlab = "Clustering coefficient", ylab = if (b == "A") "Crossing distance" else "", bty = "l"); abline(h = pretty(g$k), col = grid, lwd = 0.6)
   for (j in 1:3) { rt <- c(-0.3, 0, 0.3)[j]; h <- g[g$r_target == rt, ] %>% arrange(T); lines(h$T, h$k, col = col[j], lwd = 1.8); bars(h$T, h$k, h$e, col[j]); points(h$T, h$k, pch = c(21, 22, 24)[j], bg = col[j], col = "white", cex = 1) }
-  if (b == "A") legend("topleft", legend = c("assort. -0.3", "assort. 0", "assort. +0.3"), pch = c(21, 22, 24), pt.bg = col[1:3], col = "white", lty = 1, lwd = 1.3, bty = "n", cex = 0.65, pt.cex = 0.85)
+  if (b == "A") legend("topleft", legend = c("assortativity -0.3", "assortativity 0", "assortativity +0.3"), pch = c(21, 22, 24), pt.bg = col[1:3], col = "white", lty = 1, lwd = 1.3, bty = "o", box.col = "white", bg = "white", cex = 0.65, pt.cex = 0.85)
   mtext(sprintf("%s  Base %s", c(A = "A", B = "B")[b], b), side = 3, line = 0.3, adj = 0, font = 2, cex = 0.8) }
 eff <- s2 %>% group_by(base, tc) %>% summarise(T = mean(t_ach), d = mean(ktil[r_target == 0.3]) - mean(ktil[r_target == -0.3]), e = sqrt(var(ktil[r_target == 0.3]) / sum(r_target == 0.3) + var(ktil[r_target == -0.3]) / sum(r_target == -0.3)), .groups = "drop")
 plot(NA, xlim = c(0, 0.33), ylim = c(-0.4, 0.4), xlab = "Clustering coefficient", ylab = "Effect of assortativity (+0.3 minus -0.3)", bty = "l"); abline(h = seq(-0.4, 0.4, 0.2), col = grid, lwd = 0.6); abline(h = 0, col = ink2)
-for (j in 1:2) { b <- c("A", "B")[j]; h <- eff[eff$base == b, ] %>% arrange(T); lines(h$T, h$d, col = col[j], lwd = 1.8); bars(h$T, h$d, 1.96 * h$e, col[j]); points(h$T, h$d, pch = c(21, 22)[j], bg = col[j], col = "white", cex = 1) }
-legend("topright", legend = c("base A", "base B"), pch = c(21, 22), pt.bg = col[1:2], col = "white", lty = 1, lwd = 1.3, bty = "n", cex = 0.68); mtext("C  Assortativity effect", side = 3, line = 0.3, adj = 0, font = 2, cex = 0.8); dev.off()
+cC <- c(ink, "#9a9893")   # neutral colours: blue/orange/green already mean assortativity levels in panels A and B
+for (j in 1:2) { b <- c("A", "B")[j]; h <- eff[eff$base == b, ] %>% arrange(T); lines(h$T, h$d, col = cC[j], lwd = 1.8); bars(h$T, h$d, 1.96 * h$e, cC[j]); points(h$T, h$d, pch = c(21, 22)[j], bg = cC[j], col = "white", cex = 1) }
+legend("bottomleft", legend = c("base A", "base B"), pch = c(21, 22), pt.bg = cC, col = "white", lty = 1, lwd = 1.3, bty = "o", box.col = "white", bg = "white", cex = 0.68); mtext("C  Assortativity effect", side = 3, line = 0.3, adj = 0, font = 2, cex = 0.8); dev.off()
 # ---------- Figure 4: WP5 (clustering at fixed planted communities) ----------
 s5$tc <- ifelse(is.na(s5$t_target), "start", sprintf("%.2f", s5$t_target))
 pdf("../figures/figureZ4_communities.pdf", width = 7.2, height = 3.2, family = "Helvetica"); par(mfrow = c(1, 2), mar = c(3.6, 3.9, 1.7, 0.8)); base_par()
 for (b in c("A", "B")) { d <- s5[s5$base == b, ]; g <- d %>% group_by(mix, tc) %>% summarise(T = mean(t_ach), Q = mean(planted_mod), k = mean(ktil), e = se(ktil), .groups = "drop")
   plot(NA, xlim = c(0, 0.33), ylim = range(g$k) + c(-0.08, 0.08), xlab = "Clustering coefficient", ylab = if (b == "A") "Crossing distance" else "", bty = "l"); abline(h = pretty(g$k), col = grid, lwd = 0.6)
-  mixes <- sort(unique(g$mix)); for (j in seq_along(mixes)) { h <- g[g$mix == mixes[j], ] %>% arrange(T); lines(h$T, h$k, col = col[j], lwd = 1.8); bars(h$T, h$k, h$e, col[j]); points(h$T, h$k, pch = c(21, 22, 24, 23)[j], bg = col[j], col = "white", cex = 1)
-    text(max(h$T) + 0.005, h$k[nrow(h)], sprintf("Q = %.2f", mean(h$Q)), adj = 0, cex = 0.6, col = ink, xpd = NA) }
+  mixes <- sort(unique(g$mix)); labs <- list(); for (j in seq_along(mixes)) { h <- g[g$mix == mixes[j], ] %>% arrange(T); lines(h$T, h$k, col = col[j], lwd = 1.8); bars(h$T, h$k, h$e, col[j]); points(h$T, h$k, pch = c(21, 22, 24, 23)[j], bg = col[j], col = "white", cex = 1)
+    labs[[j]] <- c(x = max(h$T) + 0.005, y = h$k[nrow(h)], m = mean(h$Q)) }
+  L <- do.call(rbind, labs); L <- L[order(L[, "y"]), , drop = FALSE]; yy <- L[, "y"]; gap <- 0.07 * diff(par("usr")[3:4])   # spread end labels so they do not overlap
+  for (i in seq_along(yy)[-1]) if (yy[i] - yy[i - 1] < gap) yy[i] <- yy[i - 1] + gap
+  text(L[, "x"], yy, sprintf("mod. %.2f", L[, "m"]), adj = 0, cex = 0.6, col = ink, xpd = NA)
   mtext(sprintf("%s  Base %s (planted communities)", b, b), side = 3, line = 0.3, adj = 0, font = 2, cex = 0.8) }
 dev.off()
 # ---------- Figure 5: Facebook100 ----------
