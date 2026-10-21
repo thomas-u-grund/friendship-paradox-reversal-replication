@@ -113,7 +113,7 @@ can be predicted from the degree distribution, and that the arrangement of conne
 Section 3 gives an exact identity and a conservation law that show reversal must occur.
 Sections 4 and 5 give a mean-field model of hub-first saturation, with a translation
 property (multiplying the number of vertices by $\nu$ shifts the whole profile by one
-step), and test its prediction in 3{,}600 configuration-model networks. Section 6 uses
+step), and test its prediction in 3{,}600 configuration-model networks (random networks with a prescribed degree sequence). Section 6 uses
 controlled rewiring to separate assortativity, clustering, and community structure.
 Section 7 compares 105 Facebook networks and ten others with degree-preserving
 randomisations. Section 8 turns to individuals: for whom does the paradox last longest? Section 9 discusses limitations and implications.
@@ -288,7 +288,7 @@ of finite mean $\mu_1$ and finite second moment $\mu_2$ (so that the empirical
 moments converge to these), in which each non-root vertex has i.i.d.\ offspring
 $D^*-1$ with $D^*\sim\Lambda^*$, the size-biased law
 $\mathbb{P}\{D^*=d\}=d\,\mathbb{P}\{D=d\}/\mu_1$. This is the local limit of
-the configuration model and of the homogeneous Erd\H{o}s--R\'enyi graph (Hazra
+the configuration model (defined in Section 5.1) and of the homogeneous Erd\H{o}s--R\'enyi graph (Hazra
 et al., 2026, Section 5; van der Hofstad, 2017, 2024); inhomogeneous
 Erd\H{o}s--R\'enyi graphs have a multi-type limit and preferential attachment a
 P\'olya point tree, and both lie outside the single-type assumption used here. Write $\nu=\mathbb{E}[D^*]-1=\mu_2/\mu_1-1$ and assume $\nu>1$
@@ -466,14 +466,13 @@ $s$. Beyond $k=2$ the property is an empirical statement about the model, not a 
 \subsection{Design}
 
 I test the predictions of Section 4 where the model's assumptions hold by
-construction. Stage 1 uses configuration-model graphs whose degree sequences are
+construction. The \emph{configuration model} generates a random network with a prescribed degree sequence: each vertex $v$ receives $d_v$ half-edges (stubs), and all stubs are paired uniformly at random to form edges. It is the standard random-graph benchmark for ``the degree sequence and nothing else''. The pairing can create self-loops and multiple edges; I remove them (the graph is \emph{simplified}) and keep the largest component. Stage 1 uses configuration-model graphs whose degree sequences are
 drawn from three families: Negative-Binomial (the main family; six sizes
 $n=500,\ldots,16{,}000$, mean degree 6, 12, 25, 50, 100 subject to mean degree
 $\le n/20$, and CV $0.4,0.7,1.0,1.4$, giving 108 cells with 30 graphs each),
 lognormal (CV $0.7,1.4$; $n=2{,}000$ and $8{,}000$; mean degree 12 and 50), and a
 truncated power law with exponent 2.5 (same sizes and mean degrees), 3{,}600 graphs
-in all. The minimum degree is 1; each graph is simplified and restricted to its
-largest component. I compute $Q_k$ to the diameter (from all vertices when
+in all. The minimum degree is 1. I compute $Q_k$ to the diameter (from all vertices when
 $n\le4{,}000$, 2{,}220 graphs; from 2{,}000 sampled vertices otherwise), the
 reversal distances, and the mean-field prediction from each graph's realised
 degree sequence. The plan, the hypotheses, and the predictions of the mean-field model
