@@ -38,4 +38,4 @@ The analysis plan, the hypotheses H1-H9 and the mean-field predictions were writ
 `proof_audit.py` tests each claim of Appendix A numerically for 27 degree laws used in the paper and 43 random degree laws, including near-critical ones: properties of H, the Poincare function, Lemma A (error against delta), the limit profile of Q, the translation error, the discrete and continuous reversal-distance statements with n close to integer crossings, and the existence of the crossing. Output: `results/proof_audit.txt`.
 
 ## Use of AI tools
-Claude (Anthropic) assisted with the programming and with preparing these replication materials; the author reviewed the output and takes responsibility for it.
+Claude Sonnet 5.5 (Anthropic, October 2026) assisted with the programming and with preparing these replication materials; the author reviewed the output and takes responsibility for it.
