@@ -429,15 +429,14 @@ so brings reversal earlier. Degree heterogeneity acts through two terms of oppos
 sign: it raises $\nu$, which brings reversal earlier, and it raises the starting
 enrichment $Q_1=1+\mathrm{CV}^2$, so that the enrichment has farther to fall, which
 delays it; and the model predicts that the net effect depends on density
-(Section 5). The intercept is not a constant of the model: it increases with the
+(Section 5). The term $c^*(p)$, the intercept in $\log n/\log\nu$, is not a constant of the model: it increases with the
 coefficient of variation (in the mean-field model it is $0.52$ to $0.63$ at CV 0.6
 and $0.92$ to $0.96$ at CV 1.4; in the simulations of Section 5, about $0.4$ at CV 0.4
 and about $1.0$ at CV 1.4). I do not have a closed form for $\lambda^*$.
 
 \subsection{A supporting result for individuals}
 
-This subsection supports the individual-level analysis of Section 8 and is not part of the argument about the reversal distance. For a person of degree $s$ the model also gives the expected mean degree
-$\tilde m_k(s)$ of the people at distance $k$, and hence the share of people for
+This subsection supports the individual-level analysis of Section 8 and is not part of the argument about the reversal distance. For a person of degree $s$ the model also gives the expected mean degree of the people at distance $k$, $\tilde m_k(s)=\sum_d n_d\,d\,\pi_k(d\mid s)\big/\sum_d n_d\,\pi_k(d\mid s)$, and hence the share of people for
 whom the paradox holds, $\tilde P_k=\sum_s p_s\mathbf 1\{\tilde m_k(s)>s\}$. The
 following result shows that this share is the share of people below a threshold
 degree.
@@ -732,7 +731,7 @@ counts of a planted partition (960 graphs); the last two from the same kind of r
 
 Theorem 1(b) shows that the pooled first-step ratio depends
 only on the degree distribution. The ego-averaged ratio does not: it also
-depends on how degrees are correlated across edges.
+depends on how degrees are correlated across edges, which links the first step of the paradox to assortativity, the structural feature studied above.
 
 \begin{proposition}[5 --- Ego-averaged ratio and assortativity]
 Let $(D,D')$ be the degrees of the endpoints of a uniformly chosen edge, in a
@@ -777,14 +776,14 @@ $\mathrm{Cov}(D,1/D')=0$.
 \end{proof}
 
 Newman's degree assortativity coefficient is the Pearson correlation of
-$(D,D')$ on the same edge pairs, so part (b) says that for realistic joint
-degree distributions positive assortativity lowers the ego-averaged ratio
-below the pooled one, and negative assortativity raises it. I state the
+$(D,D')$ on the same edge pairs, so parts (b) and (c) say that, as degree dependence across edges increases (in the order of part (c)), the ego-averaged ratio falls below the pooled one, and it rises above it as dependence turns negative; for positive assortativity this means a lower ego-averaged ratio. I state the
 result for $k=1$ only; for $k\ge2$ the corresponding dependence involves
 longer-range degree correlations and I test it empirically.
 
 
 \section{Empirical Networks}
+
+The question for real networks is whether the degree sequence is enough: do they reverse where the model and a degree-preserving randomisation say they should, and if not, what accounts for the difference? I answer it with 105 Facebook university networks and, to check that the findings are not particular to them, ten public networks of other kinds.
 
 \subsection{Data and approach}
 
@@ -835,7 +834,9 @@ departure from the mean-field prediction, the observed minus the mean-field
 crossing, is accounted for by assortativity ($+0.47$ per unit, $p<.001$) and
 modularity ($+0.85$, $p<.001$), with clustering, CV, size, and mean degree not
 significant ($R^2=0.71$; $0.69$ with assortativity and modularity alone;
-Figure 5B). The experiments of Section 6 suggest the same for community structure, which delays reversal when added to a fixed degree sequence. For assortativity the experiments show that the sign of the effect depends on clustering, so the cross-sectional coefficient describes these networks and is not a replication of a single effect. The Facebook networks have clustering between $0.10$ and $0.29$ (83\% between $0.10$ and $0.20$), which is the range in which Table 2 finds the effect of assortativity changing from small positive to negative. The cross-sectional association of the offset with assortativity is nevertheless positive in each third of the clustering distribution (slopes $0.32$ to $0.66$) and shows no interaction with clustering ($p=.95$). This is more consistent with the experiments than it first appears. With the communities held fixed (Section 6.4) the experimental effect of assortativity is positive at natural clustering ($+0.14$ and $+0.21$ for a change of $0.6$ in assortativity, a slope of $0.2$ to $0.35$ per unit) and close to zero at clustering $0.20$, not clearly negative, and the Facebook networks' assortativity spans only $-0.07$ to $0.20$. The cross-sectional slope ($0.32$ to $0.66$ per unit) is larger than the experimental one, so the cross-section carries more than degree mixing alone: assortativity is tied to other features of the networks, for instance the mixing of students by year, which I have not separated.
+Figure 5B).
+
+These associations can be compared with the experiments of Section 6. The role of modularity agrees with them: community structure delays reversal when added to a fixed degree sequence. For assortativity the experiments show that the sign of the effect depends on clustering, so the cross-sectional coefficient describes these networks and is not a replication of a single effect. The Facebook networks have clustering between $0.10$ and $0.29$ (83\% between $0.10$ and $0.20$), which is the range in which Table 2 finds the effect of assortativity changing from small positive to negative. The cross-sectional association of the offset with assortativity is nevertheless positive in each third of the clustering distribution (slopes $0.32$ to $0.66$) and shows no interaction with clustering ($p=.95$). This is less at odds with the experiments than it first seems. With the communities held fixed (Section 6.4) the experimental effect of assortativity is positive at natural clustering ($+0.14$ and $+0.21$ for a change of $0.6$ in assortativity, a slope of $0.2$ to $0.35$ per unit) and close to zero at clustering $0.20$, not clearly negative, and the Facebook networks' assortativity spans only $-0.07$ to $0.20$. The cross-sectional slope ($0.32$ to $0.66$ per unit) is larger than the experimental one, so the cross-section carries more than degree mixing alone: assortativity is tied to other features of the networks, for instance the mixing of students by year, which I have not separated.
 
 The cross-sectional slope of the crossing on
 $\log n/\log\nu$ is $1.43$ ($R^2=0.93$); since the degree law varies across networks
@@ -910,17 +911,23 @@ $0.98$ for the mean-field model; the observed crossing, $0.92$), so large and sp
 networks do reverse later, as predicted. The mean-field model again matches the
 degree-preserving randomisations (correlation $0.999$; the largest difference is $0.11$
 steps), and again the real networks reverse later than both, in every one of the ten
-networks, by $0.27$ to $5.10$ steps (mean $1.32$; Figure 6A). The offset is much larger
+networks, by $0.27$ to $5.10$ steps (mean $1.32$; Figure 6A).
+
+The offset is much larger
 than in the Facebook networks, and it is ordered by community structure: the
 observed minus mean-field crossing has a Spearman correlation of $0.99$ and a
 Pearson correlation of $0.79$ with modularity across the ten networks, and $0.75$ across
 all 115 networks (Figure 6B). It is $0.23$ in the Enron email network (modularity $0.59$),
 about $1$ to $1.7$ in the collaboration networks and the ego network (modularity $0.76$ to $0.85$),
 and $5.1$ in the Amazon co-purchase network (modularity $0.93$). Dropping any one network leaves the Spearman correlation between $0.98$ and $1.00$, and the Pearson correlation between $0.78$ and $0.93$ (it is highest without the Amazon network). Clustering and assortativity
-are weakly related to the offset in these ten ($r=0.15$ and $-0.06$), which with ten networks is not informative. The slope of the observed crossing on $\log n/\log\nu$ in these ten is $1.86$, against $0.92$ for the mean-field crossings; the difference is the offset. The
+are weakly related to the offset in these ten ($r=0.15$ and $-0.06$), which with ten networks is not informative. The slope of the observed crossing on $\log n/\log\nu$ in these ten is $1.86$, against $0.92$ for the mean-field crossings; the difference is the offset.
+
+The
 individual-level crossing lags the reversal distance by $0.74$ to $4.84$ steps (mean $1.69$;
 correlation $0.99$), so the paradox lasts longer for the less connected in these networks
-as well, and by a wider margin where reversal is late. These are ten networks from
+as well, and by a wider margin where reversal is late.
+
+These are ten networks from
 one repository, selected for variety and not sampled; I regard this as a test that the
 predictions of Section 4 and the Facebook findings are not particular to
 Facebook-type networks, not as an estimate of any population quantity. For the same reason the modularity ordering of the offset in these ten is a consistency check on the Facebook result, which has the power to estimate the effect, and not an independent estimate of it.
@@ -969,8 +976,8 @@ modularity. Facebook100 networks in grey, the ten other networks in blue.
 
 \section{For Whom Does the Paradox Last?}
 
-The reversal distance describes the average person at distance $k$. This is a different question from the pooled reversal, which compares the people at distance $k$ with the population mean. Feld's paradox
-compares a person with their own friends, so I also ask how many people still
+The reversal distance compares the people at distance $k$ with the population mean. Feld's paradox
+compares a person with their own friends, which is a different question, so I also ask how many people still
 experience it at distance $k$: the share $P_k$ of people whose distance-$k$ shell has
 a higher mean degree than their own degree. Averaged over the 105 networks, $P_k$ is
 85\%, 75\%, 50\%, 17\%, and 5\% at $k=1,\ldots,5$ (Table 5). A majority of people have
@@ -1036,7 +1043,7 @@ The friendship paradox does not extend indefinitely through a network. It depend
 
 The results show that the answer has two parts. The degree distribution gives a baseline prediction of the reversal distance: in the mean-field model it grows as $\log n/\log\nu$ plus a term set by the degree law, and the model reproduces the reversal distance in configuration-model networks and in degree-preserving randomisations of real networks. The arrangement of connections then shifts that baseline. Real networks reverse later than their randomisations in all 115 networks, and controlled rewiring shows that clustering and community structure each delay reversal, while the effect of assortativity depends on clustering. For individuals, the paradox lasts longest for the least connected.
 
-For the higher-order paradox the results mean the following. The answer to
+For the higher-order paradox, the results mean the following. The answer to
 ``does a person's friends-of-friends have more friends than the person?'' is
 yes for most people at distance 2 and for about half at distance 3 in these networks,
 and the population-level answer, that the people at distance 3 are less connected
@@ -1045,8 +1052,17 @@ happens is not constant. It moves with the size, density, and wiring of the netw
 in the way the model describes, and a longer chain of acquaintance is needed in larger
 and sparser networks.
 
-The study has limits. The scaling result is proved for the mean-field model; for graphs it is an
+The results have a practical reading for sampling. A random-walk-based sample reaches vertices whose degree is size-biased at every step, whereas the wave of people first reached at distance $k$ in a snowball or survey design has a mean degree above the population mean up to the reversal distance and below it from there on. Collecting everyone within distance $k$ is a different statistic, because it also contains the earlier, better-connected waves; the reversal distance is therefore not the point at which a cumulative sample becomes representative. The reversal distance is later in larger, sparser, and more modular networks. The choice of design, and how
+far one goes, determines the sign of the bias. A sampler who wants a degree-representative sample should therefore not collect whole shells beyond the reversal distance, which oversamples low-degree people, and should not use random-walk steps, which oversample high-degree people at every step; the reversal distance tells how far a shell-based design can go before the bias changes sign.
+
+\paragraph{Limitations.} The study has limits. The scaling result is proved for the mean-field model; for graphs it is an
 empirical statement, accurate to about $\pm0.15$ in the slope at the sizes I simulated, and it has been tested only within configuration-model degree laws, where the model's assumptions hold by construction. Outside them, in the empirical networks, I compare the observed crossing with the model's prediction and find an offset; I have no separate test of the scaling there. The individual-level result (the paradox lasts longest for the least connected) is proved in the model for $k\le2$ and is an empirical finding beyond that.
+
+The three kinds of evidence differ in what they support. The simulations establish controlled results within the stated generating and rewiring procedures; the Facebook networks show that the same patterns hold consistently in one family of related networks, not 105 independent draws from a population of social networks; and the ten other networks show that the patterns are not confined to Facebook, not that they are universal.
+
+The empirical analysis rests mainly on one class of networks, university Facebook networks, which are dense and have small diameters; ten public networks of other kinds, from one repository and chosen for variety, show reversal at larger distances (up to $11$ steps) as the model predicts for large and sparse networks, but they are too few to support more than that. In the Facebook data clustering is collinear with size, and
+regressions of 105 correlated networks are associations. Finally, the analysis
+concerns degree; the same question can be asked of any node attribute.
 
 The simulations use two bases, a Negative-Binomial degree law, and equal-sized planted
 blocks; assortativity and clustering are manipulated with greedy swaps, and the
@@ -1061,19 +1077,10 @@ same distance distribution and do not establish mediation.
 
 The analysis plan was written before the Stage 1 and Stage 2 data were analysed and is kept with the code, not registered externally. Three analyses were added after the main analysis (the shell-coverage diagnostic, the assortativity experiment inside planted partitions, and the numerical checks of the proofs), and the pooled slope test for the power-law family departs from its pre-specified form; the replication materials list each hypothesis, its outcome, and these departures.
 
-The three kinds of evidence differ in what they support. The simulations establish controlled results within the stated generating and rewiring procedures; the Facebook networks show that the same patterns hold consistently in one family of related networks, not 105 independent draws from a population of social networks; and the ten other networks show that the patterns are not confined to Facebook, not that they are universal.
-
-The empirical analysis rests mainly on one class of networks, university Facebook networks, which are dense and have small diameters; ten public networks of other kinds, from one repository and chosen for variety, show reversal at larger distances (up to $11$ steps) as the model predicts for large and sparse networks, but they are too few to support more than that. In the Facebook data clustering is collinear with size, and
-regressions of 105 correlated networks are associations. Finally, the analysis
-concerns degree; the same question can be asked of any node attribute.
-
-The results have a practical reading for sampling. A random-walk-based sample reaches vertices whose degree is size-biased at every step, whereas the wave of people first reached at distance $k$ in a snowball or survey design has a mean degree above the population mean up to the reversal distance and below it from there on. Collecting everyone within distance $k$ is a different statistic, because it also contains the earlier, better-connected waves; the reversal distance is therefore not the point at which a cumulative sample becomes representative. The reversal distance is later in larger, sparser, and more modular networks. The choice of design, and how
-far one goes, determines the sign of the bias. A sampler who wants a degree-representative sample should therefore not collect whole shells beyond the reversal distance, which oversamples low-degree people, and should not use random-walk steps, which oversample high-degree people at every step; the reversal distance tells how far a shell-based design can go before the bias changes sign.
-
-
 \section*{Data and Code Availability}
 
 The Facebook100 networks are publicly available (Traud, Mucha, \& Porter, 2012), as are the ten additional networks (Stanford Network Analysis Project; Leskovec \& Krevl, 2014). All simulation and analysis code, the derived results behind every table and figure, and the analysis plan are available at https://anonymous.4open.science/r/33CC/ (anonymised for review).
+
 
 \appendix
 
