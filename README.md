@@ -19,16 +19,18 @@ R (4.x) with `igraph`, `dplyr`, `tidyr`, `readr`, `Rcpp`, `parallel`; a C++ comp
 | Script | Produces | Used for |
 |---|---|---|
 | `common_Z.R` (tests: `test_common_Z.R`) | shell profiles, reversal distances, mean-field model | all |
-| `stage1_Z.R`, `an_stage1_Z.R`, `an_stage1_fe_Z.R`, `an_stage1_ratio_Z.R` | `results/stage1_full.csv` (3,600 configuration-model graphs) | Section 5, Table 1, Figures 1-2 |
-| `stage2_Z.R` with `rewire_Z.cpp`, `an_stage2_Z.R`, `an_stage2_contrasts_Z.R` | `results/stage2_full.csv` (1,200 graphs) | Section 6.2, Table 2, Figure 3 |
-| `stage5_Z.R`, `community_Z.R`, `an_stage5_Z.R` | `results/stage5_full.csv` (960 graphs) | Section 6.3, Table 2, Figure 4 |
+| `stage1_Z.R`, `an_stage1_Z.R`, `an_stage1_fe_Z.R`, `an_stage1_ratio_Z.R` | `results/stage1_full.csv` (3,600 configuration-model graphs) | Section 5, Table 1, Figures 2 and 3 |
+| `stage2_Z.R` with `rewire_Z.cpp`, `an_stage2_Z.R`, `an_stage2_contrasts_Z.R` | `results/stage2_full.csv` (1,200 graphs) | Section 6.2, Table 2, Figure 4 |
+| `stage5_Z.R`, `community_Z.R`, `an_stage5_Z.R` | `results/stage5_full.csv` (960 graphs) | Section 6.3, Table 2, Figure 5 |
 | `stage6_Z.R`, `an_stage6_Z.R`, `an_assort_mod.R` | `results/stage6_full.csv`, `stage6_effects.csv` (1,080 graphs; added after the main analysis) | Section 6.3, Table 2 |
 | `an_coverage_Z.R`, `an_coverage2_Z.R` | `results/coverage_*.csv` | Section 6.3 (share of the network reached at the crossing) |
-| `fb100_Z.R`, `an_fb100_Z.R`, `an_ego.R` | `results/fb100_Z.csv` (105 networks) | Sections 7-8, Tables 3 and 5, Figures 5 and 7 |
-| `external_Z.R`, `an_external_Z.R` | `results/external_Z.csv` (10 networks) | Section 7.5, Table 4, Figure 6 |
+| `fb100_Z.R`, `an_fb100_Z.R`, `an_ego.R` | `results/fb100_Z.csv` (105 networks) | Sections 7-8, Tables 3 and 5, Figures 6 and 8 |
+| `external_Z.R`, `an_external_Z.R` | `results/external_Z.csv` (10 networks) | Section 7.5, Table 4, Figure 7 |
 | `an_review_checks.R` | clustering regime of the Facebook networks, leave-one-out for the ten networks | Sections 6.3, 7.4, 7.5 |
 | `mf_proof_check.R`, `mf_single_crossing.R`, `mf_threshold_check.R`, `proof_audit.py`, `proof_audit2.py` | `results/mf_*.csv`, `proof_audit.txt` | Appendices A and B (numerical checks of the proofs) |
-| `tables_Z.R`, `fig_Z.R` | tables and figures | paper |
+| `fig_schematic_Z.R` | `figures/figure_intro_schematic.pdf` | Figure 1 (illustrative network) |
+| `fig_individual_Z.R` | `figures/figure4_individual.pdf` | Figure 8 |
+| `tables_Z.R`, `fig_Z.R` | tables and figures | Figures 2-7 and the tables |
 | `audit_Z.R` | recomputes the numbers quoted in the manuscript and checks that each appears in the text | consistency check |
 
 ## Pre-specification and departures
