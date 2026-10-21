@@ -1078,25 +1078,9 @@ The Facebook100 networks are publicly available (Traud, Mucha, \& Porter, 2012),
 
 \appendix
 
-\section{Proof of Proposition 3}
+\section{Proof of Proposition 3 and Numerical Checks}
 
 \textbf{Roadmap.} (1) The exposure of a start vertex obeys a one-dimensional map $E_{k+1}=\delta_s+H(E_k)$ in which $n$ enters only through $\delta_s$ (Section 4.3). (2) Without the constant, $H$ has a repelling fixed point at $0$ with multiplier $\nu$; Koenigs' theorem for the inverse branch gives a Poincar\'e function $\omega$ with $H(\omega(u))=\omega(\nu u)$, which is the $n$-free curve that all orbits follow. (3) Lemma A shows that the orbit of the map with the constant follows $\omega$ at the scale $\nu^k\delta_s/(\nu-1)$: a linear phase while the exposure is small, then a nonlinear phase in which $H$ is $\nu$-Lipschitz. (4) Substituting into the enrichment gives $\mathcal Q$ and the translation property. (5) The reversal distance is read off from where $\mathcal Q$ crosses $1$, with a separate argument when the crossing falls close to a shell. The steps are independent: a reader who accepts Lemma A can check (4) and (5) from the displayed formulas.
-
-\textbf{Poincar\'e function and the limit profile.} $H$ is increasing and strictly concave with $H(0)=0$, $H'(0)=\nu>1$,
-and has a unique fixed point $E^*\in(0,1)$. Koenigs' linearisation theorem (Milnor, 2006, Theorem 8.2), applied to the inverse branch of $H$ at $0$, which is attracting (as in Milnor's own treatment of the repelling case; details below), gives an
-increasing analytic bijection $\omega:[0,\infty)\to[0,E^*)$ with $\omega(u)=u+O(u^2)$ and $H(\omega(u))=\omega(\nu u)$, and
-the orbit of \eqref{eq:onedim} tracks $\omega$ along the scale $\nu^k\delta_s/(\nu-1)$ (Lemma A below). Define, for $\lambda>0$,
-\begin{equation*}
-\mathcal Q(\lambda)=\frac{\sum_s p_s\sum_d p_d\,d\,\bigl(e^{-d\,\omega(\lambda s/(\nu\kappa))}-e^{-d\,\omega(\lambda s/\kappa)}\bigr)}
-{\mu_1\sum_s p_s\sum_d p_d\,\bigl(e^{-d\,\omega(\lambda s/(\nu\kappa))}-e^{-d\,\omega(\lambda s/\kappa)}\bigr)},\qquad \kappa=\mu_1(\nu-1).
-\end{equation*}
-\textbf{Periodic correction.} With $g(t)=\mathcal Q(\lambda^*\nu^t)$ and $\{u\}$ the fractional part,
-\begin{equation*}
-\pi(u)=-\{u\}+\frac{g(-\{u\})-1}{g(-\{u\})-g(1-\{u\})},
-\end{equation*}
-which is continuous and $1$-periodic with $\pi(0)=0$. Numerically, $\mathcal Q$ reproduces the mean-field enrichment to $4\times10^{-4}$ at $n=10^3$ and
-$2\times10^{-7}$ at $n=10^7$ (Negative-Binomial degrees, mean degree 12, CV 1.0), and the continuous reversal distance differs from
-$\log_\nu(n\lambda^*)$ by at most $0.016$ ($\lambda^*=13.35$, $c^*=0.83$ for that law).
 
 \textbf{One-dimensional reduction.} This is derived in Section 4.3: with
 $H(E)=\mu_1^{-1}\sum_dp_d(d-1)(1-e^{-dE})$ the exposure of a start vertex of degree
@@ -1117,7 +1101,7 @@ $\varphi(E)=\lim_k\nu^kh^k(E)$ exists, is analytic near $0$ with $\varphi(E)=E+O
 and satisfies $\varphi(H(E))=\nu\varphi(E)$. Since $h^k(E)\to0$ for every
 $E\in(0,E^*)$ and $h$ is increasing, $\varphi$ extends to an increasing bijection
 $[0,E^*)\to[0,\infty)$ (it diverges at $E^*$ because $E^*$ is repelling for $h$) with
-the same functional equation; $\omega=\varphi^{-1}$ is the Poincar\'e function. Two details: $H$ maps $[0,E^*)$ bijectively onto itself, so $h$ is defined on $[0,E^*)$ with $h(E)<E$, and its only fixed point there is $0$. If $\varphi(E)\to L<\infty$ as $E\uparrow E^*$, then $\varphi(H(E))=\nu\varphi(E)$ gives $L=\nu L$, so $L=0$ or $\infty$; $L=0$ is impossible because $\varphi>0$ on $(0,E^*)$, which proves the divergence. Differentiating, $\varphi'(H(E))H'(E)=\nu\varphi'(E)$ with $\varphi'(0)=1$ and $H'>0$ shows $\varphi'>0$, so $\omega$ is analytic and Lipschitz on compact sets. The orbit of $\psi_\delta$ settles at the fixed point $E^*_\delta>E^*$ of $\psi_\delta$, which tends to $E^*$ as $\delta\to0$; Lemma A only concerns the part of the orbit with bounded $\nu^k\delta$, before it settles.
+the same functional equation; $\omega=\varphi^{-1}$ is the Poincar\'e function: an increasing analytic bijection $[0,\infty)\to[0,E^*)$ with $\omega(u)=u+O(u^2)$ and $H(\omega(u))=\omega(\nu u)$. Two details: $H$ maps $[0,E^*)$ bijectively onto itself, so $h$ is defined on $[0,E^*)$ with $h(E)<E$, and its only fixed point there is $0$. If $\varphi(E)\to L<\infty$ as $E\uparrow E^*$, then $\varphi(H(E))=\nu\varphi(E)$ gives $L=\nu L$, so $L=0$ or $\infty$; $L=0$ is impossible because $\varphi>0$ on $(0,E^*)$, which proves the divergence. Differentiating, $\varphi'(H(E))H'(E)=\nu\varphi'(E)$ with $\varphi'(0)=1$ and $H'>0$ shows $\varphi'>0$, so $\omega$ is analytic and Lipschitz on compact sets. The orbit of $\psi_\delta$ settles at the fixed point $E^*_\delta>E^*$ of $\psi_\delta$, which tends to $E^*$ as $\delta\to0$; Lemma A only concerns the part of the orbit with bounded $\nu^k\delta$, before it settles.
 
 \textbf{Lemma A.} Let $\delta>0$ and $E_k=E_k(\delta)$ be the orbit of $\psi_\delta$ from $0$.
 For every $0<a<b<\infty$,
@@ -1147,6 +1131,18 @@ with $|\theta'|\le C_4\eta+o(1)$, because $\varphi(E)=E(1+O(E))$ and $E_K\le\nu\
 As $\omega$ is Lipschitz on compact sets with constant $L$,
 $|E_k-\omega(\nu^k\delta/(\nu-1))|\le L\,C_4\,b\,\eta+O(\delta\nu^J)+o(1)$.
 Letting $\delta\to0$ and then $\eta\to0$ proves the lemma. \qed
+
+\textbf{The limit profile and the periodic correction.} Define, for $\lambda>0$,
+\begin{equation*}
+\mathcal Q(\lambda)=\frac{\sum_s p_s\sum_d p_d\,d\,\bigl(e^{-d\,\omega(\lambda s/(\nu\kappa))}-e^{-d\,\omega(\lambda s/\kappa)}\bigr)}
+{\mu_1\sum_s p_s\sum_d p_d\,\bigl(e^{-d\,\omega(\lambda s/(\nu\kappa))}-e^{-d\,\omega(\lambda s/\kappa)}\bigr)},\qquad \kappa=\mu_1(\nu-1).
+\end{equation*}
+
+With $g(t)=\mathcal Q(\lambda^*\nu^t)$ and $\{u\}$ the fractional part,
+\begin{equation*}
+\pi(u)=-\{u\}+\frac{g(-\{u\})-1}{g(-\{u\})-g(1-\{u\})},
+\end{equation*}
+which is continuous and $1$-periodic with $\pi(0)=0$.
 
 \textbf{Proof of Proposition 3.} For each of the finitely many start degrees $s$,
 $\delta_s=s/(n\mu_1)$, so $\nu^k\delta_s/(\nu-1)=\lambda s/\kappa$ with
@@ -1180,6 +1176,8 @@ $\tilde Q_m=1-\delta$ the pair $(m-1,m)$ gives $m-\delta/(\tilde Q_{m-1}-\tilde 
 the denominators are bounded away from $0$); so the expansion holds uniformly, with the $o(1)$ depending on $\varepsilon$ only
 through the continuity modulus of $g$ and of $\pi$. \qed
 
+\textbf{Numerical checks.} The remaining paragraphs check numerically what the proof assumes or states: that $\mathcal Q$ crosses $1$ (the hypothesis of Proposition 3), its behaviour for large $\lambda$, the translation property, and each step of the appendix.
+
 \textbf{Existence of $\lambda^*$.} The hypothesis that $\mathcal Q$ crosses $1$ is not automatic. The model describes the exposure of the giant component, which covers only a fraction $E^*$ of the half-edges, and the conservation law of Theorem 1 does not hold for it. I evaluated $\mathcal Q$ for 43 further degree laws (random finitely supported laws, including laws with most vertices of degree $1$, and $\nu$ between $1.08$ and $167$). In 34 of them $\mathcal Q$ crosses $1$ exactly once; in the nine that do not, $\nu<2$ and $E^*<0.5$ (near-critical laws), and $\mathcal Q$ stays above $1$, so the model never reverses (for example, $p_1=0.5$, $p_2=0.2$, $p_3=0.3$, with $\nu=1.22$). The crossing is therefore a property of the degree law that has to be checked, not a consequence of $\nu>1$.
 
 \textbf{Behaviour as $\lambda\to\infty$, and a sufficient condition for a crossing.} Write $m=H'(E^*)\in(0,1)$ and $a(u)=E^*-\omega(u)>0$, which tends to $0$ as $u\to\infty$. From $\omega(\nu u)=H(\omega(u))$ and a Taylor expansion at $E^*$, $a(\nu u)=m\,a(u)\,(1+o(1))$, so $a(u/\nu)/a(u)\to1/m$. For fixed $d$ and $s$ the shell probability in $\mathcal Q$ is therefore $e^{-d\omega(\lambda s/(\nu\kappa))}-e^{-d\omega(\lambda s/\kappa)}=d\,e^{-dE^*}a(\lambda s/\kappa)\,(1/m-1)\,(1+o(1))$. The factor that depends on $s$ and $\lambda$ is common to numerator and denominator of $\mathcal Q$ and cancels, so
@@ -1190,14 +1188,12 @@ Since $\mathcal Q\to\mu_2/\mu_1^2>1$ as $\lambda\to0$ and $\mathcal Q$ is contin
 
 \textbf{Single crossing.} I evaluated $\mathcal Q$ on a grid of 150 values of $\lambda$ from $10^{-4}$ to $10^{3.5}$ for 27 degree laws (Negative-Binomial and lognormal with mean degree 6, 12, 25, 50 and CV 0.4, 1.0, 1.4; truncated power laws with mean degree 6, 12, 25). In every case $\mathcal Q\ge1$ up to a single crossing and $\mathcal Q<1$ afterwards (maximum after the crossing $0.999$), with $\lambda^*$ between $2.4$ and $77$ across the 27 laws; this is a numerical check on a grid, not a proof.
 
-\textbf{Step-by-step audit.} I also tested each step of this appendix numerically, for the 27 degree laws of the paper and 43 random degree laws (including laws with most vertices of degree one and $\nu$ as low as $1.08$): the properties of $H$ hold in all 70 laws; the functional equation $H(\omega(u))=\omega(\nu u)$ holds to relative error $6\times10^{-15}$; the Lemma A error falls from $1.5\times10^{-2}$ at $\delta=10^{-3}$ to $10^{-7}$ at $\delta=10^{-9}$ in the worst law; and the discrete and continuous reversal-distance statements hold with $n$ chosen so that $u(n)$ comes close to an integer (largest deviation of $\tilde k_{\mathrm{rev}}$ from $u+\pi(u)$ $1.6\times10^{-3}$ at $n\le4\times10^5$ for the least favourable law shown, and below $4\times10^{-4}$ for mean degree 12). The scripts and output are in the replication materials.
-
-\textbf{Numerical check.} Table A1 gives $\max_k|\tilde Q_{k+1}(\nu n)-\tilde Q_k(n)|$
+\textbf{Translation error.} Table A1 gives $\max_k|\tilde Q_{k+1}(\nu n)-\tilde Q_k(n)|$
 over the shells $k$ that contain between $10^{-8}$ and $0.999$ of the network, for
 Negative-Binomial degree laws. For mean degree 12 and CV 1.0, $\mathcal Q$ reproduces
 $\tilde Q_k(n)$ ($k=2,\ldots,8$) to $4.1\times10^{-4}$, $1.7\times10^{-5}$, and
 $1.9\times10^{-7}$ at $n=10^3,10^5,10^7$; the one-dimensional map agrees with the
-two-variable recursion to $10^{-15}$.
+two-variable recursion to $10^{-15}$. The continuous reversal distance differs from $\log_\nu(n\lambda^*)$ by at most $0.016$ ($\lambda^*=13.35$, $c^*=0.83$ for that law).
 
 \begin{table}[h]
 \centering
@@ -1218,9 +1214,12 @@ $10^9$ & $6.5\times10^{-9}$ & $1.9\times10^{-9}$ & $3.8\times10^{-9}$\\
 \par}
 \end{table}
 
+\textbf{Step-by-step audit.} I also tested each step of this appendix numerically, for the 27 degree laws of the paper and 43 random degree laws (including laws with most vertices of degree one and $\nu$ as low as $1.08$): the properties of $H$ hold in all 70 laws; the functional equation $H(\omega(u))=\omega(\nu u)$ holds to relative error $6\times10^{-15}$; the Lemma A error falls from $1.5\times10^{-2}$ at $\delta=10^{-3}$ to $10^{-7}$ at $\delta=10^{-9}$ in the worst law; and the discrete and continuous reversal-distance statements hold with $n$ chosen so that $u(n)$ comes close to an integer (largest deviation of $\tilde k_{\mathrm{rev}}$ from $u+\pi(u)$ $1.6\times10^{-3}$ at $n\le4\times10^5$ for the least favourable law shown, and below $4\times10^{-4}$ for mean degree 12). The scripts and output are in the replication materials.
+
+
 \section{Proof of Proposition 4}
 
-Let $s<s'$ and write $\pi_k(d\mid s)$ for the mean-field shell-$k$ probabilities. The expected shell mean degree is the mean of
+The claim is that the model's expected shell mean degree $\tilde m_k(s)$ is non-increasing in the start degree $s$ for $k=1,2$. Let $s<s'$ and write $\pi_k(d\mid s)$ for the mean-field shell-$k$ probabilities. The expected shell mean degree is the mean of
 $d$ under the weights $n_d\,\pi_k(d\mid s)$, so it suffices to show that the ratio
 $\pi_k(d\mid s')/\pi_k(d\mid s)$ is non-increasing in $d$ (likelihood-ratio order:
 the weights for $s'$ are then stochastically smaller in degree).
