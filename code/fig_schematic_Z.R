@@ -15,7 +15,7 @@ sh1 <- which(dist_f == 1); ang[sh1] <- 2 * pi * (seq_along(sh1) - 0.5) / length(
 for (k in 2:max(dist_f)) { v <- which(dist_f == k); pa <- sapply(v, function(x) { p <- intersect(neighbors(g, x), which(dist_f == k - 1)); atan2(mean(sin(ang[p])), mean(cos(ang[p]))) })
   o <- order(pa %% (2 * pi)); ang[v[o]] <- 2 * pi * (seq_along(v) - 0.5) / length(v) + (k %% 2) * 0.15 }
 xy[, 1] <- dist_f * cos(ang); xy[, 2] <- dist_f * sin(ang); xy[focal, ] <- 0
-nodecol <- ifelse(dist_f >= 1 & Q[pmax(dist_f, 1)] >= 1, blue, orange)   # same colours as the bars: shell above average = blue, below = orange
+nodecol <- ifelse(dist_f >= 1 & Q[pmax(dist_f, 1)] >= 1, blue, orange)   # colour = the person's distance shell, in the colour of that shell's bar (above average = blue, below = orange)
 pdf("../figures/figure_intro_schematic.pdf", width = 7.2, height = 3.5, family = "Helvetica")
 layout(matrix(1:2, 1), widths = c(1.1, 1)); par(mar = c(1.2, 0.6, 2.0, 0.6), mgp = c(2.3, 0.6, 0))
 plot(NA, xlim = range(xy[, 1]) * 1.08, ylim = c(min(xy[, 2]) * 1.08, max(xy[, 2]) * 1.16), asp = 1, axes = FALSE, xlab = "", ylab = "")
@@ -26,7 +26,7 @@ points(xy[focal, 1], xy[focal, 2], pch = 21, bg = ink, col = "white", cex = cx[f
 text(0, -0.5, "you", cex = 0.62, col = ink, font = 2)
 for (k in 1:max(dist_f)) text(0.06 * k, k, bquote(k == .(k)), cex = 0.6, col = ink2, pos = 3, offset = 0.2)
 mtext("A  One network, by distance from one person", side = 3, line = 0.2, adj = 0, font = 2, cex = 0.8)
-mtext("circle size = number of friends; blue = better connected than average, orange = less", side = 1, line = 0.1, adj = 0.5, cex = 0.58, col = ink2)
+mtext("circle size = own number of friends; colour = distance shell (blue: shell above average, orange: below)", side = 1, line = 0.1, adj = 0.5, cex = 0.58, col = ink2)
 par(mar = c(3.9, 4.6, 2.0, 0.8), mgp = c(2.4, 0.6, 0), tcl = -0.25, cex.axis = 0.8, cex.lab = 0.85, col.axis = ink2, col.lab = ink, fg = ink2, las = 1)
 bp <- barplot(Q, names.arg = 1:K, col = ifelse(Q >= 1, blue, orange), border = NA, ylim = c(0, max(Q) * 1.15), xlab = "Distance k from a person", ylab = "")
 mtext("Mean degree at distance k,\nrelative to everyone (Q_k)", side = 2, line = 2.6, las = 0, cex = 0.72, col = ink)
