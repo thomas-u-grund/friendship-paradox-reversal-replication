@@ -913,7 +913,7 @@ that reversal comes later in larger and sparser networks. We therefore applied t
 same analysis to ten public networks from the Stanford Network Analysis Project
 collection (Leskovec \& Krevl, 2014), chosen to differ in size, density, and kind:
 four scientific collaboration networks (arXiv GrQc, HepTh, CondMat, AstroPh;
-Leskovec, Kleinberg, \& Faloutsos, 2007), the Enron email network, a Facebook ego
+Leskovec, Kleinberg, \& Faloutsos, 2007), the Enron email network (Klimt \& Yang, 2004; Leskovec, Lang, Dasgupta, \& Mahoney, 2009), a Facebook ego
 network (McAuley \& Leskovec, 2012), two location-based social networks (Brightkite
 and Gowalla; Cho, Myers, \& Leskovec, 2011), and two large networks from
 Yang and Leskovec (2015), an Amazon co-purchase network (335{,}000 vertices) and the
@@ -1104,6 +1104,10 @@ people with lower degree than average; and the reversal distance is later in lar
 sparser, and more modular networks. The choice of design, and how
 far one goes, determines the sign of the bias. A sampler who wants a degree-representative sample should therefore not collect whole shells beyond the reversal distance, which oversamples low-degree people, and should not use random-walk steps, which oversample high-degree people at every step; the reversal distance tells how far a shell-based design can go before the bias changes sign.
 
+
+\section*{Data and Code Availability}
+
+The Facebook100 networks are publicly available (Traud, Mucha, \& Porter, 2012), as are the ten additional networks (Stanford Network Analysis Project; Leskovec \& Krevl, 2014). All simulation and analysis code, the derived results behind every table and figure, and the analysis plan are available at https://anonymous.4open.science/r/33CC/ (anonymised for review).
 
 \appendix
 
@@ -1306,7 +1310,7 @@ more important and special than you think. \emph{Sociological Science},
 \bibitem[Hazra, den Hollander, and Parvaneh(2025)]{Hazra2025} Hazra, R. S.,
 den Hollander, F., \& Parvaneh, A. (2025). The friendship paradox for sparse
 random graphs. \emph{Probability Theory and Related Fields}, \emph{195},
-109--131. https://doi.org/10.1007/s00440-025-01365-w
+109--131 (published online 24 February 2025). https://doi.org/10.1007/s00440-025-01365-w
 
 \bibitem[Hazra, den Hollander, and Parvaneh(2026)]{Hazra2026} Hazra, R. S.,
 den Hollander, F., \& Parvaneh, A. (2026). The multi-level friendship
@@ -1315,7 +1319,7 @@ Applications}, \emph{195}, 104873.
 
 \bibitem[Hazra and Verbitskiy(2026)]{HazraVerbitskiy2026} Hazra, R. S., \&
 Verbitskiy, E. (2026). The generalized friendship paradox for spectral
-centralities. \emph{arXiv preprint} arXiv:2507.13059.
+centralities. \emph{Journal of Complex Networks}, \emph{14}(2). arXiv:2507.13059.
 
 \bibitem[Higham(2019)]{Higham2019} Higham, D. J. (2019).
 Centrality-friendship paradoxes: When our friends are more important than
@@ -1325,6 +1329,8 @@ us. \emph{Journal of Complex Networks}, \emph{7}(4), 515--528.
 \& Lerman, K. (2013). Friendship paradox redux: Your friends are more
 interesting than you. In \emph{Proceedings of the Seventh International
 AAAI Conference on Weblogs and Social Media} (pp. 225--233). AAAI Press.
+
+\bibitem[Klimt and Yang(2004)]{Klimt2004} Klimt, B., \& Yang, Y. (2004). The Enron corpus: A new dataset for email classification research. In \emph{Machine Learning: ECML 2004} (pp. 217--226). Springer.
 
 \bibitem[Kramer, Cutler, and Radcliffe(2016)]{Kramer2016} Kramer, J. B.,
 Cutler, J., \& Radcliffe, A. J. (2016). The multistep friendship paradox.
@@ -1337,6 +1343,8 @@ ONE}, \emph{11}(2), e0147617.
 \bibitem[Leskovec and Krevl(2014)]{LeskovecKrevl2014} Leskovec, J., \& Krevl, A. (2014). SNAP Datasets: Stanford large network dataset collection. http://snap.stanford.edu/data
 
 \bibitem[Leskovec, Kleinberg, and Faloutsos(2007)]{Leskovec2007} Leskovec, J., Kleinberg, J., \& Faloutsos, C. (2007). Graph evolution: Densification and shrinking diameters. \emph{ACM Transactions on Knowledge Discovery from Data}, \emph{1}(1), Article 2.
+
+\bibitem[Leskovec, Lang, Dasgupta, and Mahoney(2009)]{Leskovec2009} Leskovec, J., Lang, K. J., Dasgupta, A., \& Mahoney, M. W. (2009). Community structure in large networks: Natural cluster sizes and the absence of large well-defined clusters. \emph{Internet Mathematics}, \emph{6}(1), 29--123.
 
 \bibitem[McAuley and Leskovec(2012)]{McAuley2012} McAuley, J., \& Leskovec, J. (2012). Learning to discover social circles in ego networks. In \emph{Advances in Neural Information Processing Systems 25}.
 
