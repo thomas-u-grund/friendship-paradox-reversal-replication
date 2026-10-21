@@ -281,7 +281,7 @@ This section develops the theory of the reversal distance. I first relate the sh
 
 \subsection{The locally tree-like limit}
 
-I now relate $B_k$ and $W_k$ to the idealised setting of Hazra et al.\ (2026).
+Before asking when reversal happens in a finite network, it helps to know what happens when there is no finiteness constraint. In the idealised setting of Hazra et al.\ (2026), the shell and walk statistics $B_k$ and $W_k$ can be computed exactly, and the answer shows what a finite network must depart from.
 
 \textbf{Standing assumptions.} In words: for large $n$, the neighbourhood of a randomly chosen vertex looks like a random tree in which each vertex has a random number of children. Formally, let $(G_n)$ be a sequence of simple (random)
 graphs converging locally weakly in probability to a unimodular
@@ -300,12 +300,12 @@ $\{d_V\,n_k(V)\}$ is uniformly integrable for each fixed $k$ (this holds, for
 instance, if degrees are bounded or have sufficiently many moments). Since $n_k(V)\le d_V\,n_k(V)$ (degrees are at least $1$ in a connected graph), the family $\{n_k(V)\}$ is then uniformly integrable as well, so both the numerator and the denominator of $B_k$ converge to their tree expectations.
 
 \begin{proposition}[2 --- Tree-like limit]
-Under these assumptions, for every fixed $k\ge2$, as $n\to\infty$:
+Under these assumptions, for every fixed $k$, as $n\to\infty$:
 \begin{enumerate}
-\item[(a)] $S_k^{\mathrm{walk}}\to1$ and $W_k\to\mu_2/\mu_1$ for every $k\ge1$;
-\item[(b)] $B_k\to\mu_2/\mu_1$ for every $k\ge1$, so $S_k\to1$.
+\item[(a)] $W_k\to\mu_2/\mu_1$ for every $k\ge1$, and $S_k^{\mathrm{walk}}\to1$ for $k\ge2$;
+\item[(b)] $B_k\to\mu_2/\mu_1$ for every $k\ge1$, so $S_k\to1$ for $k\ge2$.
 \end{enumerate}
-Moreover $S_1=S_1^{\mathrm{walk}}$ in the limit, equal to $\mu_2/\mu_1^2$.
+For $k=1$ both ratios converge to the same value, $S_1=S_1^{\mathrm{walk}}\to\mu_2/\mu_1^2$.
 \end{proposition}
 
 \begin{proof}
@@ -314,11 +314,9 @@ the limiting tree $X_k$ is a uniformly chosen vertex of generation $k$ and,
 for $k\ge1$, has degree law $\Lambda^*$ (the same law at every generation),
 because a Galton--Watson tree uses the same offspring law in every
 generation (this is the size-biasing of the degrees along the walk that underlies
-Theorem 3(a) and Lemma 1 of Hazra et al., 2026; their Theorem 3(a) assumes a
-minimum degree of at least 3 so that the walk is never absorbed, whereas I
-condition on survival: survival to step $k$ depends only on the degrees of
-$X_1,\ldots,X_{k-1}$, which are independent of $d_{X_k}$, so the law of $d_{X_k}$
-is unchanged). The convergence of the empirical $k$-level quantities to their
+Theorem 3(a) and Lemma 1 of Hazra et al., 2026). Survival of the walk to step $k$ depends only on the degrees of
+$X_1,\ldots,X_{k-1}$, which are independent of $d_{X_k}$, so conditioning on survival leaves the law of $d_{X_k}$
+unchanged (their Theorem 3(a) instead assumes a minimum degree of at least 3, so that the walk is never absorbed). The convergence of the empirical $k$-level quantities to their
 tree values as $n\to\infty$ for fixed $k$ is their Theorem 2. Hence $\mathbb{E}[d_{X_k}]\to\mathbb{E}[D^*]=\mu_2/\mu_1$ for
 every $k\ge1$, and the ratio of consecutive terms tends to $1$ for $k\ge2$.
 
@@ -332,13 +330,7 @@ uniform integrability assumption, the empirical averages in Theorem 1(a) converg
 $B_k\to\mu_2\nu^{k-1}/(\mu_1\nu^{k-1})=\mu_2/\mu_1$.
 \end{proof}
 
-In the idealised limit, then, the shell and walk statistics coincide: the
-size-biased level of the first-order paradox is reproduced at every distance
-rather than eroding. In this regime $\mathrm{Cov}(d_V,n_k(V))/\mathbb{E}[n_k(V)]
-=\mathrm{Var}(d_V)/\mu_1$ for every $k\ge1$, so the covariance in Theorem 1(a) grows with degree variance exactly as fast as the shell
-sizes do. What distinguishes a finite network is that the shell sizes stop
-growing like $\nu^{k-1}$. Part (c) of the theorem says this \emph{must}
-happen, and that when it does the hub surplus is reversed.
+In the idealised limit, then, the shell and walk statistics coincide, and the paradox does not fade: the mean degree at distance $k$ stays at $\mu_2/\mu_1$ for every $k$, so $B_k-\mu_1=\mathrm{Var}(d_V)/\mu_1$ is the same at every distance (equivalently, $\mathrm{Cov}(d_V,n_k(V))/\mathbb{E}[n_k(V)]=\mathrm{Var}(d_V)/\mu_1$ in Theorem 1(a)). The reason is that the shell sizes grow like $\nu^{k-1}$, so the well-connected people at the start keep generating proportionally more people at every distance. A finite network cannot sustain this. Part (c) of Theorem 1 says that the shell sizes must stop growing like $\nu^{k-1}$, and that when they do the surplus of well-connected people at short distances is reversed. The question of this paper is when. The next subsection gives a model of how it happens.
 
 \subsection{Finite-size departure: a mean-field model of hub-first saturation}
 
@@ -346,7 +338,7 @@ The mechanism behind reversal is simple. At short distances, well-connected peop
 
 To quantify where the reversal occurs I use a mean-field model of the
 configuration model with a given degree sequence. Let $n_d$ be the number of
-vertices of degree $d$ and $\Sigma=\sum_v d_v$ the number of half-edges.
+vertices of degree $d$ and $\Sigma=\sum_v d_v$ the number of half-edges (the model treats each half-edge as paired at random with another, as in the configuration model).
 Consider a start vertex of degree $s$. Let $F_1=s$ be the number of
 half-edges leaving the start vertex, and let a vertex of degree $d$ be
 \emph{reached within $k$ steps} with probability
@@ -354,9 +346,9 @@ half-edges leaving the start vertex, and let a vertex of degree $d$ be
 r_k(d)\;=\;1-\exp\!\Bigl(-\frac{d}{\Sigma}\sum_{j=1}^{k}F_j\Bigr),\qquad r_0(d)=0,
 \end{equation*}
 the probability that at least one of the cumulative half-edges $\sum_{j\le k}F_j$
-exposed so far pairs with one of its $d$ half-edges. The vertices first reached
+exposed so far pairs with one of its $d$ half-edges. (Each exposed half-edge hits a given half-edge of the vertex with probability about $1/\Sigma$, so the vertex is missed by all of them with probability about $e^{-d\sum_jF_j/\Sigma}$.) The vertices first reached
 at step $k$ are those in $N_k$, with probability $\pi_k(d)=r_k(d)-r_{k-1}(d)$,
-and they expose new half-edges
+and each of them exposes its remaining $d-1$ half-edges (one was used to reach it), so that the new half-edges are
 \begin{equation*}
 F_{k+1}\;=\;\sum_d n_d\,\pi_k(d)\,(d-1).
 \end{equation*}
@@ -375,14 +367,12 @@ share of the network contained in the $k$-th shell, $\xi_k=\mu_1\nu^{k-1}/n$:
 $\tilde B_k\approx\mu_2/\mu_1$ when $\xi_k$ is small, and falls below $\mu_1$ as
 $\xi_k$ grows.
 
-The same recursion gives the individual-level paradox: for a start vertex of degree $s$ the model's expected shell mean degree is
-$\tilde m_k(s)=\sum_d n_d\,d\,\pi_k(d\mid s)\big/\sum_d n_d\,\pi_k(d\mid s)$, and the predicted share of people for whom the paradox holds at distance $k$ is
-$\tilde P_k=n^{-1}\sum_s n_s\,\mathbf 1\{\tilde m_k(s)>s\}$. Section 4.5 shows that, for $k\le2$, this is the share of people below a threshold degree.
+The recursion looks like a two-variable system (cumulative exposure and frontier), but it reduces to a one-dimensional map, and that reduction is what shows how the size $n$ enters.
 
 
 \subsection{An autonomous form and a translation property}
 
-Write $E_k=\Sigma^{-1}\sum_{j\le k}F_j$ for the cumulative exposure and
+To see how $n$ enters, write $E_k=\Sigma^{-1}\sum_{j\le k}F_j$ for the cumulative exposure and
 $x_k=F_k/\Sigma$ for the current frontier, in units of the number of half-edges
 $\Sigma=n\mu_1$, and let $p_d=n_d/n$ be the degree distribution. For a start vertex of
 degree $s$ the recursion of Section 4.2 reads $x_1=\delta_s:=s/(n\mu_1)$,
@@ -408,7 +398,7 @@ $H$ expands from $0$ by the factor $\nu$ and converges to $E^*$; with it, the or
 \eqref{eq:onedim} leaves $0$ at the geometric rate $\nu$ while it is small and then
 follows the orbit of $H$. Seen on the scale $\nu^k\delta_s$, the early growth is a fixed
 curve (a Poincar\'e function of $H$, defined in Appendix A) that does not depend on $n$: a graph
-$\nu$ times larger traces the same curve one step later. That is the translation property below.
+$\nu$ times larger traces the same curve one step later. That is the translation property below. In words: in the model, the whole profile of enrichment across distances depends on $n$ only through $\nu^k/n$, so a network $\nu$ times larger reaches the same enrichment one step later, and the reversal distance grows by one step each time the number of vertices is multiplied by $\nu$.
 
 \begin{proposition}[3 --- Translation property of the mean-field model]
 Let $p$ be a degree distribution on a finite set of positive integers, not concentrated on a single degree, with
@@ -493,9 +483,8 @@ sampled graphs are at most $0.015$.
 
 \subsection{Mean degree and size}
 
-Controlling for CV, the crossing falls by
-$0.82$ per unit of log mean degree and rises by $0.36$ per unit of log size
-(Negative-Binomial graphs; $R^2=0.91$). Table 1 shows the pattern for CV 1.0:
+In a regression of the crossing on log mean degree, log size, and the CV level (Negative-Binomial graphs; $R^2=0.91$), the crossing falls by
+$0.82$ per unit of log mean degree and rises by $0.36$ per unit of log size. Table 1 shows the pattern for CV 1.0:
 at mean degree 6 the crossing grows from $3.50$ at $n=500$ to $4.91$ at
 $n=16{,}000$, whereas at mean degree 100 it is $2.16$ at $n=2{,}000$ and $2.56$ at
 $n=16{,}000$. Denser networks reverse earlier and larger networks later, as
@@ -528,7 +517,7 @@ $n$ & Mean degree 6 & 12 & 25 & 50 & 100\\
 
 \subsection{Scaling with $\log n/\log\nu$}
 
-Proposition 3 implies that, for a fixed degree law, the reversal distance grows
+The simulations support the scaling in Proposition 3 to within about $\pm0.15$ in the slope; the details follow. Proposition 3 implies that, for a fixed degree law, the reversal distance grows
 with slope $1/\log\nu$ in $\log n$. I therefore examined, within each of the 20
 Negative-Binomial cells of fixed mean degree and CV (four to six sizes each), the
 ratio $\rho=(d\tilde k_{\mathrm{rev}}/d\log n)\cdot\log\nu$, which equals 1
@@ -545,13 +534,13 @@ I also ran the test I had specified in advance: a regression of
 $\tilde k_{\mathrm{rev}}$ on $z=\log n/\log\nu$ within each degree family, with the
 requirement that the slope's interval lie within $[0.9,1.1]$. The slopes were $0.948$
 $[0.940,0.957]$ for Negative-Binomial, $0.973$ $[0.935,1.011]$ for lognormal,
-and $1.225$ $[1.182,1.268]$ for the power law. I do not regard this as a clean test
+and $1.225$ $[1.182,1.268]$ for the power law. The requirement was met for the first two families and not for the power law. I do not regard this as a clean test
 of the statement: it pools degree laws whose intercepts differ, it uses each
 graph's realised $\nu$, which varies within a cell, and in the power-law family the
 degree cutoff grows with $n$ so the degree law is not fixed. The fixed-law analysis
 above is the appropriate one, and I report both. The upshot is that the
 $\log n/\log\nu$ law is a good first-order description of the reversal distance at
-the sizes of real networks, with deviations of about $\pm0.15$ in the slope, and an
+the sizes of real networks, with deviations of about $\pm0.15$ in the slope, and it is an
 exact asymptotic law of the model.
 
 \begin{figure*}[t]
