@@ -8,10 +8,10 @@ pdf("../figures/figureZ1_scaling.pdf", width = 7.2, height = 3.3, family = "Helv
 plot(NA, xlim = c(1.6, 6.2), ylim = c(1.6, 6.2), xlab = "Simulated crossing distance", ylab = "Mean-field crossing distance", bty = "l"); abline(h = 2:6, v = 2:6, col = grid, lwd = 0.6); abline(0, 1, col = ink2)
 fam <- c(NB = col[1], LN = col[2], PL = col[3]); pchs <- c(NB = 21, LN = 24, PL = 22)
 for (f in names(fam)) { d <- s1[s1$family == f, ]; points(d$ktil, d$ktil_mf, pch = pchs[f], bg = adjustcolor(fam[f], 0.35), col = adjustcolor(fam[f], 0.6), cex = 0.5, lwd = 0.3) }
-legend("topleft", legend = c("Negative-Binomial", "lognormal", "power law"), pch = pchs, pt.bg = fam, col = "white", bty = "n", cex = 0.7); text(6.15, 1.75, sprintf("r = %.3f", cor(s1$ktil, s1$ktil_mf)), adj = 1, cex = 0.72, col = ink2)
+legend("topleft", legend = c("Negative-Binomial", "lognormal", "power law"), pch = pchs, pt.bg = fam, col = "white", bty = "n", cex = 0.7); text(6.15, 1.75, bquote(italic(r) == .(sprintf("%.3f", cor(s1$ktil, s1$ktil_mf)))), adj = 1, cex = 0.72, col = ink2)
 mtext("A", side = 3, line = 0.3, adj = -0.2, font = 2, cex = 1)
 nb <- s1[s1$family == "NB", ]; cells <- nb %>% group_by(mu_target, cv_target, n_target) %>% summarise(z = mean(z), k = mean(ktil), .groups = "drop")
-plot(NA, xlim = range(cells$z) + c(-0.05, 0.1), ylim = range(cells$k) + c(-0.1, 0.1), xlab = expression("log n / log "*nu), ylab = "Simulated crossing distance", bty = "l"); abline(h = 2:6, v = seq(1, 4, 0.5), col = grid, lwd = 0.6)
+plot(NA, xlim = range(cells$z) + c(-0.05, 0.1), ylim = range(cells$k) + c(-0.1, 0.1), xlab = expression(log~italic(n)~"/"~log~nu), ylab = "Simulated crossing distance", bty = "l"); abline(h = 2:6, v = seq(1, 4, 0.5), col = grid, lwd = 0.6)
 cvs <- sort(unique(cells$cv_target)); for (i in seq_along(cvs)) for (m in sort(unique(cells$mu_target))) { d <- cells[cells$cv_target == cvs[i] & cells$mu_target == m, ] %>% arrange(n_target); if (nrow(d) < 2) next
   lines(d$z, d$k, col = adjustcolor(col[i], 0.8), lwd = 1.3); points(d$z, d$k, pch = 21, bg = col[i], col = "white", cex = 0.7); segments(d$z[1], d$k[1], d$z[nrow(d)], d$k[1] + (d$z[nrow(d)] - d$z[1]), col = adjustcolor(col[i], 0.5), lty = 3, lwd = 0.8) }
 legend("topleft", legend = paste("CV", sprintf("%.1f", cvs)), pch = 21, pt.bg = col[seq_along(cvs)], col = "white", lty = 1, lwd = 1.2, bty = "n", cex = 0.68, pt.cex = 0.8); text(max(cells$z), min(cells$k) - 0.02, "dotted: slope 1 from each line's first point", adj = 1, cex = 0.58, col = ink2)
@@ -54,7 +54,7 @@ points(fb$ktil, fb$null_ktil, pch = 24, bg = adjustcolor(col[2], 0.75), col = "w
 legend("topleft", legend = c("mean-field model", "degree-preserving randomisation"), pch = c(1, 24), pt.bg = c(NA, col[2]), col = c(col[1], "white"), bty = "n", cex = 0.7, pt.lwd = 1.1); mtext("A", side = 3, line = 0.3, adj = -0.27, font = 2, cex = 1)
 fb$gap <- fb$ktil - fb$ktil_mf; m <- lm(gap ~ assort + modularity, fb); rg2 <- range(c(fb$gap, fitted(m)))
 plot(fitted(m), fb$gap, xlab = "Fitted from assortativity and modularity", ylab = "Observed minus mean-field crossing", xlim = rg2, ylim = rg2, pch = 21, bg = adjustcolor(col[1], 0.7), col = "white", cex = 0.9, bty = "l"); abline(h = pretty(rg2), v = pretty(rg2), col = grid, lwd = 0.6); abline(0, 1, col = ink2)
-points(fitted(m), fb$gap, pch = 21, bg = adjustcolor(col[1], 0.7), col = "white", cex = 0.9); text(rg2[2], rg2[1] + 0.03, sprintf("R2 = %.2f", summary(m)$r.squared), adj = 1, cex = 0.72, col = ink2); mtext("B", side = 3, line = 0.3, adj = -0.27, font = 2, cex = 1); dev.off()
+points(fitted(m), fb$gap, pch = 21, bg = adjustcolor(col[1], 0.7), col = "white", cex = 0.9); text(rg2[2], rg2[1] + 0.03, bquote(italic(R)^2 == .(sprintf("%.2f", summary(m)$r.squared))), adj = 1, cex = 0.72, col = ink2); mtext("B", side = 3, line = 0.3, adj = -0.27, font = 2, cex = 1); dev.off()
 cat("figures written; Facebook gap model R2:", round(summary(m)$r.squared, 3), "\n")
 # ---------- Figure 6: external networks ----------
 ex <- read.csv("../results/external_Z.csv"); ex$gap <- ex$ktil - ex$ktil_mf; fb$gap <- fb$ktil - fb$ktil_mf
