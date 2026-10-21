@@ -119,7 +119,6 @@ randomisations. Section 8 turns to individuals: for whom does the paradox last l
 
 \section{Setup and Definitions}
 
-
 Let $G=(V,E)$ be a finite, simple, undirected, connected graph with $n=|V|$ vertices
 (undirected, so that distance is symmetric, which Theorem 1 uses; directed networks are read as undirected; for a disconnected graph all statements apply within a component, and in the
 empirical analysis I use the largest component). Degree is written $d_v$;
@@ -139,57 +138,15 @@ the mean degree of a vertex drawn uniformly from the set of all ordered pairs
 $(u,w)$ at distance exactly $k$. This is the natural generalisation of Feld's
 original comparison, in which the neighbour is drawn from the set of all edges:
 for $k=1$ it is the mean degree of the endpoint of an edge traversed in a
-uniformly random direction. I define the \emph{paradox strength at distance $k$} as the ratio of
-averages
-\begin{equation*}
-S_k \;=\; B_k/B_{k-1},
-\end{equation*}
-and the \emph{enrichment} $B_k/\mu_1$ of the shell relative to the population.
-$S_1=B_1/\mu_1>1$ is the classical paradox, and $B_k/\mu_1<1$ means that the
-vertices at distance $k$ have lower degree than the population average. The
-statistic is a ratio of two sums, each of which is well defined in any
+uniformly random direction. The statistic is a ratio of two sums, each of which is well defined in any
 connected graph for every $k$ up to the diameter; nothing is averaged
-across ratios.
+across ratios. I call $Q_k=B_k/\mu_1$ the \emph{enrichment} of the shell relative to the
+population: $Q_k>1$ means that the people at distance $k$ are better connected than
+average, and $Q_1=\mu_2/\mu_1^2\ge1$ (Theorem 1), so the first shell is enriched in every
+non-regular graph. I also use the \emph{paradox strength at distance $k$}, the ratio of averages
+$S_k=B_k/B_{k-1}$; $S_1=B_1/\mu_1>1$ is the classical paradox.
 
-\textbf{Ego-averaged shell statistic.} A second, equally natural convention
-averages within each start node first,
-\begin{equation*}
-A_k \;=\; \frac{1}{\#\{u:\,n_k(u)>0\}}\sum_{u:\,n_k(u)>0}\frac{1}{n_k(u)}\sum_{w\in N_k(u)}d_w ,
-\end{equation*}
-the average over egos of the mean degree of the ego's own distance-$k$
-alters. $A_k$ and $B_k$ coincide when all egos have shells of equal size,
-and differ in general; the difference is exactly an assortativity-type term at
-$k=1$ (Section 6.4). I use $B_k$ for the theory because it admits an exact identity, and use $A_k$ only for the first step (Section 6.4).
-
-\textbf{Individual-level paradox.} Feld's paradox compares a person with the
-people around them, not with the population. For $k\ge1$ let
-$m_k(u)=n_k(u)^{-1}\sum_{w\in N_k(u)}d_w$ be the mean degree of $u$'s
-distance-$k$ shell and
-\begin{equation*}
-P_k \;=\; \frac{\#\{u:\ n_k(u)>0,\ m_k(u)>d_u\}}{\#\{u:\ n_k(u)>0\}} ,
-\end{equation*}
-the share of people whose distance-$k$ alters have a higher mean degree than
-they do. $P_1$ is the share of people whose friends have, on average, more
-friends than they do. I use $B_k$ for the theory and $P_k$ for the empirical
-question of how many people experience the paradox at distance $k$.
-
-\textbf{Walk statistic.} A \emph{$k$-step non-backtracking random walk} from
-$v$ is the process $X_0=v,X_1,\ldots,X_k$ in which $X_{t+1}$ is drawn
-uniformly from the neighbours of $X_t$ other than $X_{t-1}$ (the walk is
-absorbed if there is none). Let $W_k=\mathbb{E}[d_{X_k}]$ with the start vertex
-drawn uniformly, the expectation taken over walks that survive $k$ steps (in the
-empirical networks of Section 7, on average 0.2\% and at most 3.0\% of walks are absorbed by step 3), $W_0=\mu_1$, and let $S_k^{\mathrm{walk}}=W_k/W_{k-1}$.
-This is the exploration process studied by Hazra et al.\ (2026), turned into a
-ratio statistic in the manner of Feld's comparison. In contrast to a shell, a
-walk endpoint is always a single vertex, so $W_k$ does not mechanically change
-character as $k$ grows.
-
-
-\textbf{Enrichment and reversal.} Write $Q_k=B_k/\mu_1$ for the \emph{enrichment} of
-the distance-$k$ shell relative to the population: $Q_k>1$ means that the people
-at distance $k$ are better connected than average. Since $Q_1=\mu_2/\mu_1^2\ge1$
-(Theorem 1), the first shell is enriched in every non-regular graph. The
-\emph{reversal distance} is
+\textbf{Reversal distance (the main outcome).} The \emph{reversal distance} is
 \begin{equation*}
 k_{\mathrm{rev}} \;=\; \min\{k\ge 2:\ Q_k<1\},
 \end{equation*}
@@ -203,14 +160,53 @@ $(k_{\mathrm{rev}},\,Q_{k_{\mathrm{rev}}})$ crosses $Q=1$,
 \tilde k_{\mathrm{rev}} \;=\; (k_{\mathrm{rev}}-1)+\frac{Q_{k_{\mathrm{rev}}-1}-1}{Q_{k_{\mathrm{rev}}-1}-Q_{k_{\mathrm{rev}}}} .
 \end{equation*}
 Interpolating $\log Q_k$ instead changes $\tilde k_{\mathrm{rev}}$ by at most $0.13$
-in any graph I study and by $0.05$ on average. The reversal distance is distinct
-from the consecutive-shell ratio $S_k=B_k/B_{k-1}$: $S_k<1$ means that the paradox
-weakens from one shell to the next, whereas $k_{\mathrm{rev}}$ marks where the
-shell crosses the population benchmark. I estimate $Q_k$ from every vertex for
-networks with at most 4{,}000 vertices and from 2{,}000 uniformly sampled start
-vertices otherwise (with $Q_1$ set to its exact value $\mu_2/\mu_1^2$); for sampled
+in any graph I study and by $0.05$ on average. The continuous measure can lie below 3 although
+the discrete reversal distance is 3 (no network I study has discrete reversal distance 2).
+The reversal distance is distinct from the consecutive-shell ratio $S_k$: $S_k<1$ means that the
+paradox weakens from one shell to the next, whereas $k_{\mathrm{rev}}$ marks where the
+shell crosses the population benchmark.
+
+\textbf{Secondary quantities.} Three further statistics answer related questions and are used
+in specific places.
+
+\emph{Individual-level paradox} (Section 8). Feld's paradox compares a person with the
+people around them, not with the population. For $k\ge1$ let
+$m_k(u)=n_k(u)^{-1}\sum_{w\in N_k(u)}d_w$ be the mean degree of $u$'s
+distance-$k$ shell and
+\begin{equation*}
+P_k \;=\; \frac{\#\{u:\ n_k(u)>0,\ m_k(u)>d_u\}}{\#\{u:\ n_k(u)>0\}} ,
+\end{equation*}
+the share of people whose distance-$k$ alters have a higher mean degree than
+they do. $P_1$ is the share of people whose friends have, on average, more
+friends than they do.
+
+\emph{Walk statistic} (Sections 4.1 and 7.2). A \emph{$k$-step non-backtracking random walk} from
+$v$ is the process $X_0=v,X_1,\ldots,X_k$ in which $X_{t+1}$ is drawn
+uniformly from the neighbours of $X_t$ other than $X_{t-1}$ (the walk is
+absorbed if there is none). Let $W_k=\mathbb{E}[d_{X_k}]$ with the start vertex
+drawn uniformly, the expectation taken over walks that survive $k$ steps (in the
+empirical networks of Section 7, on average 0.2\% and at most 3.0\% of walks are absorbed by step 3), $W_0=\mu_1$, and let $S_k^{\mathrm{walk}}=W_k/W_{k-1}$.
+This is the exploration process studied by Hazra et al.\ (2026), turned into a
+ratio statistic in the manner of Feld's comparison. In contrast to a shell, a
+walk endpoint is always a single vertex, so $W_k$ does not mechanically change
+character as $k$ grows.
+
+\emph{Ego-averaged shell statistic} (Section 6.5). A second, equally natural convention
+averages within each start node first,
+\begin{equation*}
+A_k \;=\; \frac{1}{\#\{u:\,n_k(u)>0\}}\sum_{u:\,n_k(u)>0}\frac{1}{n_k(u)}\sum_{w\in N_k(u)}d_w ,
+\end{equation*}
+the average over egos of the mean degree of the ego's own distance-$k$
+alters. $A_k$ and $B_k$ coincide when all egos have shells of equal size,
+and differ in general; the difference is exactly an assortativity-type term at
+$k=1$. I use $B_k$ for the theory because it admits an exact identity, $P_k$ for the empirical
+question of how many people experience the paradox at distance $k$, and $A_k$ only for the first step.
+
+\textbf{Estimation.} I estimate $Q_k$ from every vertex for networks with at most 4{,}000 vertices
+and from 2{,}000 uniformly sampled start vertices otherwise ($Q_1$ is set to its exact value
+$\mu_2/\mu_1^2$, so sampling makes $Q_k$ for $k\ge2$, and hence $\tilde k_{\mathrm{rev}}$ and $S_k$, estimates). For sampled
 networks I report a bootstrap standard error of $\tilde k_{\mathrm{rev}}$ over start
-vertices (at most $0.017$). The continuous measure can lie below 3 although the discrete reversal distance is 3 (no network I study has discrete reversal distance 2). Sampling the start vertices leaves $Q_1$ exact but makes $Q_k$, $k\ge2$, and hence $\tilde k_{\mathrm{rev}}$ and the ratios $S_k$, estimates; the bootstrap standard errors refer to the latter. I also report, for each $k$, the share of the network
+vertices (at most $0.017$). I also report, for each $k$, the share of the network
 at distance $k$ and the share of people with a non-empty shell.
 
 \section{Reversal Is Unavoidable}
@@ -480,7 +476,7 @@ largest component. I compute $Q_k$ to the diameter (from all vertices when
 $n\le4{,}000$, 2{,}220 graphs; from 2{,}000 sampled vertices otherwise), the
 reversal distances, and the mean-field prediction from each graph's realised
 degree sequence. The plan, the hypotheses, and the predictions of the mean-field model
-were written down before the Stage 1 data were analysed; the plan, the outcome of each hypothesis, and a log of departures are in the replication materials. The pooled slope test for the power-law family (Section 5.4) departs from its pre-specified form, and three analyses were added after the main analysis: the shell-coverage diagnostic and the assortativity experiment inside planted partitions (Section 6.3), and the checks of the proof in Appendix A.
+were written down before the Stage 1 data were analysed; the plan, the outcome of each hypothesis, and a log of departures are in the replication materials. The pooled slope test for the power-law family (Section 5.4) departs from its pre-specified form, and three analyses were added after the main analysis: the shell-coverage diagnostic and the assortativity experiment inside planted partitions (Section 6.4), and the checks of the proof in Appendix A.
 
 \subsection{The mean-field model predicts the reversal distance}
 
@@ -614,23 +610,17 @@ targets the starting value, $0.10$, $0.20$, and $0.30$, with 30 graphs per cell
 (1{,}200 graphs). Assortativity was within $0.002$ of its target and clustering
 within $3\times10^{-4}$ in every graph.
 
-\subsection{Clustering delays reversal; assortativity's effect depends on clustering}
+The degree sequence gives a baseline for the reversal distance. This section asks whether the arrangement of connections shifts it, in experiments that hold the degree sequence exactly fixed. Three questions organise it. Does clustering matter independently of the degree sequence (Section 6.2)? Does community structure matter independently of clustering (Section 6.3)? And why does the effect of assortativity change with the structure around it (Section 6.4)?
+
+\subsection{Clustering delays reversal}
 
 Table 2 and Figure 3 give the results. Raising clustering from its starting value ($0.04$ in base A, $0.02$ in base B) to $0.30$ at zero assortativity delays reversal by $0.34$ steps in base A and $0.56$ in
-base B. The effect of assortativity depends on clustering: at the starting
-clustering, assortative wiring delays reversal (assortativity $+0.3$ against $-0.3$:
-$+0.20$ and $+0.29$ steps), at clustering $0.10$ the effect is near zero, and at
-clustering $0.20$ and above it is negative ($-0.16$ and $-0.15$ at $0.20$; $-0.07$
-and $-0.30$ at $0.30$). The assortativity-by-clustering interaction in a regression
-of the crossing is $-1.64$ (base A) and $-3.56$ (base B). Assortativity therefore
-does not have a single sign in its effect on reversal. I do not have a mechanistic account of the sign change; the experiments establish it but do not explain it.
-
-However, triangle-closing swaps also build community structure: modularity of the
+base B. However, triangle-closing swaps also build community structure: modularity of the
 detected partition rises by $0.34$ (base A) and $0.37$ (base B) between the
 starting clustering and 0.30, mean distance rises by $0.16$ and $0.41$, and
 clustering and modularity correlate $0.94$ and $0.93$ across graphs. In this
 unrestricted rewiring clustering cannot be separated from community structure,
-which motivates the next experiment.
+which motivates the next experiment (Section 6.3).
 
 \begin{figure*}[t]
 \centering
@@ -644,9 +634,9 @@ standard error). (C) The effect of assortativity ($+0.3$ minus $-0.3$) on the
 reversal distance by clustering, with 95\% intervals.
 \end{figure*}
 
-\subsection{Separating clustering from community structure}
+\subsection{Community structure delays reversal, independently of clustering}
 
-To separate the two, I plant a partition of the vertices into blocks (10 blocks of
+To separate clustering from community structure, I plant a partition of the vertices into blocks (10 blocks of
 200 vertices in base A, 20 blocks of 200 in base B), draw each vertex's edges so
 that a fraction $1-m$ stay within its block (mixing $m=0.15,0.30,0.50,0.80$,
 corresponding to planted modularity $0.74$ to $0.17$ in base A and $0.79$ to $0.18$
@@ -693,7 +683,28 @@ communities delay the point at which the shells have covered about three quarter
 Part of the regularity is forced, because the share must stay below one, so I read it as
 consistent with the mechanism and not as a test that excludes other explanations. The first step of the expansion can be read directly: the ratio of the share of the network at distance 2 to the share at distance 1 falls by 14 to 24\% for each $0.1$ of clustering in the four designs. This is close to the definition of clustering (triangles leave fewer new vertices at distance 2) and so is expected, but it is the rate that the mean-field model takes as input.
 
-\paragraph{Assortativity with the communities held fixed.} The sign change of Section 6.2 raises the question whether it arises because triangle-closing swaps also build communities, which assortative swaps then dissolve (in the unrestricted rewiring, at clustering $0.30$, detected modularity is lower by $0.20$ in base A and $0.24$ in base B at assortativity $+0.3$ than at $-0.3$). I therefore repeated the assortativity experiment inside the planted partitions, with block-pair edge counts fixed by the swap rule, three community strengths (mixing $0.15$, $0.5$, $0.8$), assortativity targets $-0.3$, $0$, $0.3$ (achieved to within $0.01$), and clustering either left at its natural value or raised to $0.20$ (1{,}080 graphs, 30 per cell; this experiment was added after the main analysis). Planted modularity and the degree sequence are exactly fixed. At natural clustering, raising assortativity from $-0.3$ to $+0.3$ delays reversal by $0.14$ (base A) and $0.21$ steps (base B), in each of the three community strengths. At clustering $0.20$ the effect falls to $-0.03$ and $+0.03$ (Table 2), with the six cells ranging from $-0.11$ to $+0.09$. The dependence on clustering therefore remains (the interaction is $-0.16$ and $-0.18$, $p<.001$), but its negative arm largely disappears: the clearly negative effects of $-0.16$ and $-0.15$ found with unrestricted rewiring at clustering $0.20$ are mostly the loss of community structure, and adjusting for detected modularity changes the interaction little ($-0.14$ and $-0.18$), so detected modularity is not the whole account. The remaining dependence is absorbed by the mean distance (to $-0.05$ and $-0.11$), which restates the result in terms of expansion and does not explain it.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/figureZ4_communities.pdf}
+
+\vspace{4pt}
+\textbf{Figure 4. Clustering at fixed planted community structure.} Mean continuous
+reversal distance against the achieved clustering coefficient for four levels of
+planted community strength ($Q$ is the planted modularity), bases A and B ($\pm1$
+standard error). Rewiring preserves the number of edges between every pair of blocks.
+\end{figure*}
+
+\subsection{Assortativity: an effect that depends on clustering and communities}
+
+The effect of assortativity depends on clustering (Table 2, Figure 3): at the starting
+clustering, assortative wiring delays reversal (assortativity $+0.3$ against $-0.3$:
+$+0.20$ and $+0.29$ steps), at clustering $0.10$ the effect is near zero, and at
+clustering $0.20$ and above it is negative ($-0.16$ and $-0.15$ at $0.20$; $-0.07$
+and $-0.30$ at $0.30$). The assortativity-by-clustering interaction in a regression
+of the crossing is $-1.64$ (base A) and $-3.56$ (base B). Assortativity therefore
+does not have a single sign in its effect on reversal.
+
+The sign change raises the question whether it arises because triangle-closing swaps also build communities, which assortative swaps then dissolve (in the unrestricted rewiring, at clustering $0.30$, detected modularity is lower by $0.20$ in base A and $0.24$ in base B at assortativity $+0.3$ than at $-0.3$). I therefore repeated the assortativity experiment inside the planted partitions, with block-pair edge counts fixed by the swap rule, three community strengths (mixing $0.15$, $0.5$, $0.8$), assortativity targets $-0.3$, $0$, $0.3$ (achieved to within $0.01$), and clustering either left at its natural value or raised to $0.20$ (1{,}080 graphs, 30 per cell; this experiment was added after the main analysis). Planted modularity and the degree sequence are exactly fixed. At natural clustering, raising assortativity from $-0.3$ to $+0.3$ delays reversal by $0.14$ (base A) and $0.21$ steps (base B), in each of the three community strengths. At clustering $0.20$ the effect falls to $-0.03$ and $+0.03$ (Table 2), with the six cells ranging from $-0.11$ to $+0.09$. The dependence on clustering therefore remains (the interaction is $-0.16$ and $-0.18$, $p<.001$), but its negative arm largely disappears: the clearly negative effects of $-0.16$ and $-0.15$ found with unrestricted rewiring at clustering $0.20$ are mostly the loss of community structure, and adjusting for detected modularity changes the interaction little ($-0.14$ and $-0.18$), so detected modularity is not the whole account. The remaining dependence is absorbed by the mean distance (to $-0.05$ and $-0.11$), which restates the result in terms of expansion and does not explain it. I do not have a mechanistic account of the remaining dependence on clustering: the experiments establish it but do not explain it.
 
 \begin{table*}[t]
 \centering
@@ -723,19 +734,8 @@ Assortativity $+0.3$ vs $-0.3$ (planted partition fixed, clustering 0.20) & $-0.
 \vspace{4pt}
 {\small Base A: $n=2{,}000$, mean degree 25, CV 1.0; base B: $n=4{,}000$, mean degree 12,
 CV 1.4; 30 graphs per cell. The first five rows are from unrestricted rewiring (1{,}200 graphs); the next three from rewiring that preserves the block-pair edge
-counts of a planted partition (960 graphs); the last two from the same kind of rewiring with assortativity as the target (1{,}080 graphs, averaged over three community strengths, Section 6.3).}
+counts of a planted partition (960 graphs); the last two from the same kind of rewiring with assortativity as the target (1{,}080 graphs, averaged over three community strengths, Section 6.4).}
 \end{table*}
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.9\linewidth]{figures/figureZ4_communities.pdf}
-
-\vspace{4pt}
-\textbf{Figure 4. Clustering at fixed planted community structure.} Mean continuous
-reversal distance against the achieved clustering coefficient for four levels of
-planted community strength ($Q$ is the planted modularity), bases A and B ($\pm1$
-standard error). Rewiring preserves the number of edges between every pair of blocks.
-\end{figure*}
 
 \subsection{The first step: ego-averaged and pooled ratios, and assortativity}
 
@@ -844,7 +844,7 @@ departure from the mean-field prediction, the observed minus the mean-field
 crossing, is accounted for by assortativity ($+0.47$ per unit, $p<.001$) and
 modularity ($+0.85$, $p<.001$), with clustering, CV, size, and mean degree not
 significant ($R^2=0.71$; $0.69$ with assortativity and modularity alone;
-Figure 5B). The experiments of Section 6 suggest the same for community structure, which delays reversal when added to a fixed degree sequence. For assortativity the experiments show that the sign of the effect depends on clustering, so the cross-sectional coefficient describes these networks and is not a replication of a single effect. The Facebook networks have clustering between $0.10$ and $0.29$ (83\% between $0.10$ and $0.20$), which is the range in which Table 2 finds the effect of assortativity changing from small positive to negative. The cross-sectional association of the offset with assortativity is nevertheless positive in each third of the clustering distribution (slopes $0.32$ to $0.66$) and shows no interaction with clustering ($p=.95$). This is more consistent with the experiments than it first appears. With the communities held fixed (Section 6.3) the experimental effect of assortativity is positive at natural clustering ($+0.14$ and $+0.21$ for a change of $0.6$ in assortativity, a slope of $0.2$ to $0.35$ per unit) and close to zero at clustering $0.20$, not clearly negative, and the Facebook networks' assortativity spans only $-0.07$ to $0.20$. The cross-sectional slope ($0.32$ to $0.66$ per unit) is larger than the experimental one, so the cross-section carries more than degree mixing alone: assortativity is tied to other features of the networks, for instance the mixing of students by year, which I have not separated.
+Figure 5B). The experiments of Section 6 suggest the same for community structure, which delays reversal when added to a fixed degree sequence. For assortativity the experiments show that the sign of the effect depends on clustering, so the cross-sectional coefficient describes these networks and is not a replication of a single effect. The Facebook networks have clustering between $0.10$ and $0.29$ (83\% between $0.10$ and $0.20$), which is the range in which Table 2 finds the effect of assortativity changing from small positive to negative. The cross-sectional association of the offset with assortativity is nevertheless positive in each third of the clustering distribution (slopes $0.32$ to $0.66$) and shows no interaction with clustering ($p=.95$). This is more consistent with the experiments than it first appears. With the communities held fixed (Section 6.4) the experimental effect of assortativity is positive at natural clustering ($+0.14$ and $+0.21$ for a change of $0.6$ in assortativity, a slope of $0.2$ to $0.35$ per unit) and close to zero at clustering $0.20$, not clearly negative, and the Facebook networks' assortativity spans only $-0.07$ to $0.20$. The cross-sectional slope ($0.32$ to $0.66$ per unit) is larger than the experimental one, so the cross-section carries more than degree mixing alone: assortativity is tied to other features of the networks, for instance the mixing of students by year, which I have not separated.
 
 The cross-sectional slope of the crossing on
 $\log n/\log\nu$ is $1.43$ ($R^2=0.93$); since the degree law varies across networks
