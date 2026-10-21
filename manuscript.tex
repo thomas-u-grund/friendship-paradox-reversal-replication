@@ -140,7 +140,7 @@ $(u,w)$ at distance exactly $k$. This is the natural generalisation of Feld's
 original comparison, in which the neighbour is drawn from the set of all edges:
 for $k=1$ it is the mean degree of the endpoint of an edge traversed in a
 uniformly random direction. The statistic is a ratio of two sums, each of which is well defined in any
-connected graph for every $k$ up to the diameter; nothing is averaged
+connected graph for every $k$ up to the diameter (the largest distance between two vertices); nothing is averaged
 across ratios. I call $Q_k=B_k/\mu_1$ the \emph{enrichment} of the shell relative to the
 population: $Q_k>1$ means that the people at distance $k$ are better connected than
 average, and $Q_1=\mu_2/\mu_1^2\ge1$ (Theorem 1), so the first shell is enriched in every
@@ -619,7 +619,7 @@ The degree sequence gives a baseline for the reversal distance. This section ask
 Table 2 and Figure 3 give the results. Raising clustering from its starting value ($0.04$ in base A, $0.02$ in base B) to $0.30$ at zero assortativity delays reversal by $0.34$ steps in base A and $0.56$ in
 base B. However, triangle-closing swaps also build community structure: modularity of the
 detected partition rises by $0.34$ (base A) and $0.37$ (base B) between the
-starting clustering and 0.30, mean distance rises by $0.16$ and $0.41$, and
+starting clustering and 0.30, mean distance (the average shortest-path length between pairs of vertices) rises by $0.16$ and $0.41$, and
 clustering and modularity correlate $0.94$ and $0.93$ across graphs. In this
 unrestricted rewiring clustering cannot be separated from community structure,
 which motivates the next experiment (Section 6.3).
